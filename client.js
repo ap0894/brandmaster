@@ -244,7 +244,7 @@ function connect () {
 		}
 		//$("#top").show();
 		$('#actions').html(actions);
-		$('.pie').css('background-color', teamColour);
+		//$('.pie').css('background-color', teamColour);
 	});
 	
 	// Handle the changing of tile colour event
@@ -434,12 +434,18 @@ function giveClue() {
 
 function update(percent){
 	var deg;
+	var colour;
+	if(activeGo || activeSpy) {
+		colour = teamColour;
+	} else {
+		colour = COLOR_GREY;
+	}
 	if (percent<(totaltime/2)) {
 		deg = 90 + (360*percent/totaltime);
 		$('.pie').css('background-image','linear-gradient('+deg+'deg, transparent 50%, white 50%),linear-gradient(90deg, white 50%, transparent 50%)');
 	} else if (percent>=(totaltime/2)) {	
 		deg = -90 + (360*percent/totaltime);
-        $('.pie').css('background-image','linear-gradient('+deg+'deg, transparent 50%, '+teamColour+' 50%),linear-gradient(90deg, white 50%, transparent 50%)');
+        $('.pie').css('background-image','linear-gradient('+deg+'deg, transparent 50%, '+colour+' 50%),linear-gradient(90deg, white 50%, transparent 50%)');
 	}
 }
 
