@@ -353,7 +353,7 @@ function connect () {
 			activeTeam = true;
 			if(spyMasterMode) {
 				console.log ("Spymaster active");
-				$("#clue").html("<input id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\">"+numSelector+"</div><div id=\"numTxt\">products linked</div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
+				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\">"+numSelector+"</div><div id=\"numTxt\">products linked</div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
 				//var index = data.teams.indexOf(turn);
 				//var index = data.teams.map(function(e) { return e.name; }).indexOf(turn);
 				$('#giveClue').css('background-color', teamColour);
@@ -366,7 +366,7 @@ function connect () {
 				activeSpy = true;
 			}
 			else {
-				$("#clue").html("<input id=\"clueBox\" type=\"text\" placeholder=\"Waiting for brand...\" readonly></input><div id=\"numInput\"></div><input type=\"button\" id=\"endGo\" value=\"End Go!\"></input>");
+				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Waiting for brand...\" readonly></input><div id=\"numInput\"></div><input type=\"button\" id=\"endGo\" value=\"End Go!\"></input>");
 				$('#endGo').attr("disabled", true);
 				$('#endGo').css('background-color', COLOR_GREY);	
 			}
