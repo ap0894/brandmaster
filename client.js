@@ -244,7 +244,12 @@ function connect () {
 		}
 		//$("#top").show();
 		$('#actions').html(actions);
-		//$('.pie').css('background-color', teamColour);
+		if(activeGo||activeSpy) {
+			$('.pie').css('background-color', teamColour);
+		} else {
+			$('.pie').css('background-color', COLOR_GREY);
+		}
+			
 	});
 	
 	// Handle the changing of tile colour event
