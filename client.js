@@ -14,6 +14,7 @@ var testing=true;
 var totaltime = 60 * 2.5;
 var teamColour;
 var DARKEN = -0.1;
+var activeTeam = false;
 
 // this block executes when page DOM is ready
 $( document ).ready(function() {
@@ -348,6 +349,7 @@ function connect () {
 		console.log("It's " + turn + " turn");
 		$('#clue').html('');
 		if (turn == room) {
+			activeTeam = true;
 			if(spyMasterMode) {
 				console.log ("Spymaster active");
 				$("#clue").html("<input id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\"><input id=\"num\" type=\"number\" min=\"1\" max=\"9\"></input></div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
@@ -365,8 +367,10 @@ function connect () {
 				$('#endGo').attr("disabled", true);
 				$('#endGo').css('background-color', COLOR_GREY);	
 			}
+		} else {
+			activeTeam = false;
 		}
-		if(activeGo||activeSpy) {
+		if(activeTeam) {
 			$('.pie').css('background-color', teamColour);
 		} else {
 			$('.pie').css('background-color', COLOR_GREY);
@@ -439,7 +443,7 @@ function giveClue() {
 function update(percent){
 	var deg;
 	var colour;
-	if(activeGo || activeSpy) {
+	if(activeTeam) {
 		colour = teamColour;
 	} else {
 		colour = COLOR_GREY;
