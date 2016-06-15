@@ -64,7 +64,7 @@ body {
 }
 
 .header {
-	font-size: 48pt;
+	font-size: 36pt;
 	display: inline-block;
 	vertical-align:	middle;
 }
@@ -81,7 +81,7 @@ body {
 		border-radius:15px;
 		color: white;
 		line-height: 54px;
-		font-size: 41pt;
+		font-size: 31pt;
 }
 
 .img {
