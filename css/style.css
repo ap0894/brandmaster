@@ -243,7 +243,7 @@ a, a:link, a:visited, a:hover, a:active {
 
 .container {
 	display:block;
-	max-width:908px;
+	max-width:600px;
 	margin:0 auto;
 }
 
@@ -251,7 +251,7 @@ a, a:link, a:visited, a:hover, a:active {
 	float:left;
 	position:relative;
 	width:19%;
-	margin:0.5%;
+	margin:0.25%;
 	padding-bottom:13%;
 	/*text-align:center;*/
 	color:white;
