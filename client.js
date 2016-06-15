@@ -108,10 +108,10 @@ function createScoreTable(teams) {
 		console.log(teams[x].name + " status: " + teams[x].active);
 		if(teams[x].active) {
 			newColour = lighten(teams[x].colour, DARKEN);
-			scores = scores + "<td style=\"font-size:2em; background-color:" + teams[x].colour +"; color:white; border-radius:10px; width:90px; line-height:90px; box-shadow: inset 0 -10px 1px"+newColour+";\"><span>" + teams[x].score + "</span><span>/" + teams[x].target + "</span></td>";		
+			scores = scores + "<td style=\"background-color:" + teams[x].colour +"; color:white; border-radius:10px; width:90px; line-height:90px; box-shadow: inset 0 -10px 1px"+newColour+";\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\">/" + teams[x].target + "</span></td>";		
 			//Add in another indicator for this team
 		} else {
-			scores = scores + "<td style=\"width:90px; line-height:90px; color:" + teams[x].colour +"\"><span>" + teams[x].score + "</span><span>/" + teams[x].target + "</span></td>";		
+			scores = scores + "<td style=\"width:90px; line-height:90px; color:" + teams[x].colour +"\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\">/" + teams[x].target + "</span></td>";		
 		}
 	}
 	//header += "</tr></thead>";

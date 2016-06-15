@@ -304,3 +304,11 @@ a, a:link, a:visited, a:hover, a:active {
 #teamsWrap {
 	display: inline-block;
 }
+
+.scoreNum {
+	font-size: 2em;
+}
+
+.scoreTarget {
+	color: #cccccc;
+}
