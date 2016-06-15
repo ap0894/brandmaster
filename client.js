@@ -15,6 +15,7 @@ var totaltime = 60 * 2.5;
 var teamColour;
 var DARKEN = -0.1;
 var activeTeam = false;
+var numSelector = "<select id=\"num\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option></select>" 
 
 // this block executes when page DOM is ready
 $( document ).ready(function() {
@@ -352,7 +353,7 @@ function connect () {
 			activeTeam = true;
 			if(spyMasterMode) {
 				console.log ("Spymaster active");
-				$("#clue").html("<input id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\"><input id=\"num\" type=\"number\" min=\"1\" max=\"9\"></input></div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
+				$("#clue").html("<input id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\">"+numSelector+"</div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
 				//var index = data.teams.indexOf(turn);
 				//var index = data.teams.map(function(e) { return e.name; }).indexOf(turn);
 				$('#giveClue').css('background-color', teamColour);
