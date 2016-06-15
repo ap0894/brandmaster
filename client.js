@@ -211,7 +211,7 @@ function connect () {
 		$('#teamTable').remove();
 		
 		//$('#banner').html('');
-		$('#board').css('display','block');
+		//$('#board').css('display','block');
 		//console.log("Generating player board");
 		var board = "";
 		//board += '<table class="board" id="board"><tbody>';

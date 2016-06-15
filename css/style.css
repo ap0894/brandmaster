@@ -239,7 +239,7 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .boardContainer {
-	display:inline-block;
+	display:block;
 	max-width:650px;
 	margin:0 auto;
 }
@@ -275,4 +275,16 @@ a, a:link, a:visited, a:hover, a:active {
 	vertical-align:middle;
 	border-radius:10px;
 	padding-bottom:	5px;
+}
+
+.grid{
+  display: table;
+  width: 100%;
+  border-spacing:.5em;
+}
+.col{
+	padding:1em;
+	width:25%;
+	display:table-cell;
+	border:#f0f0f0 1px solid;
 }
