@@ -360,7 +360,7 @@ function connect () {
 				$('#clueBox').css('border', '1px solid ' + teamColour);
 				$('#num').css('border', '1px solid ' + teamColour);
 				newColour = lighten(teamColour, DARKEN);
-				$('#giveClue').css('boxShadow', "inset 0 -10px 1px " + newColour);	
+				$('#giveClue').css('boxShadow', "inset 0 -5px 1px " + newColour);	
 				activeSpy = true;
 			}
 			else {
