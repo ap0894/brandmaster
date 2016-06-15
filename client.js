@@ -67,7 +67,7 @@ $(document.body).on('click', '#reset' ,function(e){
 
 // Function to create a HTML table for the player names
 function createTeamTable(teams) {
-	var output = "<div class=\"table teams\"><div class=\"table-row\">";
+	var output = "<div class=\"table teams\">";
 	var columns = "";
 	var head = "";
 	var body = "";
@@ -76,7 +76,6 @@ function createTeamTable(teams) {
 		teamName = toTitleCase(teams[x].name);
 		head = head + "<div class=\"table-cell\">" + teamName +  "</div>";
 	}
-	//output = output + "</div>";
 	
 	//this doesn't work because teams[0] can be less than teams[1]
 	for (i=0; i<teams[0].players.length; i++)
@@ -93,7 +92,7 @@ function createTeamTable(teams) {
 				}
 			}
 		}
-		//output = output + "</div>";
+		body = body + "</div>";
 	}
 	output = output + columns + head + body + "</div>";
 	return output;
