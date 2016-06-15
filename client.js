@@ -110,7 +110,7 @@ function createScoreTable(teams) {
 		console.log(teams[x].name + " status: " + teams[x].active);
 		if(teams[x].active) {
 			newColour = lighten(teams[x].colour, DARKEN);
-			scores = scores + "<td style=\"background-color:" + teams[x].colour +"; color:white; border-radius:10px; width:70px; line-height:70px; box-shadow: inset 0 -10px 1px"+newColour+";\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</span></td>";		
+			scores = scores + "<td style=\"background-color:" + teams[x].colour +"; color:white; border-radius:5px; width:70px; line-height:70px; box-shadow: inset 0 -10px 1px"+newColour+";\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</span></td>";		
 			//Add in another indicator for this team
 		} else {
 			scores = scores + "<td style=\"width:70px; line-height:70px; color:" + teams[x].colour +"\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\">/" + teams[x].target + "</span></td>";		
@@ -205,7 +205,7 @@ function connect () {
 			//$('#endGo').css('background-color', data.teams[index].colour);
 			$('#endGo').css('background-color', teamColour);
 			newColour = lighten(teamColour, DARKEN);
-			$('#endGo').css('boxShadow', "inset 0 -10px 1px " + newColour);	
+			$('#endGo').css('boxShadow', "inset 0 -5px 1px " + newColour);	
 			$('#giveClue').hide();
 		}
 	});
@@ -357,8 +357,10 @@ function connect () {
 				//var index = data.teams.indexOf(turn);
 				//var index = data.teams.map(function(e) { return e.name; }).indexOf(turn);
 				$('#giveClue').css('background-color', teamColour);
+				$('#clueBox').css('color', teamColour);
 				$('#clueBox').css('border', '1px solid ' + teamColour);
 				$('#num').css('border', '1px solid ' + teamColour);
+				$('#num').css('color', teamColour);
 				newColour = lighten(teamColour, DARKEN);
 				$('#giveClue').css('boxShadow', "inset 0 -5px 1px " + newColour);	
 				activeSpy = true;
