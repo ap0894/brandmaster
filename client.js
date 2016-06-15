@@ -5,6 +5,7 @@ var playerName;
 var COLOR_GREEN = "#009000";
 //var COLOR_WHITE = "#ffffff";
 var COLOR_PALE_GREY = "#cccccc";
+var TILE_GREY = "#F6F6F6";
 var COLOR_GREY = "#b3b3b3";
 var activeGo = false;
 var room = "";
@@ -240,10 +241,10 @@ function connect () {
 				document.getElementById(j).style.boxShadow = "inset 0 -10px 1px " + newColour;				
 	
 			} else {
-				document.getElementById(j).style.backgroundColor = COLOR_PALE_GREY;
-				newColour = lighten(COLOR_PALE_GREY, DARKEN);
+				document.getElementById(j).style.backgroundColor = TILE_GREY;
+				newColour = lighten(TILE_GREY, DARKEN);
 				document.getElementById(j).style.boxShadow = "inset 0 -10px 1px " + newColour;	
-				document.getElementById(j).style.color = "#4b4b4b";
+				document.getElementById(j).style.color = "#545454";
 			}
 		}
 		//$("#top").show();
