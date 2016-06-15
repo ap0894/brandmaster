@@ -64,7 +64,7 @@ body {
 }
 
 .header {
-	font-size: 36pt;
+	font-size: 18pt;
 	display: inline-block;
 	vertical-align:	middle;
 }
@@ -76,12 +76,12 @@ body {
 }
 
 .tile {
-		width: 54px;
-		height: 64px;
-		border-radius:15px;
+		width: 27px;
+		height: 32px;
+		border-radius:7.5px;
 		color: white;
-		line-height: 54px;
-		font-size: 31pt;
+		line-height: 27px;
+		font-size: 15pt;
 }
 
 .img {
@@ -105,7 +105,7 @@ body {
 	background-color: #27aae0;
 	box-shadow: inset 0 -8px 1px #2192c2;
 	border-radius: 5px;
-	border: 1px solid #27aae0;
+	border: 0px solid #27aae0;
 	color: white;
 }
 
@@ -121,12 +121,12 @@ body {
 
 #b {
 	background-color: #27aae0;
-	box-shadow: inset 0 -10px 1px #2192c2;
+	box-shadow: inset 0 -5px 1px #2192c2;
 }
 
 #m {
 	background-color: #e85ba6;
-	box-shadow: inset 0 -10px 1px #cc5092;
+	box-shadow: inset 0 -5px 1px #cc5092;
 }
 
 #master {
