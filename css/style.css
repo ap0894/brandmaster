@@ -170,7 +170,7 @@ a, a:link, a:visited, a:hover, a:active {
 	text-align: left;
 }
 
-.teamTable {
+#teamTable {
 	color: white;
 }
 
@@ -282,7 +282,6 @@ a, a:link, a:visited, a:hover, a:active {
 .table-column{
 	display:table-column;
 	border-radius: 10px;
-	//background-color: green;
 }
 
 .grid{
