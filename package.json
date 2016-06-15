@@ -1,35 +1,36 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "BrandMaster",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "BrandMaster",
   "keywords": [
-    "OpenShift",
+    "virtual",
     "Node.js",
-    "application",
-    "openshift"
+    "Brandt",
+    "master",
+    "team"
+	"build"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "Anup Parekh",
+    "email": "parekh.anup@gmail.com",
+    "url": "http://brandmaster-virtualteambuild.rhcloud.com/"
   },
-  "homepage": "http://www.openshift.com/",
+  "homepage": "http://brandmaster-virtualteambuild.rhcloud.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openshift/origin-server"
+    "url": ""
   },
-
   "engines": {
-    "node": ">= 0.6.0",
+    "node": ">= 0.10.0",
     "npm": ">= 1.0.0"
   },
-
   "dependencies": {
-    "express": "~3.4.4"
+    "socket.io":  "~1.4.5",
+    "express":    "~4.10.7",
+	"seedrandom": ""
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
   "main": "server.js"
 }
