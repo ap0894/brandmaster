@@ -243,13 +243,7 @@ function connect () {
 			}
 		}
 		//$("#top").show();
-		$('#actions').html(actions);
-		if(activeGo||activeSpy) {
-			$('.pie').css('background-color', teamColour);
-		} else {
-			$('.pie').css('background-color', COLOR_GREY);
-		}
-			
+		$('#actions').html(actions);			
 	});
 	
 	// Handle the changing of tile colour event
@@ -371,6 +365,11 @@ function connect () {
 				$('#endGo').attr("disabled", true);
 				$('#endGo').css('background-color', COLOR_GREY);	
 			}
+		}
+		if(activeGo||activeSpy) {
+			$('.pie').css('background-color', teamColour);
+		} else {
+			$('.pie').css('background-color', COLOR_GREY);
 		}
 	});
 }
