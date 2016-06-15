@@ -107,13 +107,11 @@ function createScoreTable(teams) {
 		teamName = toTitleCase(teams[x].name);
 		console.log(teams[x].name + " status: " + teams[x].active);
 		if(teams[x].active) {
-			//header = header + "<th style=\"font-size:1.5em; color:#b2b2b2\">" + "Team " + teamName + "</th>";
 			newColour = lighten(teams[x].colour, DARKEN);
-			scores = scores + "<td style=\"font-size:2em; background-color:" + teams[x].colour +"; color:white; border-radius:10px; width:90px; line-height:90px; box-shadow: inset 0 -10px 1px"+newColour+";\">" + teams[x].score + "/" + teams[x].target + "</td>";		
+			scores = scores + "<td style=\"font-size:2em; background-color:" + teams[x].colour +"; color:white; border-radius:10px; width:90px; line-height:90px; box-shadow: inset 0 -10px 1px"+newColour+";\"><span>" + teams[x].score + "</span><span>/" + teams[x].target + "</span></td>";		
 			//Add in another indicator for this team
 		} else {
-			//header = header + "<th style=\"color:#dadada\">" + "Team " + teamName + "</th>";
-			scores = scores + "<td style=\"width:90px; line-height:90px; color:" + teams[x].colour +"\">" + teams[x].score + "/" + teams[x].target + "</td>";		
+			scores = scores + "<td style=\"width:90px; line-height:90px; color:" + teams[x].colour +"\"><span>" + teams[x].score + "</span><span>/" + teams[x].target + "</span></td>";		
 		}
 	}
 	//header += "</tr></thead>";
