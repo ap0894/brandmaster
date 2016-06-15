@@ -1,24 +1,23 @@
 {
-  "name": "BrandMaster",
+  "name": "SocketIO-Openshift-Example",
   "version": "1.0.0",
-  "description": "BrandMaster",
+  "description": "socketio-openshift-example",
   "keywords": [
-    "virtual",
+    "openshift",
     "Node.js",
-    "Brandt",
-    "master",
-    "team"
-	"build"
+    "websocket",
+    "nodebooks",
+    "nodejs"
   ],
   "author": {
-    "name": "Anup Parekh",
-    "email": "parekh.anup@gmail.com",
-    "url": "http://brandmaster-virtualteambuild.rhcloud.com/"
+    "name": "Jaakko Vanhala",
+    "email": "nodebooks@gmail.com",
+    "url": "https://leanpub.com/jvanhalen"
   },
-  "homepage": "http://brandmaster-virtualteambuild.rhcloud.com/",
+  "homepage": "https://leanpub.com/jvanhalen",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://www.github.com/nodebooks"
   },
   "engines": {
     "node": ">= 0.10.0",
