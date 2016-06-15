@@ -72,7 +72,7 @@ function createTeamTable(teams) {
 	var head =  "<div class=\"table-row\">";
 	var body = "";
 	for (x=0; x<teams.length; x++) {
-		columns += "<div class=\"table-column\"></div>";
+		columns += "<div class=\"table-column\" style=\"background-color:"+teams[x].colour+"\"></div>";
 		teamName = toTitleCase(teams[x].name);
 		head = head + "<div class=\"table-cell\">" + teamName +  "</div>";
 	}

@@ -270,10 +270,9 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .table-cell{
-	display:table-cell;
-	vertical-align:middle;
-	border-radius:10px;
-	padding-bottom:	5px;
+	display: table-cell;
+	vertical-align: middle;
+	padding-bottom: 5px;
 }
 
 .table-column{
