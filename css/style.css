@@ -238,7 +238,7 @@ a, a:link, a:visited, a:hover, a:active {
 	margin-bottom: 20px;
 }
 
-.boardContainer {
+.container {
 	display:block;
 	max-width:650px;
 	margin:0 auto;
@@ -287,4 +287,8 @@ a, a:link, a:visited, a:hover, a:active {
 	width:25%;
 	display:table-cell;
 	border:#f0f0f0 1px solid;
+}
+
+.table-row {
+	display : table-row;
 }
