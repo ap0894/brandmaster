@@ -187,7 +187,8 @@ function switchTeam()
 	console.log(teams[index].name + " is now set to active");
 	console.log("Switching team to", whoseGo);		
 	io.sockets.emit('turn', { whoseGo : whoseGo, teams : teams });
-	sendTeams();
+	//sendTeams();
+	sendScores();
 }
 
 function isNameAvail(data) {
