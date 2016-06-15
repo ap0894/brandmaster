@@ -355,10 +355,17 @@ function connect () {
 				console.log ("Spymaster active");
 				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\">"+numSelector+"</div><div id=\"numTxt\">products linked</div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
 				//document.styleSheets[0].insertRule('.dynamic::-webkit-input-placeholder', 'color:'+teamColour + '!important');
-				addCSSRule(document.styleSheets[0], ".dynamic::-webkit-input-placeholder", "color:"+teamColour + "!important");
 				//document.styleSheets[0].addRule('.dynamic:-moz-placeholder', 'color:'+teamColour);
 				//document.styleSheets[0].addRule('.dynamic::-moz-placeholder', 'color:'+teamColour);
 				//document.styleSheets[0].addRule('.dynamic:-ms-input-placeholder', 'color:'+teamColour );
+				try {
+					addCSSRule(document.styleSheets[0], ".dynamic::-webkit-input-placeholder", "color:"+teamColour + "!important", 0);
+					addCSSRule(document.styleSheets[0], ".dynamic:-moz-placeholder", "color:"+teamColour + "!important", 0);
+					addCSSRule(document.styleSheets[0], ".dynamic::-moz-placeholder", "color:"+teamColour + "!important", 0);
+					addCSSRule(document.styleSheets[0], ".dynamic:-ms-input-placeholder", "color:"+teamColour + "!important", 0);
+				} catch (e) {
+					console.log("Error dynamically adding placeholder style", e);
+				}
 				//var index = data.teams.indexOf(turn);
 				//var index = data.teams.map(function(e) { return e.name; }).indexOf(turn);
 				$('#giveClue').css('background-color', teamColour);
