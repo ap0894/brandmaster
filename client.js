@@ -69,13 +69,14 @@ $(document.body).on('click', '#reset' ,function(e){
 function createTeamTable(teams) {
 	var output = "<div class=\"table teams\">";
 	var columns = "";
-	var head = "";
+	var head =  "<div class=\"table-row\">";
 	var body = "";
 	for (x=0; x<teams.length; x++) {
 		columns += "<div class=\"table-column\"></div>";
 		teamName = toTitleCase(teams[x].name);
 		head = head + "<div class=\"table-cell\">" + teamName +  "</div>";
 	}
+	head += "</div>"
 	
 	//this doesn't work because teams[0] can be less than teams[1]
 	for (i=0; i<teams[0].players.length; i++)

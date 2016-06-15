@@ -276,7 +276,7 @@ a, a:link, a:visited, a:hover, a:active {
 	padding-bottom:	5px;
 }
 
-.table-cell{
+.table-column{
 	display:table-column;
 	background-color: green;
 }
