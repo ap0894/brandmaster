@@ -67,7 +67,7 @@ $(document.body).on('click', '#reset' ,function(e){
 
 // Function to create a HTML table for the player names
 function createTeamTable(teams) {
-	var output = "<div class=\"table\"><div class=\"table-row\">";
+	var output = "<div class=\"table teams\"><div class=\"table-row\">";
 	for (x=0; x<teams.length; x++) {
 		teamName = toTitleCase(teams[x].name);
 		output = output + "<div class=\"table-cell\">" + teamName +  "</div>";

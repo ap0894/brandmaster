@@ -167,9 +167,9 @@ a, a:link, a:visited, a:hover, a:active {
     cursor:pointer;
 }
 
-/*#teams {
-	display: inline-block;
-}*/
+.teams .table-cell {
+	text-align: left;
+}
 
 .pie{
     width: 50px;
@@ -290,5 +290,5 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .table-row {
-	display : table-row;
+	display : table-column;
 }
