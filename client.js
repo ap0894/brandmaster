@@ -22,9 +22,6 @@ var numSelector = "<select id=\"num\"><option value=\"1\">1</option><option valu
 $( document ).ready(function() {
 	var correctModal = document.getElementById("correctModal");
 	var closeSpan = document.getElementsByClassName("close")[0];
-	closeSpan.onclick = function() {
-		correctModal.style.display = "none";
-	}
 	
 	window.onclick = function(event) {
 		if(event.target==correctModal) {
@@ -295,6 +292,9 @@ function connect () {
 				}
 				if (col == room ) {
 					correctModal.style.display = "block";
+					setTimeout(function () {
+						correctModal.style.display = "none";
+					},2000);
 					console.log("Correct keep guessing");
 					goes--;
 					//$('#goes').html(goes + " guesses left");
