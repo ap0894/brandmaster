@@ -68,30 +68,34 @@ $(document.body).on('click', '#reset' ,function(e){
 // Function to create a HTML table for the player names
 function createTeamTable(teams) {
 	var output = "<div class=\"table teams\"><div class=\"table-row\">";
+	var columns = "";
+	var head = "";
+	var body = "";
 	for (x=0; x<teams.length; x++) {
+		columns += "<div class=\"table-column\"></div>";
 		teamName = toTitleCase(teams[x].name);
-		output = output + "<div class=\"table-cell\">" + teamName +  "</div>";
+		head = head + "<div class=\"table-cell\">" + teamName +  "</div>";
 	}
-	output = output + "</div>";
+	//output = output + "</div>";
 	
 	//this doesn't work because teams[0] can be less than teams[1]
 	for (i=0; i<teams[0].players.length; i++)
 	{
-		output = output + "<div class=\"table-row\">";
+		body = body + "<div class=\"table-row\">";
 		for (j=0; j<teams.length; j++)
 		{
 			if (teams[j].players[i] != null) {
 				if(teams[j].players[i].name == playerName ) {
-					output = output + "<div class=\"table-cell\"><strong>"+ teams[j].players[i].name + "</strong></div>";
+					body = body + "<div class=\"table-cell\"><strong>"+ teams[j].players[i].name + "</strong></div>";
 				} else {
 					//console.log("Adding name " + teams[j].players[i] );
-					output = output + "<div class=\"table-cell\">"+ teams[j].players[i].name + "</div>";
+					body = body + "<div class=\"table-cell\">"+ teams[j].players[i].name + "</div>";
 				}
 			}
 		}
-		output = output + "</div>";
+		//output = output + "</div>";
 	}
-	output = output + "</div>";
+	output = output + columns + head + body + "</div>";
 	return output;
 }
 

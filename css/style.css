@@ -276,6 +276,11 @@ a, a:link, a:visited, a:hover, a:active {
 	padding-bottom:	5px;
 }
 
+.table-cell{
+	display:table-column;
+	background-color: green;
+}
+
 .grid{
   display: table;
   width: 100%;
