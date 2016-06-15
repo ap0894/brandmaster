@@ -356,7 +356,7 @@ function connect () {
 				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\">"+numSelector+"</div><div id=\"numTxt\">products linked</div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
 				document.styleSheets[0].addRule('.dynamic::-webkit-input-placeholder', 'color:'+teamColour);
 				//document.styleSheets[0].addRule('.dynamic:-moz-placeholder', 'color:'+teamColour);
-				document.styleSheets[0].addRule('.dynamic::-moz-placeholder', 'color:'+teamColour);
+				//document.styleSheets[0].addRule('.dynamic::-moz-placeholder', 'color:'+teamColour);
 				//document.styleSheets[0].addRule('.dynamic:-ms-input-placeholder', 'color:'+teamColour);
 				//var index = data.teams.indexOf(turn);
 				//var index = data.teams.map(function(e) { return e.name; }).indexOf(turn);
