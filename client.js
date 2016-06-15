@@ -109,7 +109,7 @@ function createScoreTable(teams) {
 		if(teams[x].active) {
 			//header = header + "<th style=\"font-size:1.5em; color:#b2b2b2\">" + "Team " + teamName + "</th>";
 			newColour = lighten(teams[x].colour, DARKEN);
-			scores = scores + "<td style=\"font-size:2em; background-color:" + teams[x].colour +"; color:white; border-radius:10px; box-shadow: inset 0 -10px 1px"+newColour+";\">" + teams[x].score + "/" + teams[x].target + "</td>";		
+			scores = scores + "<td style=\"font-size:2em; background-color:" + teams[x].colour +"; color:white; border-radius:10px; width:90px; line-height:90px; box-shadow: inset 0 -10px 1px"+newColour+";\">" + teams[x].score + "/" + teams[x].target + "</td>";		
 			//Add in another indicator for this team
 		} else {
 			//header = header + "<th style=\"color:#dadada\">" + "Team " + teamName + "</th>";

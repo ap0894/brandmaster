@@ -300,3 +300,7 @@ a, a:link, a:visited, a:hover, a:active {
 .table-row {
 	display : table-row;
 }
+
+#teamsWrap {
+	display: inline-block;
+}
