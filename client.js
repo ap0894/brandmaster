@@ -101,23 +101,25 @@ function createTeamTable(teams) {
 
 function createScoreTable(teams) {
 	var output = "<table class=\"table\">";
-	var header = "<thead><tr>";
+	//var header = "<thead><tr>";
 	var scores = "<tbody><tr>";
 	for (x=0; x<teams.length; x++) {
 		teamName = toTitleCase(teams[x].name);
 		console.log(teams[x].name + " status: " + teams[x].active);
 		if(teams[x].active) {
-			header = header + "<th style=\"font-size:1.5em; color:#b2b2b2\">" + "Team " + teamName + "</th>";
-			scores = scores + "<td style=\"font-size:2em; color:" + teams[x].colour +"\">" + teams[x].score + "/" + teams[x].target + "</td>";		
+			//header = header + "<th style=\"font-size:1.5em; color:#b2b2b2\">" + "Team " + teamName + "</th>";
+			newColour = lighten(teams[x].colour, DARKEN);
+			scores = scores + "<td style=\"font-size:2em; background-color:" + teams[x].colour +"; color:white; border-radius:10px; box-shadow: inset 0 -10px 1px"+newColor";\">" + teams[x].score + "/" + teams[x].target + "</td>";		
 			//Add in another indicator for this team
 		} else {
-			header = header + "<th style=\"color:#dadada\">" + "Team " + teamName + "</th>";
+			//header = header + "<th style=\"color:#dadada\">" + "Team " + teamName + "</th>";
 			scores = scores + "<td style=\"color:" + teams[x].colour +"\">" + teams[x].score + "/" + teams[x].target + "</td>";		
 		}
 	}
-	header += "</tr></thead>";
+	//header += "</tr></thead>";
 	scores += "</tr></tbody>";
-	output = output + header + scores + "</table>";
+	//output = output + header + scores + "</table>";
+	output = output + scores + "</table>";
 	return output;
 }
 

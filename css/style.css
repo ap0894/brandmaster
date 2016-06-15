@@ -277,6 +277,7 @@ a, a:link, a:visited, a:hover, a:active {
 	display: table-cell;
 	vertical-align: middle;
 	padding-bottom: 5px;
+	border-radius: 10px;
 }
 
 .table-column{
