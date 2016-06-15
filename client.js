@@ -113,7 +113,7 @@ function createScoreTable(teams) {
 			//Add in another indicator for this team
 		} else {
 			//header = header + "<th style=\"color:#dadada\">" + "Team " + teamName + "</th>";
-			scores = scores + "<td style=\"color:" + teams[x].colour +"\">" + teams[x].score + "/" + teams[x].target + "</td>";		
+			scores = scores + "<td style=\"width:90px; line-height:90px; color:" + teams[x].colour +"\">" + teams[x].score + "/" + teams[x].target + "</td>";		
 		}
 	}
 	//header += "</tr></thead>";
