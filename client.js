@@ -186,7 +186,9 @@ function connect () {
 		//the html for displaying the clue
 		//$('#clue').html("<div>" + data.clue.toUpperCase() + " " + data.num + "</div>");
 		//$('#clueBox').placeholder = data.clue.toUpperCase() + " " + data.num ;
-		document.getElementById("clueBox").placeholder = data.clue.toUpperCase() + " " + data.num;
+		if(!spyMasterMode) {
+			document.getElementById("clueBox").placeholder = data.clue.toUpperCase() + " " + data.num;
+		}
 		//$('#history').append(data.clue.toUpperCase() + " " + data.num + "<br />");
 		// Activate players
 		if(room == data.whoseGo && !spyMasterMode) {
