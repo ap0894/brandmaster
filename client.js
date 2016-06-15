@@ -20,7 +20,7 @@ $( document ).ready(function() {
 	connect ();
 	socket.emit('getTeams');
 	$("#endGo").hide();
-	$("#top").hide();
+	//$("#top").hide();
 	$("#labels").hide();
 	//$('#resetContainer').html("<div><input type=\'button\' class=\'btn btn-primary btn-sm\' id=\'reset\' value=\'Reset\'></input></div>");
 	
@@ -214,6 +214,7 @@ function connect () {
 		//$('#board').css('display','block');
 		//console.log("Generating player board");
 		var board = "";
+		var actions = "<div class=\"center\" id=\"top\"><div id=\"topWrap\"><div id=\"topInWrap\"><div id=\"pie\" class=\"pie degree middle\"><span class=\"block\"></span><span id=\"time\"></span></div><div class=\"middle\" id=\"clueWrap\"><div id=\"clue\"></div><div class=\"middle\" id=\"goes\"></div></div><div class=\"middle\" id=\"end\"></div></div></div></div>";
 		//board += '<table class="board" id="board"><tbody>';
 		for (var i = 0; i < data.trs.length; i++){
 			//board += '<tr>'+data.trs[i]+'</tr>'
@@ -237,7 +238,8 @@ function connect () {
 				document.getElementById(j).style.color = "#4b4b4b";
 			}
 		}
-		$("#top").show();
+		//$("#top").show();
+		$('#actions').html(actions);
 		$('.pie').css('background-color', teamColour);
 	});
 	
