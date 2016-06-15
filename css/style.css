@@ -170,6 +170,10 @@ a, a:link, a:visited, a:hover, a:active {
 	text-align: left;
 }
 
+.teamTable {
+	color: white;
+}
+
 .pie{
     width: 50px;
     height: 50px;
@@ -277,7 +281,8 @@ a, a:link, a:visited, a:hover, a:active {
 
 .table-column{
 	display:table-column;
-	background-color: green;
+	border-radius: 10px;
+	//background-color: green;
 }
 
 .grid{
