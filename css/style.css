@@ -30,6 +30,10 @@ body {
 	display:inline-block;
 }
 
+#numTxt {
+	display:inline-block;
+}
+
 #topInWrap {
 	display: table;
 }
@@ -155,7 +159,7 @@ body {
 
 #num {
 	font-size: 9pt;
-	width: 30px;
+	width: 55px;
 	padding: 12px;
 	border-radius: 5px;
 }
