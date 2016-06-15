@@ -29,7 +29,7 @@ var checked = true;
 var inProgress = false;
 var isPaused = false;
 
-var data = require('data.js');
+var data = require('./data.js');
 var seedrandom = require('seedrandom');
 
 // Check the configuration file for more details
