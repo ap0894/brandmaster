@@ -21,7 +21,7 @@ var numSelector = "<select id=\"num\"><option value=\"1\">1</option><option valu
 // this block executes when page DOM is ready
 $( document ).ready(function() {
 	var correctModal = document.getElementById("correctModal");
-	var closeSpan = document.getElementByClassName("close")[0];
+	var closeSpan = document.getElementsByClassName("close")[0];
 	closeSpan.onclick = function() {
 		correctModal.style.display = "none";
 	}
