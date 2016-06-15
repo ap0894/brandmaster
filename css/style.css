@@ -32,7 +32,7 @@ body {
 
 #numTxt {
 	display:inline-block;
-	color: #b2b2b2;
+	color: #b2b2b2;	
 }
 
 #topInWrap {
@@ -152,7 +152,7 @@ body {
 	border-radius: 5px;
     border-style: groove;
 	font-size: 9pt;
-	margin: 8px;
+	//margin: 8px;
 	display: inline-block;
 	padding: 12px;
 	width: 30%;
@@ -238,7 +238,7 @@ a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
     display: inline-block;
     font-size: 9pt;
-	margin: 8px;
+	//margin: 8px;
 }
 
 #playerentry{

@@ -244,7 +244,7 @@ startTimer = function() {
         minutes = parseInt(duration / 60, 10);
         seconds = parseInt(duration % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
+        //minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
 		io.sockets.emit('timer', { minutes: minutes, seconds: seconds, duration: duration });
