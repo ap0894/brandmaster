@@ -1,16 +1,16 @@
-input::-webkit-input-placeholder {
+dynamic::-webkit-input-placeholder {
 color: #27aae0 !important;
 }
  
-input:-moz-placeholder { /* Firefox 18- */
+dynamic:-moz-placeholder { /* Firefox 18- */
 color: #27aae0 !important;  
 }
  
-input::-moz-placeholder {  /* Firefox 19+ */
+dynamic::-moz-placeholder {  /* Firefox 19+ */
 color: #27aae0 !important;  
 }
  
-input:-ms-input-placeholder {  
+dynamic:-ms-input-placeholder {  
 color: #27aae0 !important;  
 }
 
