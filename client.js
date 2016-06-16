@@ -475,6 +475,7 @@ function giveClue() {
 					//$('#giveClue').css('boxShadow', "inset 0 -5px 1px " + newColour);	
 					$('#giveClue').css('boxShadow', "");	
 					$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GREY);
+					$('#clueBox').val($('#clueBox').val()+ " sent!");
 					$('#clueBox').css('color', COLOR_PALE_GREY);
 					$('#num').css('border', '1px solid ' + COLOR_PALE_GREY);
 					$('#clueBox').prop('readonly', true);
