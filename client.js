@@ -91,7 +91,11 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 	for(a=0; a<TEAM_SIZE; a++) {
 		table += "<tr>";
 		for(b=0; b<NUM_TEAMS; b++) {
-			table += "<td>Waiting for player</td>";
+			if(teams[b].players[a] != null) {
+				table += "<td><strong>"+ teams[b].players[a].name + "</strong></td>";
+			} else {
+				table += "<td>Waiting for player</td>";
+			}
 		}
 		table += "</tr>";
 	}
