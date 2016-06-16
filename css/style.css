@@ -388,3 +388,7 @@ a, a:link, a:visited, a:hover, a:active {
 .score {
 	border-spacing: 26px 0px;
 }
+
+#history {
+	text-align:left;
+}
