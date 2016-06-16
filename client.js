@@ -384,6 +384,7 @@ function connect () {
 		$("#endGo").hide();
 		turn = data.whoseGo;
 		activeTeamColour = data.activeTeamColour;
+		console.log("Active colour " + activeTeamColour);
 		console.log("It's " + turn + " turn");
 		$('#clue').html('');
 		if (turn == room) {

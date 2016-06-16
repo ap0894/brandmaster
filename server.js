@@ -184,6 +184,7 @@ function switchTeam()
 	var index = teamNames.indexOf(whoseGo);
 	teams[index].active = false;
 	activeTeamColour = teamColours[index];
+	console.log("Active team colour: " + activeTeamColour);
 	io.sockets.in(whoseGo).emit('disable');
 	if (index == NUM_TEAMS-1) {
 		index = 0;
