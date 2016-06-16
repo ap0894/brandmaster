@@ -205,7 +205,7 @@ function connect () {
 			$('#clueBox').css('border', '1px solid ' + teamColour);
 		}
 		
-		$('#history').append("<span style=\"color:"+activeTeamColour+"\">" + toTitleCase(turn) + "</span> team set clue <span style=\"color:"+activeTeamColour+"\">" + data.clue.toUpperCase() + "</span> (" + data.num + ")<br />");
+		$('#history').append("<span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + toTitleCase(turn) + "</span> team set clue <span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + data.clue.toUpperCase() + "</span> (" + data.num + ")<br />");
 		// Activate players
 		if(room == data.whoseGo && !spyMasterMode) {
 			console.log("Activating players in active team except the spymaster");
