@@ -373,7 +373,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
   
   //add player to team which has space
   socket.on('registerPlayer', function (data, callback) {
-	//console.log("received join game request from client:", data);
+	console.log("received join game request from client:", data);
 	
 	var added = false;
 	var left;
