@@ -142,6 +142,7 @@ function createBoard(){
 		teams[2].active = true;
 		activeTeamColour = teamColours[2];
 	}	
+	console.log("Active team colour: " + activeTeamColour);
 	
 	// add neturals 
 	for(var x = 0; x < BLANKS; x++){
@@ -433,7 +434,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 				
 				//Show board, turn then send score
 				io.sockets.emit('board', {trs: trs, colours: colours} );
-				io.sockets.emit('turn', { whoseGo : whoseGo, teams : teams });
+				io.sockets.emit('turn', { whoseGo : whoseGo, activeTeamColour : activeTeamColour });
 				sendScores();
 				isPaused = false;
 				startTimer();
