@@ -418,7 +418,8 @@ function connect () {
 			activeTeam = false;
 			$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"\" readonly></input>");
 			$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GREY);
-			$('#clueBox').val("<span style=\"color:"+teamColour+"\">"+turn + "team\'s turn");
+			$('#clueBox').val(turn + " team\'s turn");
+			$('#clueBox').css('color', teamColour);
 			$('.pie').css('background-color', COLOR_GREY);
 		}
 		/*if(activeTeam) {
