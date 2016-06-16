@@ -24,6 +24,7 @@ body {
 
 #topWrap {
 	display: inline-block;
+	padding-top: 16px;
 }
 
 #numInput {
@@ -66,12 +67,17 @@ body {
 
 #shadow {
 	padding:5px;
+	padding-bottom: 16px;
 }
 
 .header {
 	font-size: 18pt;
 	display: inline-block;
 	vertical-align:	middle;
+}
+
+#header{
+	padding-top: 12px;
 }
 
 .blurb {
@@ -81,12 +87,13 @@ body {
 }
 
 .tile {
-		width: 27px;
-		height: 32px;
-		border-radius:7.5px;
-		color: white;
-		line-height: 27px;
-		font-size: 15pt;
+	width: 27px;
+	height: 32px;
+	border-radius:7.5px;
+	color: white;
+	line-height: 27px;
+	font-size: 15pt;
+	margin: -1px;
 }
 
 .img {
@@ -312,6 +319,7 @@ a, a:link, a:visited, a:hover, a:active {
 
 #teamsWrap {
 	display: inline-block;
+	padding-bottom: 16px;
 }
 
 .scoreNum {
