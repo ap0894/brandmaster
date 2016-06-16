@@ -43,6 +43,12 @@ var server = require('http').Server(app);
 // Websockets with socket.io
 var io = require('socket.io')(server);
 
+//Function to capitalise first letter of a word
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
 // Function to initialise teams
 function createTeams() {
 	//console.log("Initialising teams");
@@ -97,7 +103,8 @@ function createBoard(){
 			trs[i%5] = "";
 		}*/
 		var randomNumber = Math.floor(Math.random() * sessionData.length);
-		var word = sessionData[randomNumber];
+		var word = toTitleCase(sessionData[randomNumber]);
+		//var word = sessionData[randomNumber];
 		removeItem(sessionData, randomNumber);
 		wordsSelected.push(word);
 		trs[i] = "<div class=\"square center\"><div class=\"content\"><div class=\"table\"><div class=\"table-cell\"id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></div></div></div></div>";
