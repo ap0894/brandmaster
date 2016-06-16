@@ -247,12 +247,12 @@ function connect () {
 			if(spyMasterMode) {
 				document.getElementById(j).style.backgroundColor = data.colours[j];
 				newColour = lighten(data.colours[j], DARKEN);
-				document.getElementById(j).style.boxShadow = "inset 0 -10px 1px " + newColour;				
+				document.getElementById(j).style.boxShadow = "inset 0 -5px 1px " + newColour;				
 	
 			} else {
 				document.getElementById(j).style.backgroundColor = TILE_GREY;
 				newColour = lighten(TILE_GREY, DARKEN);
-				document.getElementById(j).style.boxShadow = "inset 0 -10px 1px " + newColour;	
+				document.getElementById(j).style.boxShadow = "inset 0 -5px 1px " + newColour;	
 				document.getElementById(j).style.color = "#545454";
 			}
 		}
@@ -269,7 +269,7 @@ function connect () {
 		{
 			//Set tile white & clear it's contents
 			document.getElementById(theValue).style.backgroundColor = COLOR_PALE_GREY ;
-			document.getElementById(theValue).style.boxShadow = "inset 0 -10px 1px " + COLOR_PALE_GREY;
+			document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_PALE_GREY;
 			document.getElementById(theValue).innerHTML = "" ;
 		} 
 		// not spy master
@@ -277,7 +277,7 @@ function connect () {
 			document.getElementById(theValue).style.backgroundColor = theColours[theValue];
 			//newColour = lighten(theColours[theValue], DARKEN);
 			//"0 10px 1px " + newColour;
-			//document.getElementById(theValue).style.boxShadow = "inset 0 -10px 1px " + newColour;	
+			//document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + newColour;	
 			document.getElementById(theValue).style.boxShadow = "";	
 			//document.getElementById(theValue).style.backgroundColor = theColours[theValue];
 			var col;
@@ -466,7 +466,7 @@ function giveClue() {
 					$('#giveClue').css('background-color', COLOR_GREY);
 					$('#giveClue').prop('value', 'Sent');
 					//newColour = lighten(COLOR_GREY, DARKEN);
-					//$('#giveClue').css('boxShadow', "inset 0 -10px 1px " + newColour);	
+					//$('#giveClue').css('boxShadow', "inset 0 -5px 1px " + newColour);	
 					$('#giveClue').css('boxShadow', "");	
 					$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GREY);
 					$('#clueBox').css('color', COLOR_PALE_GREY);
