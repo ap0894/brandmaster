@@ -81,6 +81,9 @@ $(document.body).on('click', '#reset' ,function(e){
 
 // Function to create a HTML table for the player names
 function createTeamTable(teams) {
+
+	
+
 	var output = "<div class=\"table teams\">";
 	var columns = "";
 	var head =  "<div class=\"table-row\">";
@@ -340,14 +343,14 @@ function connect () {
 	});
 	
 	//Handle display team event
-	socket.on('displayTeam', function (teams) {
+	socket.on('displayTeam', function (data) {
 		//$('#temp').remove();
 		$('#waitMsg').remove();
 		
-		for (i=0; i<teams.length; i++)
+		for (i=0; i<data.teams.length; i++)
 		{
-			if (teams[i].players.length > 0) {
-				if(teams[i].players[0].name === playerName) {
+			if (data.teams[i].players.length > 0) {
+				if(data.teams[i].players[0].name === playerName) {
 					spyMasterMode = true;
 					console.log("You are a code master");
 				}

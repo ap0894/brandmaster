@@ -236,7 +236,7 @@ function removePlayer(data) {
 
 function sendTeams () {
 	console.log("Server is sending the teams");
-	io.sockets.emit('displayTeam', teams);
+	io.sockets.emit('displayTeam', {teams:teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE });
 }
 
 function sendScores () {
