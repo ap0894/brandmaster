@@ -357,7 +357,7 @@ function connect () {
 			}
 		}
 		
-		var teamTable = createTeamTable(teams);
+		var teamTable = createTeamTable(data.teams);
 		$('#teamTable').html(teamTable);
 	});
 	
