@@ -29,6 +29,7 @@ body {
 
 #numInput {
 	display:inline-block;
+	margin-right: 8px;
 }
 
 #numTxt {
@@ -379,4 +380,8 @@ a, a:link, a:visited, a:hover, a:active {
 	position:relative;
 	right:-22px;
 	top:-16px;
+}
+
+.score {
+	border-spacing: 60px; 0px;
 }

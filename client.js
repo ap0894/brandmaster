@@ -113,7 +113,7 @@ function createTeamTable(teams) {
 }
 
 function createScoreTable(teams) {
-	var output = "<table class=\"table\">";
+	var output = "<table class=\"table score\">";
 	//var header = "<thead><tr>";
 	var scores = "<tbody><tr style=\"vertical-align:top; height:70px;\">";
 	for (x=0; x<teams.length; x++) {
