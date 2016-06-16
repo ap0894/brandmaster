@@ -383,5 +383,5 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .score {
-	border-spacing: 60px; 0px;
+	border-spacing: 60px 0px;
 }
