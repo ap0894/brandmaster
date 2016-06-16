@@ -281,6 +281,7 @@ function connect () {
 			document.getElementById(theValue).style.boxShadow = "";	
 			//document.getElementById(theValue).style.backgroundColor = theColours[theValue];
 			var col;
+			var newColour;
 			for (i=0; i<data.teams.length; i++) {
 				if (data.teams[i].colour === theColours[theValue]) {
 					col = data.teams[i].name;
@@ -292,6 +293,9 @@ function connect () {
 				}
 				if (col == room ) {
 					correctModal.style.display = "block";
+					$('.modal-content').css('background-color', '#2ec306');
+					newColour = lighten('#2ec306', DARKEN);
+					$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + newColour);
 					setTimeout(function () {
 						correctModal.style.display = "none";
 					},2000);
@@ -309,6 +313,8 @@ function connect () {
 				} else {
 					incorrectModal.style.display = "block";
 					$('.modal-content').css('background-color', '#ff196a');
+					newColour = lighten('#ff196a', DARKEN);
+					$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + newColour);
 					setTimeout(function () {
 						incorrectModal.style.display = "none";
 					},2000);
