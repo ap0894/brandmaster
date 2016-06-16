@@ -307,6 +307,11 @@ function connect () {
 						socket.emit('switch'); 
 					}
 				} else {
+					incorrectModal.style.display = "block";
+					$('.modal-content').css('background-color', '#ff196a');
+					setTimeout(function () {
+						incorrectModal.style.display = "none";
+					},2000);
 					console.log("Incorrect stop guessing & switching");
 					goes = 0;
 					socket.emit('switch');
