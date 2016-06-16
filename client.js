@@ -4,7 +4,8 @@ var activeSpy = false;
 var playerName;
 var COLOR_GREEN = "#009000";
 //var COLOR_WHITE = "#ffffff";
-var COLOR_PALE_GREY = "#cccccc";
+var COLOR_PALE_GREY = "#b3b3b3";
+var COLOR_EVEN_PALER_GREY = "#f0f0f0";
 var TILE_GREY = "#F6F6F6";
 var COLOR_GREY = "#b3b3b3";
 var activeGo = false;
@@ -120,7 +121,10 @@ function createScoreTable(teams) {
 		console.log(teams[x].name + " status: " + teams[x].active);
 		if(teams[x].active) {
 			newColour = lighten(teams[x].colour, DARKEN);
-			scores = scores + "<td style=\"padding-top:8px; background-color:" + teams[x].colour +"; color:white; border-radius:5px; width:56px; box-shadow: inset 0 -5px 1px"+newColour+";\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</span><br/><span style=\"font-size:8pt\">Your turn</span></td>";		
+			scores = scores + "<td style=\"padding-top:8px; background-color:" + teams[x].colour +"; color:white; border-radius:5px; width:56px; box-shadow: inset 0 -5px 1px"+newColour+";\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</span><br/><span id=\"yourTurn\" style=\"font-size:8pt\"></span></td>";		
+			if(activeGo||activeSpy) {
+				$('#yourTurn').html("Your turn");
+			}
 			//Add in another indicator for this team
 		} else {
 			scores = scores + "<td style=\"padding-top:8px; width:56px; color:" + teams[x].colour +"\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\">/" + teams[x].target + "</span></td>";		
@@ -268,9 +272,10 @@ function connect () {
 		if(spyMasterMode)
 		{
 			//Set tile white & clear it's contents
-			document.getElementById(theValue).style.backgroundColor = COLOR_PALE_GREY ;
-			document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_PALE_GREY;
-			document.getElementById(theValue).innerHTML = "" ;
+			document.getElementById(theValue).style.backgroundColor = COLOR_EVEN_PALER_GREY ;
+			document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_EVEN_PALER_GREY;
+			//document.getElementById(theValue).innerHTML = "" ;
+			document.getElementById(theValue).style.color = COLOR_PALE_GREY;
 		} 
 		// not spy master
 		else {
