@@ -87,7 +87,7 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 		cols += "<col span=\"1\" style=\"background-color:"+teams[z].colour+"\">";
 	}
 	cols += "<colgroup>";
-	var table = "<table>" + cols;
+	var table = "<table style=\"border-spacing: 12px 0px\">" + cols;
 	for(a=0; a<TEAM_SIZE; a++) {
 		table += "<tr>";
 		for(b=0; b<NUM_TEAMS; b++) {
