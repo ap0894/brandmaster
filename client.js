@@ -421,7 +421,7 @@ function connect () {
 			$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"\" readonly></input>");
 			$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GREY);
 			$('#clueBox').val(turn + " team\'s turn");
-			$('#clueBox').css('color', teamColour);
+			$('#clueBox').css('color', activeTeamColour);
 			$('.pie').css('background-color', COLOR_GREY);
 		}
 		/*if(activeTeam) {
