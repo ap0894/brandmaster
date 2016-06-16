@@ -367,3 +367,15 @@ a, a:link, a:visited, a:hover, a:active {
 	text-align: center;
 	width: 30%;
 }
+
+#star {
+	position:absolute;
+}
+
+#starImg {
+	z-index:1;
+	width:50%;
+	position:relative;
+	right:-22px;
+	top:-16px;
+}
