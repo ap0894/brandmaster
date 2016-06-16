@@ -198,6 +198,7 @@ function connect () {
 		//$('#clue').html("<div>" + data.clue.toUpperCase() + " " + data.num + "</div>");
 		//$('#clueBox').placeholder = data.clue.toUpperCase() + " " + data.num ;
 		if(!spyMasterMode) {
+			$('#clueBox').css('color', teamColour);
 			document.getElementById("clueBox").placeholder = data.clue.toUpperCase() + " " + data.num;
 		}
 		//$('#history').append(data.clue.toUpperCase() + " " + data.num + "<br />");
@@ -208,7 +209,6 @@ function connect () {
 			goes++;
 			activeGo = true; // Set player status active
 			
-			//$('#goes').html(goes + " guesses left");
 			$('#numInput').html(goes + " guesses left");
 			$('#numInput').css('color', teamColour);
 			$('#numInput').css('font-size', '12pt');
