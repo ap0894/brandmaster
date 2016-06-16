@@ -386,13 +386,10 @@ function connect () {
 		$('#clue').html('');
 		if (turn == room) {
 			activeTeam = true;
+			$('.pie').css('background-color', teamColour);
 			if(spyMasterMode) {
 				console.log ("Spymaster active");
 				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\">"+numSelector+"</div><div id=\"numTxt\">products linked</div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
-				//document.styleSheets[0].insertRule('.dynamic::-webkit-input-placeholder', 'color:'+teamColour + '!important');
-				//document.styleSheets[0].addRule('.dynamic:-moz-placeholder', 'color:'+teamColour);
-				//document.styleSheets[0].addRule('.dynamic::-moz-placeholder', 'color:'+teamColour);
-				//document.styleSheets[0].addRule('.dynamic:-ms-input-placeholder', 'color:'+teamColour );
 				try {
 					addCSSRule(document.styleSheets[0], ".dynamic::-webkit-input-placeholder", "color:"+teamColour + "!important", 0);
 					addCSSRule(document.styleSheets[0], ".dynamic:-moz-placeholder", "color:"+teamColour + "!important", 0);
@@ -413,18 +410,22 @@ function connect () {
 				activeSpy = true;
 			}
 			else {
-				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Waiting for brand...\" readonly></input><div id=\"numInput\"></div><input type=\"button\" id=\"endGo\" value=\"End Go!\"></input>");
+				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Waiting for Brand...\" readonly></input><div id=\"numInput\"></div><input type=\"button\" id=\"endGo\" value=\"End Go!\"></input>");
 				$('#endGo').attr("disabled", true);
 				$('#endGo').css('background-color', COLOR_GREY);	
 			}
 		} else {
 			activeTeam = false;
+			$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"\" readonly></input>");
+			$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GREY);
+			$('#clueBox').val("<span style=\"color:"+teamColour+"\">"+turn + "team\'s turn");
+			$('.pie').css('background-color', COLOR_GREY);
 		}
-		if(activeTeam) {
+		/*if(activeTeam) {
 			$('.pie').css('background-color', teamColour);
 		} else {
 			$('.pie').css('background-color', COLOR_GREY);
-		}
+		}*/
 	});
 }
 
