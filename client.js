@@ -82,6 +82,11 @@ $(document.body).on('click', '#reset' ,function(e){
 // Function to create a HTML table for the player names
 function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 
+	var cols = "<colgroup>";
+	for (z=0; z<NUM_TEAMS; z++){
+		cols += "<col span=\"1\" style=\"background-color:"+teams[z]+"\">";
+	}
+	cols += "<colgroup>";
 	var table = "<table>"
 	for(a=0; a<TEAM_SIZE; a++) {
 		table += "<tr>";
