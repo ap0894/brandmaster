@@ -4,8 +4,10 @@ var activeSpy = false;
 var playerName;
 var COLOR_GREEN = "#009000";
 //var COLOR_WHITE = "#ffffff";
-var COLOR_PALE_GREY = "#f6f6f6";
-var COLOR_GREY = "#dadada";
+var COLOR_PALE_GREY = "#b3b3b3";
+var COLOR_EVEN_PALER_GREY = "#f0f0f0";
+var TILE_GREY = "#F6F6F6";
+var COLOR_GREY = "#b3b3b3";
 var activeGo = false;
 var room = "";
 var goes = 0;
@@ -13,15 +15,27 @@ var num = 0;
 var testing=true;
 var totaltime = 60 * 2.5;
 var teamColour;
+var DARKEN = -0.1;
+var activeTeam = false;
+var numSelector = "<select id=\"num\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option></select>" 
 
 // this block executes when page DOM is ready
 $( document ).ready(function() {
+	var correctModal = document.getElementById("correctModal");
+	var closeSpan = document.getElementsByClassName("close")[0];
+	
+	window.onclick = function(event) {
+		if(event.target==correctModal) {
+			correctModal.style.display = "none";
+		}
+	}
+	
 	connect ();
 	socket.emit('getTeams');
 	$("#endGo").hide();
-	$("#top").hide();
+	//$("#top").hide();
 	$("#labels").hide();
-	$('#resetContainer').html("<div><input type=\'button\' class=\'btn btn-primary btn-sm\' id=\'reset\' value=\'Reset\'></input></div>");
+	//$('#resetContainer').html("<div><input type=\'button\' class=\'btn btn-primary btn-sm\' id=\'reset\' value=\'Reset\'></input></div>");
 	
 	// Listener for click on Enter Game button
 	$('#joinBtn').click(function(e){
@@ -66,52 +80,60 @@ $(document.body).on('click', '#reset' ,function(e){
 
 // Function to create a HTML table for the player names
 function createTeamTable(teams) {
-	var output = "<table class=\"table\"><thead><tr>";
+	var output = "<div class=\"table teams\">";
+	var columns = "";
+	var head =  "<div class=\"table-row\">";
+	var body = "";
 	for (x=0; x<teams.length; x++) {
-		output = output + "<th>" + teams[x].name.toUpperCase() +  " " + teams[x].score + "/" + teams[x].target + "</th>";
+		columns += "<div class=\"table-column\" style=\"background-color:"+teams[x].colour+";border-radius: 10px;\"></div>";
+		teamName = toTitleCase(teams[x].name);
+		head = head + "<div class=\"table-cell\">" + teamName +  "</div>";
 	}
-	output = output + "</tr></thead>";
+	head += "</div>"
 	
 	//this doesn't work because teams[0] can be less than teams[1]
 	for (i=0; i<teams[0].players.length; i++)
 	{
-		output = output + "<tr>";
+		body = body + "<div class=\"table-row\">";
 		for (j=0; j<teams.length; j++)
 		{
 			if (teams[j].players[i] != null) {
 				if(teams[j].players[i].name == playerName ) {
-					output = output + "<td><strong>"+ teams[j].players[i].name + "</strong></td>";
+					body = body + "<div class=\"table-cell\"><strong>"+ teams[j].players[i].name + "</strong></div>";
 				} else {
 					//console.log("Adding name " + teams[j].players[i] );
-					output = output + "<td>"+ teams[j].players[i].name + "</td>";
+					body = body + "<div class=\"table-cell\">"+ teams[j].players[i].name + "</div>";
 				}
 			}
 		}
-		output = output + "</tr>";
+		body = body + "</div>";
 	}
-	output = output + "</table>";
+	output = output + columns + head + body + "</div>";
 	return output;
 }
 
 function createScoreTable(teams) {
 	var output = "<table class=\"table\">";
-	var header = "<thead><tr>";
-	var scores = "<tbody><tr>";
+	//var header = "<thead><tr>";
+	var scores = "<tbody><tr style=\"vertical-align:top; height:70px;\">";
 	for (x=0; x<teams.length; x++) {
 		teamName = toTitleCase(teams[x].name);
 		console.log(teams[x].name + " status: " + teams[x].active);
 		if(teams[x].active) {
-			header = header + "<th style=\"font-size:1.5em; color:#b2b2b2\">" + "Team " + teamName + "</th>";
-			scores = scores + "<td style=\"font-size:2em; color:" + teams[x].colour +"\">" + teams[x].score + "/" + teams[x].target + "</td>";		
+			newColour = lighten(teams[x].colour, DARKEN);
+			scores = scores + "<td style=\"padding-top:8px; background-color:" + teams[x].colour +"; color:white; border-radius:5px; width:56px; box-shadow: inset 0 -5px 1px"+newColour+";\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</span><br/><span id=\"yourTurn\" style=\"font-size:8pt\"></span></td>";		
+			if(activeGo||activeSpy) {
+				$('#yourTurn').html("Your turn");
+			}
 			//Add in another indicator for this team
 		} else {
-			header = header + "<th style=\"color:#dadada\">" + "Team " + teamName + "</th>";
-			scores = scores + "<td style=\"color:" + teams[x].colour +"\">" + teams[x].score + "/" + teams[x].target + "</td>";		
+			scores = scores + "<td style=\"padding-top:8px; width:56px; color:" + teams[x].colour +"\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\">/" + teams[x].target + "</span></td>";		
 		}
 	}
-	header += "</tr></thead>";
+	//header += "</tr></thead>";
 	scores += "</tr></tbody>";
-	output = output + header + scores + "</table>";
+	//output = output + header + scores + "</table>";
+	output = output + scores + "</table>";
 	return output;
 }
 
@@ -159,10 +181,10 @@ function connect () {
 	// Handle teamSize event
 	socket.on('teamSize', function(data) {
 	   //console.log('Team Size:', data);
-	   $('#numPlayers').html("Players: "+ data.teamSize);
+	   //$('#numPlayers').html("Players: "+ data.teamSize);
 	   //document.getElementById('numPlayers').innerHTML = "Players =  "+ data.teamSize;
 	   if (data.left >0 ) {
-		$('#numPlayers').append(", waiting for "+ data.left + " more players to join");
+		$('#numPlayers').html("Waiting for "+ data.left + " more players");
 	   }
 	});
 
@@ -178,7 +200,9 @@ function connect () {
 		//the html for displaying the clue
 		//$('#clue').html("<div>" + data.clue.toUpperCase() + " " + data.num + "</div>");
 		//$('#clueBox').placeholder = data.clue.toUpperCase() + " " + data.num ;
-		document.getElementById("clueBox").placeholder = data.clue.toUpperCase() + " " + data.num;
+		if(!spyMasterMode) {
+			document.getElementById("clueBox").placeholder = data.clue.toUpperCase() + " " + data.num;
+		}
 		//$('#history').append(data.clue.toUpperCase() + " " + data.num + "<br />");
 		// Activate players
 		if(room == data.whoseGo && !spyMasterMode) {
@@ -196,8 +220,8 @@ function connect () {
 			//var index = data.teams.map(function(e) { return e.name; }).indexOf(data.whoseGo);
 			//$('#endGo').css('background-color', data.teams[index].colour);
 			$('#endGo').css('background-color', teamColour);
-			newColour = lighten(teamColour, -0.15);
-			$('#endGo').css('boxShadow', "inset 0 -10px 1px " + newColour);	
+			newColour = lighten(teamColour, DARKEN);
+			$('#endGo').css('boxShadow', "inset 0 -5px 1px " + newColour);	
 			$('#giveClue').hide();
 		}
 	});
@@ -205,35 +229,39 @@ function connect () {
 	// Handle display board event
 	socket.on('board', function(data) {
 		$('#numPlayers').html('');
-		$('#banner').html('');
-		$('#board').css('display','block');
+		$('#rules').remove();
+		$('#teamTable').remove();
+		
+		//$('#banner').html('');
+		//$('#board').css('display','block');
 		//console.log("Generating player board");
 		var board = "";
-		board += '<table class="board" id="board"><tbody>';
+		var actions = "<div class=\"center\" id=\"top\"><div id=\"topWrap\"><div id=\"topInWrap\"><div id=\"pie\" class=\"pie degree middle\"><span class=\"block\"></span><span id=\"time\"></span></div><div class=\"middle\" id=\"clueWrap\"><div id=\"clue\"></div><div class=\"middle\" id=\"goes\"></div></div><div class=\"middle\" id=\"end\"></div></div></div></div>";
+		//board += '<table class="board" id="board"><tbody>';
 		for (var i = 0; i < data.trs.length; i++){
-			board += '<tr>'+data.trs[i]+'</tr>'
+			//board += '<tr>'+data.trs[i]+'</tr>'
+			board += data.trs[i];
 		}
-		board += '</tbody></table>';
+		//board += '</tbody></table>';
 		//document.getElementById("board").innerHTML = board;
-		$("#board").html(board);
+		$("#board").append(board);
 
 		//console.log("Generating spymaster board");
 		for(var j = 0; j < data.colours.length; j++){
 			if(spyMasterMode) {
 				document.getElementById(j).style.backgroundColor = data.colours[j];
-				newColour = lighten(data.colours[j], -0.15);
-				document.getElementById(j).style.boxShadow = "inset 0 -10px 1px " + newColour;				
+				newColour = lighten(data.colours[j], DARKEN);
+				document.getElementById(j).style.boxShadow = "inset 0 -5px 1px " + newColour;				
 	
 			} else {
-				document.getElementById(j).style.backgroundColor = COLOR_PALE_GREY;
-				newColour = lighten(COLOR_PALE_GREY, -0.15);
-				document.getElementById(j).style.boxShadow = "inset 0 -10px 1px " + newColour;	
-				document.getElementById(j).style.color = "#4b4b4b";
+				document.getElementById(j).style.backgroundColor = TILE_GREY;
+				newColour = lighten(TILE_GREY, DARKEN);
+				document.getElementById(j).style.boxShadow = "inset 0 -5px 1px " + newColour;	
+				document.getElementById(j).style.color = "#545454";
 			}
 		}
-		$("#top").show();
-		$("#labels").show();
-		$('.pie').css('background-color', teamColour);
+		//$("#top").show();
+		$('#actions').html(actions);			
 	});
 	
 	// Handle the changing of tile colour event
@@ -244,18 +272,21 @@ function connect () {
 		if(spyMasterMode)
 		{
 			//Set tile white & clear it's contents
-			document.getElementById(theValue).style.backgroundColor = COLOR_PALE_GREY ;
-			document.getElementById(theValue).style.boxShadow = "inset 0 -10px 1px " + COLOR_PALE_GREY;
-			document.getElementById(theValue).innerHTML = "" ;
+			document.getElementById(theValue).style.backgroundColor = COLOR_EVEN_PALER_GREY ;
+			document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_EVEN_PALER_GREY;
+			//document.getElementById(theValue).innerHTML = "" ;
+			document.getElementById(theValue).style.color = COLOR_PALE_GREY;
 		} 
 		// not spy master
 		else {
 			document.getElementById(theValue).style.backgroundColor = theColours[theValue];
-			//newColour = lighten(theColours[theValue], -0.15);
-			//document.getElementById(theValue).style.boxShadow = "inset 0 -10px 1px " + newColour;	
+			//newColour = lighten(theColours[theValue], DARKEN);
+			//"0 10px 1px " + newColour;
+			//document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + newColour;	
 			document.getElementById(theValue).style.boxShadow = "";	
 			//document.getElementById(theValue).style.backgroundColor = theColours[theValue];
 			var col;
+			var newColour;
 			for (i=0; i<data.teams.length; i++) {
 				if (data.teams[i].colour === theColours[theValue]) {
 					col = data.teams[i].name;
@@ -266,6 +297,13 @@ function connect () {
 					socket.emit('score', col);
 				}
 				if (col == room ) {
+					correctModal.style.display = "block";
+					$('.modal-content').css('background-color', '#2ec306');
+					newColour = lighten('#2ec306', DARKEN);
+					$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + newColour);
+					setTimeout(function () {
+						correctModal.style.display = "none";
+					},2000);
 					console.log("Correct keep guessing");
 					goes--;
 					//$('#goes').html(goes + " guesses left");
@@ -278,6 +316,13 @@ function connect () {
 						socket.emit('switch'); 
 					}
 				} else {
+					incorrectModal.style.display = "block";
+					$('.modal-content').css('background-color', '#ff196a');
+					newColour = lighten('#ff196a', DARKEN);
+					$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + newColour);
+					setTimeout(function () {
+						incorrectModal.style.display = "none";
+					},2000);
 					console.log("Incorrect stop guessing & switching");
 					goes = 0;
 					socket.emit('switch');
@@ -295,7 +340,8 @@ function connect () {
 	
 	//Handle display team event
 	socket.on('displayTeam', function (teams) {
-		$('#temp').remove();
+		//$('#temp').remove();
+		$('#waitMsg').remove();
 		
 		for (i=0; i<teams.length; i++)
 		{
@@ -307,9 +353,14 @@ function connect () {
 			}
 		}
 		
-		//var output = createTeamTable(teams);
-		var output = createScoreTable(teams);
-		$('#teams').html(output);
+		var teamTable = createTeamTable(teams);
+		$('#teamTable').html(teamTable);
+	});
+	
+	//Handle display score event
+	socket.on('displayScore', function (teams) {
+		var scoreTable = createScoreTable(teams);
+		$('#scoreTable').html(scoreTable);
 	});
 	
 	// Handle the timer event
@@ -331,23 +382,45 @@ function connect () {
 		console.log("It's " + turn + " turn");
 		$('#clue').html('');
 		if (turn == room) {
+			activeTeam = true;
 			if(spyMasterMode) {
 				console.log ("Spymaster active");
-				$("#clue").html("<input id=\"clueBox\" type=\"text\" placeholder=\"Enter Clue\"></input><div id=\"numInput\"><input id=\"num\" type=\"number\" min=\"1\" max=\"9\"></input></div><input type=\"button\" id=\"giveClue\" value=\"Go!\" onclick=\"giveClue()\"></input>");
+				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Enter Brand...\"></input><div id=\"numInput\">"+numSelector+"</div><div id=\"numTxt\">products linked</div><input type=\"button\" id=\"giveClue\" value=\"Send\" onclick=\"giveClue()\"></input>");
+				//document.styleSheets[0].insertRule('.dynamic::-webkit-input-placeholder', 'color:'+teamColour + '!important');
+				//document.styleSheets[0].addRule('.dynamic:-moz-placeholder', 'color:'+teamColour);
+				//document.styleSheets[0].addRule('.dynamic::-moz-placeholder', 'color:'+teamColour);
+				//document.styleSheets[0].addRule('.dynamic:-ms-input-placeholder', 'color:'+teamColour );
+				try {
+					addCSSRule(document.styleSheets[0], ".dynamic::-webkit-input-placeholder", "color:"+teamColour + "!important", 0);
+					addCSSRule(document.styleSheets[0], ".dynamic:-moz-placeholder", "color:"+teamColour + "!important", 0);
+					addCSSRule(document.styleSheets[0], ".dynamic::-moz-placeholder", "color:"+teamColour + "!important", 0);
+					addCSSRule(document.styleSheets[0], ".dynamic:-ms-input-placeholder", "color:"+teamColour + "!important", 0);
+				} catch (e) {
+					console.log("Error dynamically adding placeholder style", e);
+				}
 				//var index = data.teams.indexOf(turn);
 				//var index = data.teams.map(function(e) { return e.name; }).indexOf(turn);
 				$('#giveClue').css('background-color', teamColour);
+				$('#clueBox').css('color', teamColour);
 				$('#clueBox').css('border', '1px solid ' + teamColour);
 				$('#num').css('border', '1px solid ' + teamColour);
-				newColour = lighten(teamColour, -0.15);
-				$('#giveClue').css('boxShadow', "inset 0 -10px 1px " + newColour);	
+				$('#num').css('color', teamColour);
+				newColour = lighten(teamColour, DARKEN);
+				$('#giveClue').css('boxShadow', "inset 0 -5px 1px " + newColour);	
 				activeSpy = true;
 			}
 			else {
-				$("#clue").html("<input id=\"clueBox\" type=\"text\" placeholder=\"Waiting for a clue\" readonly></input><div id=\"numInput\"></div><input type=\"button\" id=\"endGo\" value=\"End Go!\"></input>");
+				$("#clue").html("<input class=\"dynamic\" id=\"clueBox\" type=\"text\" placeholder=\"Waiting for brand...\" readonly></input><div id=\"numInput\"></div><input type=\"button\" id=\"endGo\" value=\"End Go!\"></input>");
 				$('#endGo').attr("disabled", true);
 				$('#endGo').css('background-color', COLOR_GREY);	
 			}
+		} else {
+			activeTeam = false;
+		}
+		if(activeTeam) {
+			$('.pie').css('background-color', teamColour);
+		} else {
+			$('.pie').css('background-color', COLOR_GREY);
 		}
 	});
 }
@@ -356,6 +429,10 @@ function clicked(value){
 	if(!spyMasterMode) {
 		if (activeGo && goes > 0) {
 			var word = document.getElementById(value).getElementsByTagName('a')[0].innerHTML;
+			//confirmModal.style.display = "block";
+			$('.modal-content').css('background-color', 'white');
+			//newColour = lighten('#2ec306', DARKEN);
+			$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + COLOR_GREY);
 			if (window.confirm("Are you sure you want to select '"+word+"'?")) {
 				//only deactivate once reached max goes
 				if (goes == 0) {
@@ -393,13 +470,15 @@ function giveClue() {
 					// Need to grey out the button & the input box
 					$('#giveClue').css('background-color', COLOR_GREY);
 					$('#giveClue').prop('value', 'Sent');
-					//newColour = lighten(COLOR_GREY, -0.15);
-					//$('#giveClue').css('boxShadow', "inset 0 -10px 1px " + newColour);	
+					//newColour = lighten(COLOR_GREY, DARKEN);
+					//$('#giveClue').css('boxShadow', "inset 0 -5px 1px " + newColour);	
 					$('#giveClue').css('boxShadow', "");	
-					$('#clueBox').css('border', '1px solid ' + COLOR_GREY);
-					$('#num').css('border', '1px solid ' + COLOR_GREY);
+					$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GREY);
+					$('#clueBox').css('color', COLOR_PALE_GREY);
+					$('#num').css('border', '1px solid ' + COLOR_PALE_GREY);
 					$('#clueBox').prop('readonly', true);
 					$('#num').prop('readonly', true);
+					$('#num').css('color', COLOR_PALE_GREY);
 					$('#errors').html('');
 					console.log("Sending clue: " + clue + " Num: " + num);
 					activeSpy = false;
@@ -416,12 +495,18 @@ function giveClue() {
 
 function update(percent){
 	var deg;
+	var colour;
+	if(activeTeam) {
+		colour = teamColour;
+	} else {
+		colour = COLOR_GREY;
+	}
 	if (percent<(totaltime/2)) {
 		deg = 90 + (360*percent/totaltime);
 		$('.pie').css('background-image','linear-gradient('+deg+'deg, transparent 50%, white 50%),linear-gradient(90deg, white 50%, transparent 50%)');
 	} else if (percent>=(totaltime/2)) {	
 		deg = -90 + (360*percent/totaltime);
-        $('.pie').css('background-image','linear-gradient('+deg+'deg, transparent 50%, '+teamColour+' 50%),linear-gradient(90deg, white 50%, transparent 50%)');
+        $('.pie').css('background-image','linear-gradient('+deg+'deg, transparent 50%, '+colour+' 50%),linear-gradient(90deg, white 50%, transparent 50%)');
 	}
 }
 
@@ -442,4 +527,12 @@ function lighten(color, luminosity) {
 		newColor += ("00"+c).substr(c.length);
 	}
 	return newColor; 
+}
+
+function addCSSRule (sheet, selector, rules, index) {
+	if("insertRule" in sheet) {
+		sheet.insertRule(selector + "{" + rules + "}", index);
+	} else if("addRule" in sheet) {
+		sheet.addRule(selector, rules, index);
+	}
 }

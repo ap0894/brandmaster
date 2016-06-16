@@ -7,11 +7,11 @@ var NUMBER_OF_WORDS = 25;
 var timerDuration = 60 * 2.5;
 var WORDS_PER_TEAM = 8;
 var teamNames = ["blues", "reds", "yellows", "greens"];
-var COLOR_BLUE = "#44b4c2";
-var COLOR_RED = "#e45640";
-var COLOR_YELLOW = "#f3af2a"; 
+var COLOR_BLUE = "#27aae0";
+var COLOR_RED = "#e85ba6";
+var COLOR_YELLOW = "#f3ae2a"; 
 var COLOR_BROWN = "#f3af2a";
-var COLOR_GREEN = "#009000";
+var COLOR_GREEN = "#8dc53e";
 var COLOR_BLACK = "#808080";
 var teamColours = [COLOR_BLUE, COLOR_RED, COLOR_YELLOW, COLOR_GREEN];
 var BLANKS = NUMBER_OF_WORDS - ((WORDS_PER_TEAM * NUM_TEAMS) + 1);
@@ -93,14 +93,16 @@ function createBoard(){
 	
 	//Fill wordsSelected array & create 5 table rows with 5 element 
 	for(var i = 0; i < NUMBER_OF_WORDS; i++){
-		if (!trs[i%5]){
+		/*if (!trs[i%5]){
 			trs[i%5] = "";
-		}
+		}*/
 		var randomNumber = Math.floor(Math.random() * sessionData.length);
 		var word = sessionData[randomNumber];
 		removeItem(sessionData, randomNumber);
 		wordsSelected.push(word);
-		trs[i%5] += "<td class=\"text-center\" id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></td>";
+		trs[i] = "<div class=\"square center\"><div class=\"content\"><div class=\"table\"><div class=\"table-cell\"id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></div></div></div></div>";
+		//trs[i] = "<div class=\"tile\" id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></div>";
+		console.log("i: " + i + " " + trs[i] + ",");
 	}
 	
 	//create the colours array
@@ -185,7 +187,8 @@ function switchTeam()
 	console.log(teams[index].name + " is now set to active");
 	console.log("Switching team to", whoseGo);		
 	io.sockets.emit('turn', { whoseGo : whoseGo, teams : teams });
-	sendTeams();
+	//sendTeams();
+	sendScores();
 }
 
 function isNameAvail(data) {
@@ -222,6 +225,11 @@ function sendTeams () {
 	io.sockets.emit('displayTeam', teams);
 }
 
+function sendScores () {
+	console.log("Server is sending the scores");
+	io.sockets.emit('displayScore', teams);
+}
+
 function pauseTimer() {
 	isPaused = true;
 }
@@ -236,7 +244,7 @@ startTimer = function() {
         minutes = parseInt(duration / 60, 10);
         seconds = parseInt(duration % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
+        //minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
 		io.sockets.emit('timer', { minutes: minutes, seconds: seconds, duration: duration });
@@ -317,7 +325,8 @@ io.on('connection', function (socket) { // Incoming connections from clients
 		{
 			socket.emit('endGame', teams);
 		}
-		sendTeams();
+		//sendTeams();
+		sendScores();
 	});
 	
 	//Handle clueGiven by spyMaster
@@ -364,7 +373,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
   
   //add player to team which has space
   socket.on('registerPlayer', function (data, callback) {
-	//console.log("received join game request from client:", data);
+	console.log("received join game request from client:", data);
 	
 	var added = false;
 	var left;
@@ -409,9 +418,10 @@ io.on('connection', function (socket) { // Incoming connections from clients
 					createBoard();
 				}
 				
-				//Show board
+				//Show board, turn then send score
 				io.sockets.emit('board', {trs: trs, colours: colours} );
 				io.sockets.emit('turn', { whoseGo : whoseGo, teams : teams });
+				sendScores();
 				isPaused = false;
 				startTimer();
 			}
