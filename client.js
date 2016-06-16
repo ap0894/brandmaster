@@ -121,10 +121,7 @@ function createScoreTable(teams) {
 		console.log(teams[x].name + " status: " + teams[x].active);
 		if(teams[x].active) {
 			newColour = lighten(teams[x].colour, DARKEN);
-			scores = scores + "<td style=\"padding-top:8px; background-color:" + teams[x].colour +"; color:white; border-radius:5px; width:56px; box-shadow: inset 0 -5px 1px"+newColour+";\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</span><br/><span id=\"yourTurn\" style=\"font-size:8pt\"></span></td>";		
-			if(activeGo||activeSpy) {
-				$('#yourTurn').html("Your turn");
-			}
+			scores = scores + "<td style=\"padding-top:8px; background-color:" + teams[x].colour +"; color:white; border-radius:5px; width:56px; box-shadow: inset 0 -5px 1px"+newColour+";\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</span><br/><span id=\"yourTurn\" style=\"font-size:8pt\"></span></td>";
 			//Add in another indicator for this team
 		} else {
 			scores = scores + "<td style=\"padding-top:8px; width:56px; color:" + teams[x].colour +"\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\">/" + teams[x].target + "</span></td>";		
@@ -360,7 +357,10 @@ function connect () {
 	//Handle display score event
 	socket.on('displayScore', function (teams) {
 		var scoreTable = createScoreTable(teams);
-		$('#scoreTable').html(scoreTable);
+		$('#scoreTable').html(scoreTable);				
+		if(activeGo||activeSpy) {
+			$('#yourTurn').html("Your turn");
+		}
 	});
 	
 	// Handle the timer event
