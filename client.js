@@ -463,7 +463,7 @@ function giveClue() {
 		}
 		else {
 			// check clue word is not contained in any of the table words. Use wordsSelected from server.
-			socket.emit('checkClue', clue, function (data) {
+			socket.emit('checkClue', clue.toLowerCase, function (data) {
 				if(data) {
 					console.log("clue not on board");					
 					//$("#clue").html('');
