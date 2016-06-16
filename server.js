@@ -28,6 +28,7 @@ var whoseGo = "";
 var checked = true;
 var inProgress = false;
 var isPaused = false;
+var activeTeamColour;
 
 var data = require('./data.js');
 var seedrandom = require('seedrandom');
@@ -127,16 +128,19 @@ function createBoard(){
 		console.log("Incrementing target to " + teams[0].target);
 		whoseGo = teamNames[0];
 		teams[0].active = true;
+		activeTeamColour = teamColours[0];
 	}else if(Math.floor(Math.random() * data.length) % 2 === 1){
 		colours.push(teamColours[1]);
 		teams[1].target++;
 		whoseGo = teamNames[1];
 		teams[1].active = true;
+		activeTeamColour = teamColours[1];
 	}else {
 		colours.push(teamColours[2]);
 		teams[2].target++;
 		whoseGo = teamNames[2];
 		teams[2].active = true;
+		activeTeamColour = teamColours[2];
 	}	
 	
 	// add neturals 
@@ -183,13 +187,12 @@ function switchTeam()
 {
 	var index = teamNames.indexOf(whoseGo);
 	teams[index].active = false;
-	
 	io.sockets.in(whoseGo).emit('disable');
 	if (index == NUM_TEAMS-1) {
 		index = 0;
 	} else {
 		index++;
-	
+	}
 	activeTeamColour = teamColours[index];
 	console.log("Active team colour: " + activeTeamColour);
 	whoseGo = teamNames[index];
