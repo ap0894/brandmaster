@@ -183,6 +183,7 @@ function switchTeam()
 {
 	var index = teamNames.indexOf(whoseGo);
 	teams[index].active = false;
+	activeTeamColour = teamColours[index];
 	io.sockets.in(whoseGo).emit('disable');
 	if (index == NUM_TEAMS-1) {
 		index = 0;
@@ -193,7 +194,7 @@ function switchTeam()
 	teams[index].active = true;
 	console.log(teams[index].name + " is now set to active");
 	console.log("Switching team to", whoseGo);		
-	io.sockets.emit('turn', { whoseGo : whoseGo, teams : teams });
+	io.sockets.emit('turn', { whoseGo : whoseGo, activeTeamColour : activeTeamColour });
 	//sendTeams();
 	sendScores();
 }

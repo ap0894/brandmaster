@@ -383,11 +383,11 @@ function connect () {
 	socket.on('turn', function (data) { 
 		$("#endGo").hide();
 		turn = data.whoseGo;
+		activeTeamColour = data.activeTeamColour;
 		console.log("It's " + turn + " turn");
 		$('#clue').html('');
 		if (turn == room) {
 			activeTeam = true;
-			activeTeamColour = teamColour;
 			$('.pie').css('background-color', teamColour);
 			if(spyMasterMode) {
 				console.log ("Spymaster active");
