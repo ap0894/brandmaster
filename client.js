@@ -92,9 +92,9 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 		table += "<tr>";
 		for(b=0; b<NUM_TEAMS; b++) {
 			if(teams[b].players[a] != null) {
-				table += "<td><strong>"+ teams[b].players[a].name + "</strong></td>";
+				table += "<td style=\"width:200px; font-size:10pt; padding:5px;\"><strong>"+ teams[b].players[a].name + "</strong></td>";
 			} else {
-				table += "<td>Waiting for player</td>";
+				table += "<td style=\"width:200px; font-size:10pt; padding:5px;\">Waiting for player</td>";
 			}
 		}
 		table += "</tr>";
