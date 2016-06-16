@@ -199,7 +199,8 @@ function connect () {
 		//$('#clueBox').placeholder = data.clue.toUpperCase() + " " + data.num ;
 		if(!spyMasterMode) {
 			$('#clueBox').css('color', teamColour);
-			document.getElementById("clueBox").placeholder = data.clue.toUpperCase() + " " + data.num;
+			//document.getElementById("clueBox").val = data.clue.toUpperCase() + " " + data.num;
+			$('#clueBox').val(data.clue.toUpperCase() + " " + data.num);
 		}
 		//$('#history').append(data.clue.toUpperCase() + " " + data.num + "<br />");
 		// Activate players
