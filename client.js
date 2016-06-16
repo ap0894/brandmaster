@@ -362,7 +362,7 @@ function connect () {
 		$('#scoreTable').html(scoreTable);				
 		if(activeTeam) {
 			$('#yourTurn').html("Your turn");
-			$('#star').html("<img id=\"starImg\" class=\"img\" src=\"images/my_team_star.png\" alt=\"star\"></img>");
+			$('#star').html("<img id=\"starImg\" class=\"img\" src=\"images/my_team_star_small.png\" alt=\"star\"></img>");
 		}
 	});
 	
