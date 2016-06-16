@@ -201,7 +201,7 @@ function connect () {
 			$('#clueBox').css('color', teamColour);
 			//document.getElementById("clueBox").val = data.clue.toUpperCase() + " " + data.num;
 			$('#clueBox').val(data.clue.toUpperCase() + " " + data.num);
-			$('#clueBox').css('border' + '1px solid ' + teamColour);
+			$('#clueBox').css('border', '1px solid ' + teamColour);
 		}
 		//$('#history').append(data.clue.toUpperCase() + " " + data.num + "<br />");
 		// Activate players

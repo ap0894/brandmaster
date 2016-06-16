@@ -376,10 +376,9 @@ a, a:link, a:visited, a:hover, a:active {
 
 #starImg {
 	z-index:1;
-	width:50%;
 	position:relative;
-	right:-22px;
-	top:-16px;
+	right:-32px;
+	top:-18px;
 }
 
 .score {
