@@ -192,7 +192,6 @@ function isNameAvail(data) {
 	console.log("Checking if name " + data + " is available");
 	var isAvail = true;
 	for (i=0; i<NUM_TEAMS; i++) {
-		var index = teams[i].players.map(functiodata.n(e) { return e.name; }).indexOf(data);
 		var index = teams[i].players.map(function(e) { return e.name; }).indexOf(data);
 		//console.log ("index: " + index);
 		if(index != -1) {
