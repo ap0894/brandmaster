@@ -139,7 +139,7 @@ body {
 	font-family: BentonSans,Arial,Helvetica,Sans-serif;
 	font-size: 20px;
 	color: #27aae0;
-	width: 150px;
+	width: 184px;
 	margin-right: 10px;
 }
 
@@ -174,9 +174,10 @@ body {
     border-style: groove;
 	font-size: 9pt;
 	margin-right: 8px;
+	margin-left: 8px;
 	display: inline-block;
 	padding: 12px;
-	width: 30%;
+	width: 200px;
 }
 
 #num {
@@ -248,7 +249,7 @@ a, a:link, a:visited, a:hover, a:active {
     /*text-align: center;*/
     text-decoration: none;
     font-size: 9pt;
-	margin: 8px;
+	//margin: 8px;
 }
 
 #giveClue {
@@ -345,7 +346,7 @@ a, a:link, a:visited, a:hover, a:active {
 	display:none;
 	position:fixed;
 	z-index: 1;
-	padding-top: 250px;
+	padding-top: 278px;
 	left: 0;
 	top: 0;
 	width: 100%;

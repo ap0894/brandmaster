@@ -478,7 +478,7 @@ function giveClue() {
 					$('#clueBox').css('color', COLOR_PALE_GREY);
 					$('#num').css('border', '1px solid ' + COLOR_PALE_GREY);
 					$('#clueBox').prop('readonly', true);
-					$('#num').prop('readonly', true);
+					$('#num').prop('disabled', true);
 					$('#num').css('color', COLOR_PALE_GREY);
 					$('#errors').html('');
 					console.log("Sending clue: " + clue + " Num: " + num);
