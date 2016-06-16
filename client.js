@@ -80,11 +80,20 @@ $(document.body).on('click', '#reset' ,function(e){
 });
 
 // Function to create a HTML table for the player names
-function createTeamTable(teams) {
+function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 
-	
+	var table = "<table>"
+	for(a=0; a<TEAM_SIZE; a++) {
+		table += "<tr>";
+		for(b=0; b<NUM_TEAMS; b++) {
+			table += "<td>Waiting for player</td>";
+		}
+		table += "</tr>";
+	}
+	table += "</table>";
+	return table;
 
-	var output = "<div class=\"table teams\">";
+	/*var output = "<div class=\"table teams\">";
 	var columns = "";
 	var head =  "<div class=\"table-row\">";
 	var body = "";
@@ -113,7 +122,7 @@ function createTeamTable(teams) {
 		body = body + "</div>";
 	}
 	output = output + columns + head + body + "</div>";
-	return output;
+	return output;*/
 }
 
 function createScoreTable(teams) {
@@ -357,7 +366,8 @@ function connect () {
 			}
 		}
 		
-		var teamTable = createTeamTable(data.teams);
+		var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
+		
 		$('#teamTable').html(teamTable);
 	});
 	
