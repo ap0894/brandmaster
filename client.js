@@ -211,7 +211,7 @@ function connect () {
 			//$('#goes').html(goes + " guesses left");
 			$('#numInput').html(goes + " guesses left");
 			$('#numInput').css('color', teamColour);
-			$('#numInput').css('font-size', '9pt');
+			$('#numInput').css('font-size', '12pt');
 			
 			$('#endGo').attr("disabled", false);
 			//var index = data.teams.map(function(e) { return e.name; }).indexOf(data.whoseGo);
