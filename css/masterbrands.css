@@ -1,0 +1,173 @@
+body {
+	font-family: BentonSans,Arial,Helvetica,Sans-serif;
+}
+
+#header {
+	text-align:center;
+}
+
+#brand{
+	font-family: BentonSans;
+	font-weight: bold;
+	font-size: 30pt;
+	color: #f2aa4e;
+	display: inline-block;
+}
+
+#top {
+	text-align: center;
+}
+
+#topWrap {
+	display: inline-block;
+}
+
+#numInput {
+	display:inline-block;
+}
+
+#topInWrap {
+	display: table;
+}
+
+.middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+#master {
+	font-family: BentonSans;
+	font-size: 30pt;
+	color: #4ab2bf;
+	display: inline-block;
+}
+
+#clueBox {
+	border: 1px solid #d3d3d3;
+	border-radius: 10px;
+    border-style: groove;
+	font-size: 9pt;
+	margin: 16px;
+	display: inline-block;
+	padding: 12px;
+	width: 30%;
+}
+
+#num {
+	font-size: 9pt;
+	width: 30px;
+	padding: 12px;
+	border-radius: 15px;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+	text-decoration: none ;
+	color:inherit;
+    cursor:pointer;
+}
+
+#teamsWrap {
+	text-align: center;
+}
+
+#teams {
+	display: inline-block;
+}
+.boardContainer {
+	width: 100%;
+	text-align: center;
+}
+
+.board
+{
+    border-collapse: separate;
+    border-spacing: 8px ;
+	border-style: none;
+	display: inline-block;
+}
+
+.board td {
+   height: 65px ;
+   width: 100px ;
+   /*position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;*/
+   color: white;*/
+   border: 0px ;
+   border-radius: 15px;
+   text-align: center
+}
+
+.board td a {
+	font-size: 9pt;
+}
+
+.pie{
+    width: 70px;
+    height: 70px;
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    background-color: #1fbba6;
+    float: left;
+    margin: 1em;
+}
+ 
+.block{
+    position:absolute;
+    background:#fff;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    top:7.5px;
+    left:7.5px;
+}
+#time{
+  position:absolute;
+  top:35%;
+  left:17%;
+  color: #b0b0b0;
+}
+.degree{
+      background-image:
+        linear-gradient(90deg, transparent 50%, white 50%),
+        linear-gradient(90deg, white 50%, transparent 50%);
+}
+
+#goes {
+	color: #ababab;
+	display: inline-block;
+}
+
+#ratio {
+	position: relative;
+	padding-bottom: 35%;
+	height: 0;
+}
+
+#endGo {
+	display: inline-block;
+	border: none;
+	border-radius: 15px;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 9pt;
+	margin: 16px;
+}
+
+#giveClue {
+    border: none;
+	border-radius: 15px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 9pt;
+	margin: 16px;
+}

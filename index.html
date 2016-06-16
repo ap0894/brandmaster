@@ -4,101 +4,89 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrandMaster - Team building for virtual teams</title>
-	<link rel="stylesheet" href="css/style.css">
+    <title>MasterBrands - Team building for virtual teams</title>
+	<link rel="stylesheet" href="css/masterbrands.css">
   </head>
   <body>	
-	<div class="center" id="pageContainer">
-		<div id="resetContainer">
-		
-		</div>
+	<div id="resetContainer"></div>
+	<div id="banner">
 		<div id="header">
-			<div id="b" class="header tile">
-				<strong>b</strong>
+			<div id="icon"><img src="images/MB_logo_large.png"></img></div><div id="brand">Brand</div><div id="master">Master</div>
+		</div>
+		<div class="panel-group" id="accordion">
+		  <div class="panel panel-default">
+			<div class="panel-heading">
+			  <h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+				The Objective</a>
+			  </h4>
 			</div>
-			<div id="m" class="header tile">
-				<strong>m</strong>
+			<div id="collapse1" class="panel-collapse collapse in">
+			  <div class="panel-body">Your company has developed a diverse suite of new products to take to market. Your challenge as the marketing team, is to identify your products using one word clues or Masterbrands that link as many of these products together in the mind of your team and therefore your customers.</div>
 			</div>
-			<div class="header" id="brand">
-				&nbsp;Brand
+		  </div>
+		  <div class="panel panel-default">
+			<div class="panel-heading">
+			  <h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+				The Rules</a>
+			  </h4>
 			</div>
-			<div class="header" id="master">
-				Master
+			<div id="collapse2" class="panel-collapse collapse">
+			  <div class="panel-body">One player will be your Chief Brander, who can see all the products your team and the other teams are developing. This player is charged with conceptualising one word Masterbrands to link your products together.  The Chief Brander enters their clue/master brand and the number of products they are trying to link together. The rest of the team, will try to identify their companies products from these clues. <p>Teams take turns to link as many products together as possible. Each team receives 2 minutes to complete their turn (which includes providing a masterbrand and making all respective guesses). The teams turn will end when a wrong answer is provided (i.e. A product is guessed that does not belong to that team), or the 2 minutes elapses. </p><p>Be careful, other teams are developing their own products and uncovering their products names will only speed their time to market. </p><p>The winning team are the ones to uncover and link all their products first. </p>
+			  </div>
 			</div>
-			<div id="shadow" class="center"><img class="img" src="images/shadow.png" alt="shadow"></img></div>
+		  </div>
 		</div>
-		
-		<div class="container" id="rules">
-			<div class="title">Objective</div>
-			<div class="blurb">
-				To uncover your companies various products by linking them with one word clues or master brands.
-			</div>
-			<div class="title">Rules</div>
-			<div class="blurb">
-				Brand Master<br/>See's all the products that are being developed and must conceptualise a one word Master Brand to link their teams products together. Enter the master brand and send to team marketeers to guess.<br/>Marketeers<br/>Identify their companies products from the Master Brand clue.
-			</div>
-		</div>
-		
-		<div class="center" id="playerentry">
-			<div id="errMsg"></div>
-			<form id="homePageForm">	
-				<label class="label paleGrey" for="pname">Your Name</label>
-				<input class="input" type="text" id="pname" placeholder="Enter your name"/>
-				<button class="btn-primary" type="button" id="joinBtn">Join game</button>
-			</form>
-		</div>
-		
-		<div id="teamTable" class="container">	
-		</div>
-		
-		<div class="center" id="waitMsg"></div>
-
-		<div class="container center" id="teamsWrap">
-			<div id="scoreTable"></div>	
-			<div id="errors"></div>
-			<div id="numPlayers"></div>
-		</div>
-			
-		<div class="container" id="board">
-		</div>
-		<div class="container" id="actions">
-		</div>
-		
-		<!-- Correct Modal -->
-		<div id="correctModal" class="modal">
-			<!--Modal Content -->
-			<div class="modal-content">
-				<p><img class="img" src="images/happy_face.png" alt="correct"></img></p>
-				<p><strong>Whoohoo! That's correct!</strong></p>
-				<p>Have another go...</p>
-			</div>
-		</div>
-		<!-- Incorrect Modal -->
-		<div id="incorrectModal" class="modal">
-			<!--Modal Content -->
-			<div class="modal-content">
-				<p><img class="img" src="images/sad_face.png" alt="incorrect"></img></p>
-				<p><strong>It's good, but it's not right!</strong></p>
-				<p>Your turn ends...</p>
-			</div>
-		</div>
-		<!-- confirm Modal -->
-		<div id="confirmModal" class="modal">
-			<!--Modal Content -->
-			<div class="modal-content">
-				<p>Are you sure you want to select'<span id="wordToConfirm"></span>'?</p>
-				<input type="button">Nope</input><input type="button">Yes we do!</input>
-			</div>
-		</div>
-		
-		<!--<div id="history"></div>-->
-		
-		<!-- Javascript files added to the end of body for bootstrap -->
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-		<script src="./api/config"></script>  <!-- Loaded via REST API -->
-		<script src="./client.js"></script>
 	</div>
+	
+	<div id="temp">
+		<div id="waitMsg"></div>
+	</div>
+	
+	<div id="playerentry" style="margin:20px;">
+		<div id="errMsg"></div>
+		<form id="homePageForm">	
+			<label for="pname">Name</label>
+			<input type="text" id="pname" placeholder="Enter your name"/>
+			<button type="button" id="joinBtn">Join Game</button>
+		</form>
+	</div>
+
+	<div id="teamsWrap">
+		<div id="teams"></div>	
+		<div id="errors"></div>
+		<div id="numPlayers"></div>
+	</div>
+		
+	<div class="boardContainer" id="board">
+		<div id="top">
+			<div id="topWrap">
+				<div id="topInWrap">
+					<div id="pie" class="pie degree middle">
+						<span class="block"></span>
+						<span id="time"></span>
+					</div>
+					<div class="middle" id="clueWrap" >
+						<div id="clue"></div>
+						<div class="middle" id="goes"></div>
+					</div>
+					<div class="middle" id="end"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<!--<div id="history"></div>-->
+    
+	<!-- Javascript files added to the end of body for bootstrap -->
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+	<script src="./api/config"></script>  <!-- Loaded via REST API -->
+	<script src="./client.js"></script>
+	
   </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
+    <script src="jquery-1.12.3.min.js"></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.20/dist/jquery.flip.min.js"></script>
+	<script src="./api/config"></script>  <!-- Loaded via REST API -->
+	<script src="./client.js"></script>
+	<link rel="stylesheet" href="styles/styles.css?v=1.0">
+    <title>NameCodes</title>
+  </head>
+  <body>
+  <!--<div id="top">Trying to connect websocket... But nothing seems to happen... :)</div>
+  <div id="mid">Round-trip time: <span id="ping"></span></div>-->
+  <div id="header">
+	<img src="images/header.jpg" alt="Codenames">
+  </div>
+  <div id="playerentry">
+	Player Name: <input type="text" name="pname" id="pname"></input>
+	<button id="button">Join Game</button>
+  </div>
+  <div id="messageboard">
+	<div id="globalMessages">
+		
+	</div>
+	
+	<div id="teamMessages">
+	
+	</div>
+  
+  </div>
+
+  <div id="teams"></div>
+  <div id="counter"></div>
+  <div id="board"></div>
+  <div id="team"></div>
+  <div id="turn"></div>
+  <div id="clues"></div>
+  <div id="clueGiven"></div>
+  <div id="status"></div>
+  <div id="errors"></div>
+  <button id="endGo">End Turn</button>
+  <div id="globalChat"></div>
+  <div id="teamChat"></div>
+  </body>
+</html>
