@@ -358,7 +358,7 @@ function connect () {
 	socket.on('displayScore', function (teams) {
 		var scoreTable = createScoreTable(teams);
 		$('#scoreTable').html(scoreTable);				
-		if(activeGo||activeSpy) {
+		if(activeTeam) {
 			$('#yourTurn').html("Your turn");
 		}
 	});
