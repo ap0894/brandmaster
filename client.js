@@ -220,7 +220,6 @@ function connect () {
 		teamName = toTitleCase(room).slice(0,-1);
 		$('#avatarName').html(teamName+" team");
 		$('#avatarName').css('color', teamColour);
-		//var fill;
 	});
 
 	// Handle teamSize event
@@ -283,21 +282,15 @@ function connect () {
 	socket.on('board', function(data) {
 		$('#numPlayers').html('');
 		$('#rules').remove();
-		//$('#teamTable').remove();
 		$('#teamTable').css('display','none');
 		
-		//$('#banner').html('');
-		//$('#board').css('display','block');
 		//console.log("Generating player board");
 		var board = "";
 		var actions = "<div class=\"center\" id=\"top\"><div id=\"topWrap\"><div id=\"topInWrap\"><div id=\"pie\" class=\"pie degree middle\"><span class=\"block\"></span><span id=\"time\"></span></div><div class=\"middle\" id=\"clueWrap\"><div id=\"clue\"></div><div class=\"middle\" id=\"goes\"></div></div><div class=\"middle\" id=\"end\"></div></div></div></div>";
 		//board += '<table class="board" id="board"><tbody>';
 		for (var i = 0; i < data.trs.length; i++){
-			//board += '<tr>'+data.trs[i]+'</tr>'
 			board += data.trs[i];
 		}
-		//board += '</tbody></table>';
-		//document.getElementById("board").innerHTML = board;
 		$("#board").append(board);
 
 		//console.log("Generating spymaster board");
@@ -314,7 +307,6 @@ function connect () {
 				document.getElementById(j).style.color = "#545454";
 			}
 		}
-		//$("#top").show();
 		$('#actions').html(actions);
 	});
 	
