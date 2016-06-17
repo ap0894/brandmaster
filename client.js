@@ -29,6 +29,10 @@ $( document ).ready(function() {
 	window.onclick = function(event) {
 		if(event.target==correctModal) {
 			correctModal.style.display = "none";
+		} else if(event.target==incorrectModal) {
+			incorrectModal.style.display = "none";
+		} else if(event.target==confirmModal) {
+			confirmModal.style.display = "none";
 		}
 	}
 	
@@ -480,6 +484,26 @@ function clicked(value){
 			confirmModal.style.display = "block";
 			$('.modal-content').css('background-color', 'white');
 			$('.modal-content').css('color', COLOR_PALE_GREY);
+			
+			$('#yes').click(function(e) {
+				e.preventDefault();
+				confirmModal.style.display = "none";
+				//only deactivate once reached max goes
+				if (goes == 0) {
+					console.log("max goes reached, deactivating players");
+					//$('#goes').html('');
+					$('#numInput').html("");
+					activeGo = false;
+				}
+				//console.log("Sending id of " + value + " to server clicked listener");
+				socket.emit('clicked', value);
+			});
+			
+			$('#nope').click(function(e) {
+				e.preventDefault();
+				confirmModal.style.display = "none";
+			});
+			
 			//newColour = lighten('#2ec306', DARKEN);
 			$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + COLOR_GREY);
 			/*if (window.confirm("Are you sure you want to select '"+word+"'?")) {
