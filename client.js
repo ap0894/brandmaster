@@ -87,7 +87,8 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 	for (z=0; z<NUM_TEAMS; z++){
 		cols += "<col span=\"1\" style=\"background-color:"+teams[z].colour+"\">";
 		teamName = toTitleCase(teams[z].name);
-		teamNameRow += "<td style=\"width:200px; font-size:12pt; padding:5px;\">"+ teamName + "</td>";
+		newColour = lighten(teams[z].colour, DARKEN);
+		teamNameRow += "<td style=\"width:200px; font-size:12pt; padding:5px; color:"+newColour+"\">"+ teamName + "</td>";
 	}
 	cols += "<colgroup>";
 	teamNameRow += "</tr>";
@@ -96,9 +97,9 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 		table += "<tr>";
 		for(b=0; b<NUM_TEAMS; b++) {
 			if(teams[b].players[a] != null) {
-				table += "<td style=\"width:200px; font-size:10pt; padding:5px;\"><strong>"+ teams[b].players[a].name + "</strong></td>";
+				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\"><strong>"+ teams[b].players[a].name + "</strong></td>";
 			} else {
-				table += "<td style=\"width:200px; font-size:10pt; padding:5px;\">Waiting for player</td>";
+				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
 			}
 		}
 		table += "</tr>";
