@@ -413,3 +413,8 @@ a, a:link, a:visited, a:hover, a:active {
 #ttable tbody tr:last-child td {
     border-radius: 0px 0px 5px 5px;
 }
+
+#avatarContainer {
+	float: right;
+	margin-right: 10px;
+}
