@@ -70,14 +70,14 @@ $( document ).ready(function() {
 		e.preventDefault();
 		reconnect();
 	});
-	
-	$('#newGame').click(function(e) {
-		console.log("New Game Clicked");
-		e.preventDefault();
-		socket.emit('reset');
-	});
 });
 
+$(document.body).on('click', '#newGame' ,function(e){
+	e.preventDefault();
+	console.log("New Game Clicked");
+	socket.emit('reset');
+});
+	
 $(document.body).on('click', '#endGo' ,function(e){
 	e.preventDefault();
 	goes = 0;
