@@ -271,7 +271,7 @@ a, a:link, a:visited, a:hover, a:active {
 
 #playerentry{
 	margin-top: 20px;
-	margin-bottom: 20px;
+	//margin-bottom: 20px;
 }
 
 .container {

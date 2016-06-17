@@ -83,11 +83,14 @@ $(document.body).on('click', '#reset' ,function(e){
 function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 
 	var cols = "<colgroup>";
+	var teamNameRow = "<tr>";
 	for (z=0; z<NUM_TEAMS; z++){
 		cols += "<col span=\"1\" style=\"background-color:"+teams[z].colour+"\">";
+		teamName = toTitleCase(teams[z].name);
+		teamNameRow += "<td style=\"width:200px; font-size:12pt; padding:5px;\">"+ teamName + "</td>";
 	}
 	cols += "<colgroup>";
-	var table = "<table id=\"ttable\" style=\"display:inline-block; padding-top:15px; border-spacing: 12px 0px\">" + cols;
+	var table = "<table id=\"ttable\" style=\"display:inline-block; padding-top:20px; border-spacing: 12px 0px\">" + cols;
 	for(a=0; a<TEAM_SIZE; a++) {
 		table += "<tr>";
 		for(b=0; b<NUM_TEAMS; b++) {
