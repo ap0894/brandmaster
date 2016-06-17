@@ -105,7 +105,7 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 			if(teams[b].players[a] != null) {
 				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">"+ teams[b].players[a].name + "</td>";
 			} else {
-				newColour = lighten(teams[b].colour, DARKEN+5);
+				newColour = lighten(teams[b].colour, DARKEN-0.05);
 				table += "<td style=\"color: "+newColour+"; width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
 			}
 		}
@@ -322,6 +322,7 @@ function connect () {
 		// not spy master
 		else {
 			document.getElementById(theValue).style.backgroundColor = theColours[theValue];
+			document.getElementById(theValue).style.color = 'white';
 			//newColour = lighten(theColours[theValue], DARKEN);
 			//"0 10px 1px " + newColour;
 			//document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + newColour;	
