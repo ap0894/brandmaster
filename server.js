@@ -337,7 +337,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 		teams[index].score++;
 		if(teams[index].score == teams[index].target)
 		{
-			io.sockets.emit('endGame', {teams:teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE });
+			io.sockets.emit('endGame', {teams:teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE, teamName:teamName });
 		}
 		//sendTeams();
 		sendScores();

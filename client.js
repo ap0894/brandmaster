@@ -37,6 +37,7 @@ $( document ).ready(function() {
 	}
 	
 	connect ();
+	$('#endBanner').hide();
 	socket.emit('getTeams');
 	$("#endGo").hide();
 	$('#btmShadow').hide();
@@ -68,6 +69,11 @@ $( document ).ready(function() {
 	$('#reconnect').click(function(e) {
 		e.preventDefault();
 		reconnect();
+	});
+	
+	$('#newGame').click(function(e) {
+		e.preventDefault();
+		socket.emit('reset');
 	});
 });
 
@@ -383,6 +389,10 @@ function connect () {
 		var endTable = createEndTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
 		$('#teamTable').html(endTable);
 		$('#teamTable').css('display','block');
+		$('#endBanner').append("<div id=\"winnerName\">" + data.teamName + "</div>");
+		$('#endBanner').append("<input class=\"btn-primary\" id=\"newGame\" value=\"New Game\"></input>");
+		$('#endBanner').css('display', 'block');
+		//$('#winnerName').css('color', data.teams.colour);
 		//console.log("Game Over, resetting");
 		//socket.emit('reset');
 	});
