@@ -90,7 +90,8 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 		teamNameRow += "<td style=\"width:200px; font-size:12pt; padding:5px;\">"+ teamName + "</td>";
 	}
 	cols += "<colgroup>";
-	var table = "<table id=\"ttable\" style=\"display:inline-block; padding-top:20px; border-spacing: 12px 0px\">" + cols;
+	teamNameRow += "</tr>";
+	var table = "<table id=\"ttable\" style=\"display:inline-block; padding-top:20px; border-spacing: 12px 0px\">" + cols + teamNameRow;
 	for(a=0; a<TEAM_SIZE; a++) {
 		table += "<tr>";
 		for(b=0; b<NUM_TEAMS; b++) {
