@@ -17,7 +17,7 @@ var totaltime = 60 * 2.5;
 var teamColour;
 var activeTeamColour;
 var DARKEN = -0.1;
-var LIGHTEN = 0.1;
+var LIGHTEN = 0.15;
 var activeTeam = false;
 var numSelector = "<select id=\"num\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option></select>" 
 
