@@ -120,7 +120,7 @@ function createEndTable(teams, NUM_TEAMS, TEAM_SIZE) {
 		teamName = toTitleCase(teams[z].name);
 		newColour = lighten(teams[z].colour, DARKEN);
 		teamNameRow += "<td style=\"width:200px; font-size:12pt; padding:5px; color:"+newColour+"\">"+ teamName + "</td>";
-		scores = scores + "<td style=\"width:200px; padding:5px;\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</td>";
+		scores = scores + "<td style=\"width:200px; padding:5px;\"><span class=\"scoreNum\">" + teams[z].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[z].target + "</td>";
 	}
 	scores += "</tr>";
 	cols += "<colgroup>";
