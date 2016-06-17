@@ -476,11 +476,11 @@ function clicked(value){
 	if(!spyMasterMode) {
 		if (activeGo && goes > 0) {
 			var word = document.getElementById(value).getElementsByTagName('a')[0].innerHTML;
-			//confirmModal.style.display = "block";
+			confirmModal.style.display = "block";
 			$('.modal-content').css('background-color', 'white');
 			//newColour = lighten('#2ec306', DARKEN);
 			$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + COLOR_GREY);
-			if (window.confirm("Are you sure you want to select '"+word+"'?")) {
+			/*if (window.confirm("Are you sure you want to select '"+word+"'?")) {
 				//only deactivate once reached max goes
 				if (goes == 0) {
 					console.log("max goes reached, deactivating players");
@@ -490,7 +490,7 @@ function clicked(value){
 				}
 				//console.log("Sending id of " + value + " to server clicked listener");
 				socket.emit('clicked', value);
-			}
+			}*/
 		}
 	}
 }
