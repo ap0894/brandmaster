@@ -108,7 +108,7 @@ function createBoard(){
 		//var word = sessionData[randomNumber];
 		removeItem(sessionData, randomNumber);
 		wordsSelected.push(word.toLowerCase());
-		trs[i] = "<div class=\"square center\"><div class=\"content\"><div class=\"table\"><div class=\"table-cell\"id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></div></div></div></div>";
+		trs[i] = "<div class=\"square center\"><div class=\"content\"><div class=\"table\"><div class=\"front table-cell\"id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></div><div class=\"back\">Back Content</div></div></div></div>";
 		//trs[i] = "<div class=\"tile\" id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></div>";
 		console.log("i: " + i + " " + trs[i] + ",");
 	}
