@@ -35,7 +35,7 @@ $( document ).ready(function() {
 	socket.emit('getTeams');
 	$("#endGo").hide();
 	//$("#top").hide();
-	$("#labels").hide();
+	//$("#labels").hide();
 	//$('#resetContainer').html("<div><input type=\'button\' class=\'btn btn-primary btn-sm\' id=\'reset\' value=\'Reset\'></input></div>");
 	
 	// Listener for click on Enter Game button
@@ -360,9 +360,14 @@ function connect () {
 	
 	
 	socket.on('endGame', function(teams) {
-		alert("Game Over");
-		console.log("Game Over, resetting");
-		socket.emit('reset');
+		//alert("Game Over");
+		$('#teamsWrap').hide();
+		$('#board').hide();
+		$('#actions').hide();
+		var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
+		$('#teamTable').html(teamTable);
+		//console.log("Game Over, resetting");
+		//socket.emit('reset');
 	});
 	
 	//Handle display team event
@@ -379,9 +384,7 @@ function connect () {
 				}
 			}
 		}
-		
 		var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
-		
 		$('#teamTable').html(teamTable);
 	});
 	
