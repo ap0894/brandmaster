@@ -72,6 +72,7 @@ $( document ).ready(function() {
 	});
 	
 	$('#newGame').click(function(e) {
+		console.log("New Game Clicked");
 		e.preventDefault();
 		socket.emit('reset');
 	});
@@ -391,7 +392,7 @@ function connect () {
 		$('#teamTable').css('display','block');
 		teamName = toTitleCase(data.teamName);
 		$('#endBanner').append("<div id=\"winnerName\" style=\"margin-bottom:20px\">" + teamName + " win!</div>");
-		$('#endBanner').append("<input class=\"btn-primary\" id=\"newGame\" value=\"New Game\" style=\"text-align:center\"></input>");
+		$('#endBanner').append("<input type=\"button\" class=\"btn-primary\" id=\"newGame\" value=\"New Game\" style=\"text-align:center\"></input>");
 		$('#endBanner').css('display', 'block');
 		
 		$('#winnerName').css('color', data.colour);
