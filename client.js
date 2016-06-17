@@ -340,11 +340,17 @@ function connect () {
 					socket.emit('score', col);
 				}
 				if (col == room ) {
+					console.log("Correct keep guessing");
+					goes--;
 					correctModal.style.display = "block";
 					if(goes>0) {
-						$('#modalMsg').html(goes + " goes left...");
+						$('#modalMsg').html(goes + " guesses left...");
+						$('#numInput').html(goes + " guesses left");
+						console.log("Goes left: ", goes);
 					} else {
 						$('#modalMsg').html("Your turn is over!");
+						console.log("end of goes, switching");
+						socket.emit('switch'); 
 					}
 					$('.modal-content').css('background-color', '#2ec306');
 					newColour = lighten('#2ec306', DARKEN);
@@ -352,17 +358,6 @@ function connect () {
 					setTimeout(function () {
 						correctModal.style.display = "none";
 					},2000);
-					console.log("Correct keep guessing");
-					goes--;
-					//$('#goes').html(goes + " guesses left");
-					$('#numInput').html(goes + " guesses left");
-					if(goes > 0) {
-						console.log("Goes left: ", goes);
-					}
-					else { 
-						console.log("end of goes, switching");
-						socket.emit('switch'); 
-					}
 				} else {
 					incorrectModal.style.display = "block";
 					$('.modal-content').css('background-color', '#ff035c');
