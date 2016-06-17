@@ -241,7 +241,7 @@ function connect () {
 			$('#clueBox').val(data.clue.toUpperCase() + " " + data.num);
 		}
 		
-		$('#history').append("<span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + toTitleCase(turn) + "</span> team set clue <span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + data.clue.toUpperCase() + "</span> (" + data.num + ")<br />");
+		$('#history').prepend("<span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + toTitleCase(turn) + "</span> team set clue <span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + data.clue.toUpperCase() + "</span> (" + data.num + ")<br />");
 		$('#btmShadow').show(); //Is there a way to only do this once?
 		// Activate players
 		if(room == data.whoseGo && !spyMasterMode) {
