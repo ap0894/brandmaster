@@ -392,3 +392,7 @@ a, a:link, a:visited, a:hover, a:active {
 #history {
 	text-align:left;
 }
+
+#ttable tbody tr:first-child td:first-child {
+    border-radius: 10px 0 0 0;
+}
