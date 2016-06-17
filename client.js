@@ -217,6 +217,8 @@ function connect () {
 		teamColour = data.colour;
 		loc = "images/avatar_"+room+"_small.png"
 		$('#avatar').attr("src",loc);
+		teamName = toTitleCase(room).slice(0,-1);
+		$('#avatarContainer').append("<br/><span style=\"color:"+teamColour+"\">"+teamName+"</span>");
 		//var fill;
 	});
 
