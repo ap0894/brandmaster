@@ -235,10 +235,9 @@ function connect () {
 		//$('#clue').html("<div>" + data.clue.toUpperCase() + " " + data.num + "</div>");
 		//$('#clueBox').placeholder = data.clue.toUpperCase() + " " + data.num ;
 		if(!spyMasterMode) {
-			$('#clueBox').css('color', teamColour);
-			//document.getElementById("clueBox").val = data.clue.toUpperCase() + " " + data.num;
+			$('#clueBox').css('color', COLOR_PALE_GRAY);
+			$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GRAY);
 			$('#clueBox').val(data.clue.toUpperCase() + " " + data.num);
-			$('#clueBox').css('border', '1px solid ' + teamColour);
 		}
 		
 		$('#history').append("<span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + toTitleCase(turn) + "</span> team set clue <span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + data.clue.toUpperCase() + "</span> (" + data.num + ")<br />");
@@ -248,6 +247,9 @@ function connect () {
 			goes = data.num; // Set the number of goes players can have
 			goes++;
 			activeGo = true; // Set player status active
+			
+			$('#clueBox').css('color', teamColour);
+			$('#clueBox').css('border', '1px solid ' + teamColour);
 			
 			$('#numInput').html(goes + " guesses left");
 			$('#numInput').css('color', teamColour);
@@ -355,8 +357,8 @@ function connect () {
 					}
 				} else {
 					incorrectModal.style.display = "block";
-					$('.modal-content').css('background-color', '#ff196a');
-					newColour = lighten('#ff196a', DARKEN);
+					$('.modal-content').css('background-color', '#ff035c');
+					newColour = lighten('#ff035c', DARKEN);
 					$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + newColour);
 					setTimeout(function () {
 						incorrectModal.style.display = "none";
