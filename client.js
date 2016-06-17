@@ -213,7 +213,7 @@ function connect () {
 	   if (data.left >0 ) {
 		$('#numPlayers').html("Waiting for "+ data.left + " more players");
 		$('#numPlayers').css({'font-size':'24pt', 'padding-top':'20px' });
-		$('#numPlayers').css('color:', COLOR_PALE_GREY);
+		$('#numPlayers').css('color', COLOR_PALE_GREY);
 	   }
 	});
 
