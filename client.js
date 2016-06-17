@@ -257,7 +257,8 @@ function connect () {
 	socket.on('board', function(data) {
 		$('#numPlayers').html('');
 		$('#rules').remove();
-		$('#teamTable').remove();
+		//$('#teamTable').remove();
+		$('#teamTable').css('display','none');
 		
 		//$('#banner').html('');
 		//$('#board').css('display','block');
@@ -359,13 +360,14 @@ function connect () {
 	});
 	
 	
-	socket.on('endGame', function(teams) {
+	socket.on('endGame', function(data) {
 		//alert("Game Over");
 		$('#teamsWrap').hide();
 		$('#board').hide();
 		$('#actions').hide();
 		var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
 		$('#teamTable').html(teamTable);
+		$('#teamTable').css('display','block');
 		//console.log("Game Over, resetting");
 		//socket.emit('reset');
 	});
