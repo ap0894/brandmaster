@@ -389,10 +389,12 @@ function connect () {
 		var endTable = createEndTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
 		$('#teamTable').html(endTable);
 		$('#teamTable').css('display','block');
-		$('#endBanner').append("<div id=\"winnerName\">" + data.teamName + "</div>");
-		$('#endBanner').append("<input class=\"btn-primary\" id=\"newGame\" value=\"New Game\"></input>");
+		teamName = toTitleCase(data.teamName);
+		$('#endBanner').append("<div id=\"winnerName\" style=\"\margin-bottom:20px">" + teamName + " win!</div>");
+		$('#endBanner').append("<input class=\"btn-primary\" id=\"newGame\" value=\"New Game\" style=\"text-align:center\"></input>");
 		$('#endBanner').css('display', 'block');
-		//$('#winnerName').css('color', data.teams.colour);
+		
+		$('#winnerName').css('color', data.colour);
 		//console.log("Game Over, resetting");
 		//socket.emit('reset');
 	});
