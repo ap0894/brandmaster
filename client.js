@@ -235,8 +235,8 @@ function connect () {
 		//$('#clue').html("<div>" + data.clue.toUpperCase() + " " + data.num + "</div>");
 		//$('#clueBox').placeholder = data.clue.toUpperCase() + " " + data.num ;
 		if(!spyMasterMode) {
-			$('#clueBox').css('color', COLOR_PALE_GRAY);
-			$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GRAY);
+			$('#clueBox').css('color', COLOR_PALE_GREY);
+			$('#clueBox').css('border', '1px solid ' + COLOR_PALE_GREY);
 			$('#clueBox').val(data.clue.toUpperCase() + " " + data.num);
 		}
 		
