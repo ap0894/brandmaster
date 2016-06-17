@@ -145,7 +145,7 @@ body {
 	box-shadow: inset 0 -5px 1px #b3b3b3;
 	border-radius: 5px;
 	border: 0px solid #27aae0;
-	color: white;
+	color: #b3b3b3;
 }
 
 #homePageForm {
@@ -321,7 +321,7 @@ a, a:link, a:visited, a:hover, a:active {
 .table-cell{
 	display: table-cell;
 	vertical-align: middle;
-	padding-bottom: 5px;
+	/*padding-bottom: 5px;*/
 	border-radius: 10px;
 }
 
@@ -403,6 +403,7 @@ a, a:link, a:visited, a:hover, a:active {
 
 #history {
 	text-align:left;
+	color: #b3b3b3;
 }
 
 #ttable tbody tr:first-child td {

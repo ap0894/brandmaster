@@ -17,7 +17,7 @@ var totaltime = 60 * 2.5;
 var teamColour;
 var activeTeamColour;
 var DARKEN = -0.1;
-var LIGHTEN = 0.15;
+var LIGHTEN = 0.2;
 var activeTeam = false;
 var numSelector = "<select id=\"num\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option></select>" 
 
@@ -105,7 +105,7 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 			if(teams[b].players[a] != null) {
 				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">"+ teams[b].players[a].name + "</td>";
 			} else {
-				newColour = lighten(teams[b].colour, DARKEN);
+				newColour = lighten(teams[b].colour, DARKEN+5);
 				table += "<td style=\"color: "+newColour+"; width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
 			}
 		}
@@ -242,6 +242,7 @@ function connect () {
 		}
 		
 		$('#history').append("<span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + toTitleCase(turn) + "</span> team set clue <span style=\"font-weight:bold; color:"+activeTeamColour+"\">" + data.clue.toUpperCase() + "</span> (" + data.num + ")<br />");
+		$('#btmShadow').show(); //Is there a way to only do this once?
 		// Activate players
 		if(room == data.whoseGo && !spyMasterMode) {
 			console.log("Activating players in active team except the spymaster");
@@ -303,7 +304,6 @@ function connect () {
 		}
 		//$("#top").show();
 		$('#actions').html(actions);
-		$('#btmShadow').show();
 	});
 	
 	// Handle the changing of tile colour event
@@ -488,7 +488,7 @@ function clicked(value){
 			/*$('#wordToConfirm').html(word);
 			$('.modal-content').css('background-color', 'white');
 			$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + COLOR_GREY);
-			$('.modal-content').css('color', COLOR_PALE_GREY);
+			$('.modal-content').css('color', COLOR_GREY);
 			confirmModal.style.display = "block";
 			
 			$('#yes').click(function(e) {
