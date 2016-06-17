@@ -100,7 +100,8 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 			if(teams[b].players[a] != null) {
 				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">"+ teams[b].players[a].name + "</td>";
 			} else {
-				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
+				newColour = lighten(teams[b].colour, DARKEN);
+				table += "<td style=\"color: "+newColour+"; width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
 			}
 		}
 		table += "</tr>";
