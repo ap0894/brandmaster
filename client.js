@@ -212,6 +212,7 @@ function connect () {
 	   //document.getElementById('numPlayers').innerHTML = "Players =  "+ data.teamSize;
 	   if (data.left >0 ) {
 		$('#numPlayers').html("Waiting for "+ data.left + " more players");
+		$('#numPlayers').css({'color: '+ COLOR_PALE_GREY, 'font-size':'24pt', 'padding-top':'20px' });
 	   }
 	});
 
