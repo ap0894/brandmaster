@@ -341,6 +341,11 @@ function connect () {
 				}
 				if (col == room ) {
 					correctModal.style.display = "block";
+					if(goes>0) {
+						$('#modalMsg').html(goes + " goes left...");
+					} else {
+						$('#modalMsg').html("Your turn is over!");
+					}
 					$('.modal-content').css('background-color', '#2ec306');
 					newColour = lighten('#2ec306', DARKEN);
 					$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + newColour);
