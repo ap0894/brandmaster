@@ -390,7 +390,7 @@ function connect () {
 		$('#teamTable').html(endTable);
 		$('#teamTable').css('display','block');
 		teamName = toTitleCase(data.teamName);
-		$('#endBanner').append("<div id=\"winnerName\" style=\"\margin-bottom:20px">" + teamName + " win!</div>");
+		$('#endBanner').append("<div id=\"winnerName\" style=\"margin-bottom:20px\">" + teamName + " win!</div>");
 		$('#endBanner').append("<input class=\"btn-primary\" id=\"newGame\" value=\"New Game\" style=\"text-align:center\"></input>");
 		$('#endBanner').css('display', 'block');
 		
