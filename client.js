@@ -215,6 +215,8 @@ function connect () {
 	   //console.log('Welcome to team', roomId);
 		room = data.roomId;
 		teamColour = data.colour;
+		loc = "images/avatar_"+room+"_small.png"
+		$('#avatar').attr("src",loc);
 		//var fill;
 	});
 
