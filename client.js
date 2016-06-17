@@ -218,8 +218,8 @@ function connect () {
 		loc = "images/avatar_"+room+"_small.png"
 		$('#avatar').attr("src",loc);
 		teamName = toTitleCase(room).slice(0,-1);
-		$('#avatarContainer').append("<br/><span style=\"color:"+teamColour+"\">"+teamName+" team</span>");
-		//var fill;
+		$('#avatarName').html(teamName+" team");
+		$('#avatarName').css('color', teamColour);
 	});
 
 	// Handle teamSize event
