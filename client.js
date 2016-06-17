@@ -106,37 +106,39 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 	}
 	table += "</table>";
 	return table;
+}
 
-	/*var output = "<div class=\"table teams\">";
-	var columns = "";
-	var head =  "<div class=\"table-row\">";
-	var body = "";
-	for (x=0; x<teams.length; x++) {
-		columns += "<div class=\"table-column\" style=\"background-color:"+teams[x].colour+";border-radius: 10px;\"></div>";
-		teamName = toTitleCase(teams[x].name);
-		head = head + "<div class=\"table-cell\">" + teamName +  "</div>";
-	}
-	head += "</div>"
+// Function to create a HTML table for the player names
+function createEndTable(teams, NUM_TEAMS, TEAM_SIZE) {
+
+	var cols = "<colgroup>";
+	var teamNameRow = "<tr>";
+	var scores = "<tr style=\"\">";
 	
-	//this doesn't work because teams[0] can be less than teams[1]
-	for (i=0; i<teams[0].players.length; i++)
-	{
-		body = body + "<div class=\"table-row\">";
-		for (j=0; j<teams.length; j++)
-		{
-			if (teams[j].players[i] != null) {
-				if(teams[j].players[i].name == playerName ) {
-					body = body + "<div class=\"table-cell\"><strong>"+ teams[j].players[i].name + "</strong></div>";
-				} else {
-					//console.log("Adding name " + teams[j].players[i] );
-					body = body + "<div class=\"table-cell\">"+ teams[j].players[i].name + "</div>";
-				}
+	for (z=0; z<NUM_TEAMS; z++){
+		cols += "<col span=\"1\" style=\"background-color:"+teams[z].colour+"\">";
+		teamName = toTitleCase(teams[z].name);
+		newColour = lighten(teams[z].colour, DARKEN);
+		teamNameRow += "<td style=\"width:200px; font-size:12pt; padding:5px; color:"+newColour+"\">"+ teamName + "</td>";
+		scores = scores + "<td style=\"width:200px; padding:5px;\"><span class=\"scoreNum\">" + teams[x].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[x].target + "</td>";
+	}
+	scores += "</tr>";
+	cols += "<colgroup>";
+	teamNameRow += "</tr>";
+	var table = "<table id=\"ttable\" style=\"display:inline-block; padding-top:20px; border-spacing: 12px 0px\">" + cols + teamNameRow + scores;
+	for(a=0; a<TEAM_SIZE; a++) {
+		table += "<tr>";
+		for(b=0; b<NUM_TEAMS; b++) {
+			if(teams[b].players[a] != null) {
+				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\"><strong>"+ teams[b].players[a].name + "</strong></td>";
+			} else {
+				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
 			}
 		}
-		body = body + "</div>";
+		table += "</tr>";
 	}
-	output = output + columns + head + body + "</div>";
-	return output;*/
+	table += "</table>";
+	return table;
 }
 
 function createScoreTable(teams) {
@@ -365,8 +367,8 @@ function connect () {
 		$('#teamsWrap').hide();
 		$('#board').hide();
 		$('#actions').hide();
-		var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
-		$('#teamTable').html(teamTable);
+		var endTable = createEndTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
+		$('#teamTable').html(endTable);
 		$('#teamTable').css('display','block');
 		//console.log("Game Over, resetting");
 		//socket.emit('reset');
