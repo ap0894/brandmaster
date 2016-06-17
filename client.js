@@ -476,8 +476,10 @@ function clicked(value){
 	if(!spyMasterMode) {
 		if (activeGo && goes > 0) {
 			var word = document.getElementById(value).getElementsByTagName('a')[0].innerHTML;
+			$('#wordToConfirm').html(word);
 			confirmModal.style.display = "block";
 			$('.modal-content').css('background-color', 'white');
+			$('.modal-content').css('color', COLOR_PALE_GREY);
 			//newColour = lighten('#2ec306', DARKEN);
 			$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + COLOR_GREY);
 			/*if (window.confirm("Are you sure you want to select '"+word+"'?")) {
