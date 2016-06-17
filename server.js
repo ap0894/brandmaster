@@ -1,5 +1,5 @@
 var TEAM_SIZE = 2;
-var NUM_TEAMS = 2;
+var NUM_TEAMS = 3;
 var gameHash = 65;
 var maxHash = 999;
 var NUMBER_OF_WORDS = 25;
