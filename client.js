@@ -17,6 +17,7 @@ var totaltime = 60 * 2.5;
 var teamColour;
 var activeTeamColour;
 var DARKEN = -0.1;
+var LIGHTEN = 0.1;
 var activeTeam = false;
 var numSelector = "<select id=\"num\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option></select>" 
 
@@ -87,7 +88,7 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 	for (z=0; z<NUM_TEAMS; z++){
 		cols += "<col span=\"1\" style=\"background-color:"+teams[z].colour+"\">";
 		teamName = toTitleCase(teams[z].name);
-		newColour = lighten(teams[z].colour, DARKEN);
+		newColour = lighten(teams[z].colour, LIGHTEN);
 		teamNameRow += "<td style=\"width:200px; font-size:12pt; padding:5px; color:"+newColour+"\">"+ teamName + "</td>";
 	}
 	cols += "<colgroup>";
@@ -97,7 +98,7 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 		table += "<tr>";
 		for(b=0; b<NUM_TEAMS; b++) {
 			if(teams[b].players[a] != null) {
-				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\"><strong>"+ teams[b].players[a].name + "</strong></td>";
+				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">"+ teams[b].players[a].name + "</td>";
 			} else {
 				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
 			}
@@ -118,7 +119,7 @@ function createEndTable(teams, NUM_TEAMS, TEAM_SIZE) {
 	for (z=0; z<NUM_TEAMS; z++){
 		cols += "<col span=\"1\" style=\"background-color:"+teams[z].colour+"\">";
 		teamName = toTitleCase(teams[z].name);
-		newColour = lighten(teams[z].colour, DARKEN);
+		newColour = lighten(teams[z].colour, LIGHTEN);
 		teamNameRow += "<td style=\"width:200px; font-size:12pt; padding:5px; color:"+newColour+"\">"+ teamName + "</td>";
 		scores = scores + "<td style=\"width:200px; padding:5px;\"><span class=\"scoreNum\">" + teams[z].score + "</span><span class=\"scoreTarget\" style=\"color:"+newColour+"\">/" + teams[z].target + "</td>";
 	}
@@ -130,7 +131,7 @@ function createEndTable(teams, NUM_TEAMS, TEAM_SIZE) {
 		table += "<tr>";
 		for(b=0; b<NUM_TEAMS; b++) {
 			if(teams[b].players[a] != null) {
-				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\"><strong>"+ teams[b].players[a].name + "</strong></td>";
+				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">"+ teams[b].players[a].name + "</td>";
 			} else {
 				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
 			}
