@@ -1,6 +1,6 @@
 var TEAM_SIZE = 2;
 var NUM_TEAMS = 2;
-var gameHash = 0;
+var gameHash = 65;
 var maxHash = 999;
 var NUMBER_OF_WORDS = 25;
 //var timerDuration = 60 * 2.5;
