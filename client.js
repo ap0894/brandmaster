@@ -39,6 +39,7 @@ $( document ).ready(function() {
 	connect ();
 	socket.emit('getTeams');
 	$("#endGo").hide();
+	$('#btmShadow').hide();
 	//$("#top").hide();
 	//$("#labels").hide();
 	//$('#resetContainer').html("<div><input type=\'button\' class=\'btn btn-primary btn-sm\' id=\'reset\' value=\'Reset\'></input></div>");
@@ -301,7 +302,8 @@ function connect () {
 			}
 		}
 		//$("#top").show();
-		$('#actions').html(actions);			
+		$('#actions').html(actions);
+		$('#btmShadow').show();
 	});
 	
 	// Handle the changing of tile colour event
