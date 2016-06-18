@@ -1,11 +1,11 @@
 var TEAM_SIZE = 2;
-var NUM_TEAMS = 3;
+var NUM_TEAMS = 4;
 var gameHash = 65;
 var maxHash = 999;
 var NUMBER_OF_WORDS = 25;
 //var timerDuration = 60 * 2.5;
 var timerDuration = 60 * 2.5;
-var WORDS_PER_TEAM = 8;
+var WORDS_PER_TEAM = 6;
 var teamNames = ["blues", "pinks", "oranges", "greens"];
 var COLOR_BLUE = "#27aae0";
 var COLOR_PINK = "#e85ba6";
@@ -141,6 +141,12 @@ function createBoard(){
 		whoseGo = teamNames[2];
 		teams[2].active = true;
 		activeTeamColour = teamColours[2];
+	}else {
+		colours.push(teamColours[3]);
+		teams[3].target++;
+		whoseGo = teamNames[3];
+		teams[3].active = true;
+		activeTeamColour = teamColours[3];
 	}	
 	console.log("Active team colour: " + activeTeamColour);
 	
