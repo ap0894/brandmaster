@@ -122,6 +122,8 @@ function createBoard(){
 	}
 	
 	// one extra for one of the teams
+	var remainder = Math.floor(Math.random() * data.length) % 2;
+	console.log("Math.floor(Math.random() * data.length) % 2: " + remainder);
 	if(Math.floor(Math.random() * data.length) % 2 === 0){
 		colours.push(teamColours[0]);
 		teams[0].target++;
@@ -135,7 +137,7 @@ function createBoard(){
 		whoseGo = teamNames[1];
 		teams[1].active = true;
 		activeTeamColour = teamColours[1];
-	}else {
+	}else if(Math.floor(Math.random() * data.length) % 2 === 2){
 		colours.push(teamColours[2]);
 		teams[2].target++;
 		whoseGo = teamNames[2];
