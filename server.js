@@ -110,7 +110,7 @@ function createBoard(){
 		wordsSelected.push(word.toLowerCase());
 		trs[i] = "<div class=\"square center\"><div class=\"content\"><div class=\"table\"><div class=\"table-cell\"id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></div></div></div></div>";
 		//trs[i] = "<div class=\"tile\" id=\'"+ i +"\' onclick=\"clicked(\'" + i + "\')\"><a href=\"#\">" + word + "</a></div>";
-		console.log("i: " + i + " " + trs[i] + ",");
+		//console.log("i: " + i + " " + trs[i] + ",");
 	}
 	
 	//create the colours array
@@ -320,6 +320,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 	// Handle reset event
 	socket.on('reset', function () {
 		// reset the server
+		clearInterval(myTimer);
 		console.log ("Resetting");
 
 		sessionData = [];
