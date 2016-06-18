@@ -1,6 +1,6 @@
 var TEAM_SIZE = 2;
 var NUM_TEAMS = 4;
-var gameHash = 65;
+//var gameHash = 0;
 var maxHash = 999;
 var NUMBER_OF_WORDS = 25;
 //var timerDuration = 60 * 2.5;
@@ -84,13 +84,15 @@ function createBoard(){
 	//var seed = document.getElementById("seed").value;
 	//Math.seedrandom(seed);
 
-	if (gameHash < maxHash) {
+	/*if (gameHash < maxHash) {
 		gameHash++;
 		console.log("Incremented game hash: " + gameHash);
 	} else {
 		gameHash=0;
 		console.log("Reset game hash " + gameHash);
-	}
+	}*/
+	var gameHash = Math.floor((Math.random() * 999) + 1);
+	
 	Math.seedrandom(gameHash);
 
 	//reset state to pristine state
@@ -117,7 +119,7 @@ function createBoard(){
 	for(var i = 0; i < WORDS_PER_TEAM; i++){
 		for (j=0; j<NUM_TEAMS; j++) {
 			colours.push(teamColours[j]);
-			console.log("Pushing colour " + teamColours[j]);
+			//console.log("Pushing colour " + teamColours[j]);
 		}
 	}
 	
