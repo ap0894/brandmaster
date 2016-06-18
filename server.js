@@ -277,6 +277,7 @@ startTimer = function() {
         if (duration < 0) {
 			// Time run out - need to change turns
             duration = timerDuration;
+			console.log("Timeout, switching teams");
 			switchTeam();
         }
     }, 1000);
