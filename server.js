@@ -1,4 +1,4 @@
-var TEAM_SIZE = 2;
+var TEAM_SIZE = 3;
 var NUM_TEAMS = 4;
 //var gameHash = 0;
 var maxHash = 999;
@@ -124,7 +124,7 @@ function createBoard(){
 	}
 	
 	// one extra for one of the teams
-	var remainder = Math.floor(Math.random() * data.length) % 3;
+	/*var remainder = Math.floor(Math.random() * data.length) % 3;
 	console.log("Math.floor(Math.random() * data.length) % 2: " + remainder);
 	if(remainder === 0){
 		colours.push(teamColours[0]);
@@ -151,7 +151,15 @@ function createBoard(){
 		whoseGo = teamNames[3];
 		teams[3].active = true;
 		activeTeamColour = teamColours[3];
-	}	
+	}*/	
+	
+	var extraIndex = Math.floor(Math.random() * 4);	
+	console.log("Extra team id: " + extraIndex);
+	colours.push(teamColours[extraIndex]);
+	teams[extraIndex].target++;
+	whoseGo = teamNames[extraIndex];
+	teams[extraIndex].active = true;
+	activeTeamColour = teamColours[extraIndex];
 	console.log("Active team colour: " + activeTeamColour);
 	
 	// add neturals 
