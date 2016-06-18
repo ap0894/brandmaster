@@ -91,7 +91,7 @@ function createBoard(){
 		gameHash=0;
 		console.log("Reset game hash " + gameHash);
 	}*/
-	var gameHash = Math.floor((Math.random() * 999) + 1);
+	var gameHash = Math.floor((Math.random() * maxHash) + 1);
 	
 	Math.seedrandom(gameHash);
 
@@ -124,22 +124,22 @@ function createBoard(){
 	}
 	
 	// one extra for one of the teams
-	var remainder = Math.floor(Math.random() * data.length) % 2;
+	var remainder = Math.floor(Math.random() * data.length) % 3;
 	console.log("Math.floor(Math.random() * data.length) % 2: " + remainder);
-	if(Math.floor(Math.random() * data.length) % 2 === 0){
+	if(remainder === 0){
 		colours.push(teamColours[0]);
 		teams[0].target++;
 		console.log("Incrementing target to " + teams[0].target);
 		whoseGo = teamNames[0];
 		teams[0].active = true;
 		activeTeamColour = teamColours[0];
-	}else if(Math.floor(Math.random() * data.length) % 2 === 1){
+	}else if(remainder === 1){
 		colours.push(teamColours[1]);
 		teams[1].target++;
 		whoseGo = teamNames[1];
 		teams[1].active = true;
 		activeTeamColour = teamColours[1];
-	}else if(Math.floor(Math.random() * data.length) % 2 === 2){
+	}else if(remainder === 2){
 		colours.push(teamColours[2]);
 		teams[2].target++;
 		whoseGo = teamNames[2];
