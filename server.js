@@ -143,7 +143,7 @@ function createBoard(){
 		activeTeamColour = teamColours[3];
 	}*/	
 	
-	var extraIndex = Math.floor(Math.random() * 4);	
+	var extraIndex = Math.floor(Math.random() * NUM_TEAMS);	
 	console.log("Extra team id: " + extraIndex);
 	colours.push(teamColours[extraIndex]);
 	teams[extraIndex].target++;
