@@ -47,7 +47,7 @@ $( document ).ready(function() {
 			console.log("Options Available");
 			$('#options').html(optionsSelector);					
 		} else {
-			console.log("Options not available");
+			console.log("Options not available, getting teams");
 			$('#options').remove();
 			socket.emit('getTeams');
 		}
