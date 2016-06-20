@@ -152,7 +152,7 @@ function createBoard(){
 	activeTeamColour = teamColours[extraIndex];
 	console.log("Active team colour: " + activeTeamColour);
 	
-	BLANKS =  = NUMBER_OF_WORDS - ((WORDS_PER_TEAM * NUM_TEAMS) + 1);
+	BLANKS = NUMBER_OF_WORDS - ((WORDS_PER_TEAM * NUM_TEAMS) + 1);
 	// add neturals 
 	for(var x = 0; x < BLANKS; x++){
 		colours.push(COLOR_BROWN);
