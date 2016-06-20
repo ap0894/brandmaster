@@ -11,6 +11,7 @@ var COLOR_ORANGE = "#f3ae2a";
 var COLOR_BROWN = "#f3af2a";
 var COLOR_GREEN = "#8dc53e";
 var COLOR_BLACK = "#808080";
+var teamsInitialised = false;
 var teamColours = [COLOR_BLUE, COLOR_PINK, COLOR_ORANGE, COLOR_GREEN];
 var BLANKS = NUMBER_OF_WORDS - ((WORDS_PER_TEAM * NUM_TEAMS) + 1);
 
@@ -229,14 +230,16 @@ function isNameAvail(data) {
 function removePlayer(data) {
 
 	// if player was a code master, pause the game
-	console.log("Looking for player" + data);
-	for (i=0; i<NUM_TEAMS; i++) {
-		var index = teams[i].players.map(function(e) { return e.name; }).indexOf(data);
-		if(index != -1) {
-			console.log("Found at index: " + index);
-			teams[i].players.splice(index, 1);
-			pauseTimer();
-			return ;
+	if(teamsInitialised) {
+		console.log("Looking for player" + data);
+		for (i=0; i<NUM_TEAMS; i++) {
+			var index = teams[i].players.map(function(e) { return e.name; }).indexOf(data);
+			if(index != -1) {
+				console.log("Found at index: " + index);
+				teams[i].players.splice(index, 1);
+				pauseTimer();
+				return ;
+			}
 		}
 	}
 }
@@ -333,6 +336,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 		checked = true;
 		inProgress = false;
 		isPaused = false;
+		teamsInitialised = false;
 
 		whoseGo = "";
 		//createTeams();
@@ -441,6 +445,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 		}
 		console.log("Calling Create teams with values " + TEAM_SIZE + " " + NUM_TEAMS);
 		createTeams();
+		teamsInitialised = true;
 	}
 	var added = false;
 	var left;
