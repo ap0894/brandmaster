@@ -38,20 +38,18 @@ $( document ).ready(function() {
 	}
 	
 	connect();
+	$('#btmShadow').hide();
 	$('#endBanner').hide();
+	//$('#resetContainer').html("<div><input type=\'button\' class=\'btn btn-primary btn-sm\' id=\'reset\' value=\'Reset\'></input></div>");
 	socket.emit('getStatus', function (data) {
 		if(data) {
 			console.log("Options Available");
 		} else {
 			console.log("Options not available");
+			$('#pnum').remove();
+			socket.emit('getTeams');
 		}
 	});
-	socket.emit('getTeams');
-	//$("#endGo").hide();
-	$('#btmShadow').hide();
-	//$("#top").hide();
-	//$("#labels").hide();
-	//$('#resetContainer').html("<div><input type=\'button\' class=\'btn btn-primary btn-sm\' id=\'reset\' value=\'Reset\'></input></div>");
 	
 	// Listener for click on Enter Game button
 	$('#joinBtn').click(function(e){
