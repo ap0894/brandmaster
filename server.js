@@ -413,7 +413,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 	console.log("received join game request from client:", data);
 	if(playerNum) {
 		console.log("Received player number parameter " + playerNum);
-		switch (playerNum) {
+		switch (parseInt(playerNum)) {
 			case 4:
 				TEAM_SIZE = 2;
 				NUM_TEAMS = 2;
