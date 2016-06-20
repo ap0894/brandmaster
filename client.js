@@ -19,6 +19,7 @@ var activeTeamColour;
 var DARKEN = -0.1;
 var LIGHTEN = 0.2;
 var activeTeam = false;
+var currentGuesser = false;
 var numSelector = "<select id=\"num\"><option value=\"0\">..</option><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option></select>" 
 
 // this block executes when page DOM is ready
@@ -340,7 +341,7 @@ function connect () {
 				}
 			}
 			if(activeGo) {
-				if(col) {
+				if(col & currentGuesser) {
 					socket.emit('score', col);
 				}
 				if (col == room ) {
@@ -354,7 +355,9 @@ function connect () {
 					} else {
 						$('#modalMsg').html("Your turn is over!");
 						console.log("end of goes, switching");
-						socket.emit('switch'); 
+						if(currentGuesser) {
+							socket.emit('switch'); 
+						}
 					}
 					$('.modal-content').css('background-color', '#2ec306');
 					newColour = lighten('#2ec306', DARKEN);
@@ -372,8 +375,11 @@ function connect () {
 					},2000);
 					console.log("Incorrect stop guessing & switching");
 					goes = 0;
-					socket.emit('switch');
+					if(currentGuesser) {
+						socket.emit('switch');
+					}
 				}
+				currentGuesser = false;
 			}
 		}
 	});
@@ -494,6 +500,7 @@ function connect () {
 function clicked(value){
 	if(!spyMasterMode) {
 		if (activeGo && goes > 0) {
+			currentGuesser = true;
 			var word = document.getElementById(value).getElementsByTagName('a')[0].innerHTML;
 			
 			/*$('#wordToConfirm').html(word);
@@ -533,6 +540,7 @@ function clicked(value){
 				socket.emit('clicked', value);
 			}
 		}
+		//currentGuesser = false;
 	}
 }
 
