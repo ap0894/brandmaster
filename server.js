@@ -25,6 +25,7 @@ var myTimer;
 var whoseGo = "";
 var checked = true;
 var inProgress = false;
+var optionsAvailable = true;
 var isPaused = false;
 var activeTeamColour;
 
@@ -318,6 +319,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 	// Handle reset event
 	socket.on('reset', function () {
 		// reset the server
+		optionsAvailable = true;
 		clearInterval(myTimer);
 		console.log ("Resetting");
 
@@ -394,6 +396,18 @@ io.on('connection', function (socket) { // Incoming connections from clients
 		}
 	});
   
+  
+  socket.on('getStatus', function (callback) {
+	if(optionsAvailable) {
+		callback(true);
+		console.log("options available");
+	} else {
+		console.log("options not available");
+		callback(false);
+	}
+  });
+  
+  
   //add player to team which has space
   socket.on('registerPlayer', function (data, callback) {
 	console.log("received join game request from client:", data);
@@ -429,6 +443,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 				}
 				i++;
 			}
+			optionsAvailable = false;
 			callback (true);
 			teamSize++;
 			left = (TEAM_SIZE*NUM_TEAMS) - teamSize;

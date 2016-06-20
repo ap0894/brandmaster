@@ -37,10 +37,17 @@ $( document ).ready(function() {
 		}
 	}
 	
-	connect ();
+	connect();
 	$('#endBanner').hide();
+	socket.emit('getStatus', function (data) {
+		if(data) {
+			console.log("Options Available");
+		} else {
+			console.log("Options not available");
+		}
+	});
 	socket.emit('getTeams');
-	$("#endGo").hide();
+	//$("#endGo").hide();
 	$('#btmShadow').hide();
 	//$("#top").hide();
 	//$("#labels").hide();
@@ -67,10 +74,10 @@ $( document ).ready(function() {
 		}
 	});
 	
-	$('#reconnect').click(function(e) {
+	/*$('#reconnect').click(function(e) {
 		e.preventDefault();
 		reconnect();
-	});
+	});*/
 });
 
 $(document.body).on('click', '#newGame' ,function(e){
@@ -114,7 +121,7 @@ function createTeamTable(teams, NUM_TEAMS, TEAM_SIZE) {
 				table += "<td style=\"width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">"+ teams[b].players[a].name + "</td>";
 			} else {
 				newColour = lighten(teams[b].colour, DARKEN-0.05);
-				table += "<td style=\"color: "+newColour+"; width:200px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
+				table += "<td style=\"color: "+newColour+"; width:254px; text-align:left; font-size:10pt; padding:5px; padding-left:10px;\">Waiting for player</td>";
 			}
 		}
 		table += "</tr>";
@@ -184,7 +191,7 @@ function toTitleCase(str)
 }
 
 // Connect event for web sockets
-function connect () {
+function connect() {
   
 	var connString = config.protocol + config.domain + ':' + config.clientport;
 	console.log("Websocket connection string:", connString, config.wsclientopts);
