@@ -429,8 +429,10 @@ function connect() {
 				}
 			}
 		}
-		var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
-		$('#teamTable').html(teamTable);
+		if (data.teams.length > 0 ) {
+			var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
+			$('#teamTable').html(teamTable);
+		}
 	});
 	
 	//Handle display score event
