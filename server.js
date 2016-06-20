@@ -1,9 +1,7 @@
 var TEAM_SIZE = 3;
 var NUM_TEAMS = 4;
-//var gameHash = 0;
 var maxHash = 999;
 var NUMBER_OF_WORDS = 25;
-//var timerDuration = 60 * 2.5;
 var timerDuration = 60 * 2.5;
 var WORDS_PER_TEAM = 6;
 var teamNames = ["blues", "pinks", "oranges", "greens"];
@@ -81,16 +79,6 @@ function getTeamSize () {
 function createBoard(){	
 
 	//get seed and set the seed for randomizer
-	//var seed = document.getElementById("seed").value;
-	//Math.seedrandom(seed);
-
-	/*if (gameHash < maxHash) {
-		gameHash++;
-		console.log("Incremented game hash: " + gameHash);
-	} else {
-		gameHash=0;
-		console.log("Reset game hash " + gameHash);
-	}*/
 	var gameHash = Math.floor((Math.random() * maxHash) + 1);
 	
 	Math.seedrandom(gameHash);
