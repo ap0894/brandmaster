@@ -341,7 +341,7 @@ function connect () {
 				}
 			}
 			if(activeGo) {
-				if(col & currentGuesser) {
+				if(col && currentGuesser) {
 					socket.emit('score', col);
 				}
 				if (col == room ) {
@@ -379,6 +379,7 @@ function connect () {
 						socket.emit('switch');
 					}
 				}
+				console.log("No longer the current guesser");
 				currentGuesser = false;
 			}
 		}
@@ -501,6 +502,7 @@ function clicked(value){
 	if(!spyMasterMode) {
 		if (activeGo && goes > 0) {
 			currentGuesser = true;
+			console.log("Setting you to the current guesser");
 			var word = document.getElementById(value).getElementsByTagName('a')[0].innerHTML;
 			
 			/*$('#wordToConfirm').html(word);
