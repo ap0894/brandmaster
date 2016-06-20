@@ -3,7 +3,7 @@ var NUM_TEAMS;
 var maxHash = 999;
 var NUMBER_OF_WORDS = 25;
 var timerDuration = 60 * 2.5;
-var WORDS_PER_TEAM;
+var WORDS_PER_TEAM = 6;
 var teamNames = ["blues", "pinks", "oranges", "greens"];
 var COLOR_BLUE = "#27aae0";
 var COLOR_PINK = "#e85ba6";
@@ -13,7 +13,7 @@ var COLOR_GREEN = "#8dc53e";
 var COLOR_BLACK = "#808080";
 var teamsInitialised = false;
 var teamColours = [COLOR_BLUE, COLOR_PINK, COLOR_ORANGE, COLOR_GREEN];
-var BLANKS;
+var BLANKS = NUMBER_OF_WORDS - ((WORDS_PER_TEAM * NUM_TEAMS) + 1);
 
 var sessionData = [];
 var wordsSelected = [];
@@ -153,7 +153,6 @@ function createBoard(){
 	console.log("Active team colour: " + activeTeamColour);
 	
 	// add neturals 
-	BLANKS = NUMBER_OF_WORDS - ((WORDS_PER_TEAM * NUM_TEAMS) + 1);
 	for(var x = 0; x < BLANKS; x++){
 		colours.push(COLOR_BROWN);
 	}
@@ -422,32 +421,26 @@ io.on('connection', function (socket) { // Incoming connections from clients
 			case 4:
 				TEAM_SIZE = 2;
 				NUM_TEAMS = 2;
-				WORDS_PER_TEAM = 8;
 				break;
 			case 6:
 				TEAM_SIZE = 3;
 				NUM_TEAMS = 2;
-				WORDS_PER_TEAM = 8;
 				break;
 			case 8:
 				TEAM_SIZE = 2;
 				NUM_TEAMS = 4;
-				WORDS_PER_TEAM = 6;
 				break;
 			case 9:
 				TEAM_SIZE = 3;
 				NUM_TEAMS = 3;
-				WORDS_PER_TEAM = 8;
 				break;
 			case 12:
 				TEAM_SIZE = 3;
 				NUM_TEAMS = 4;
-				WORDS_PER_TEAM = 6;
 				break;
 			case 16:
 				TEAM_SIZE = 4;
 				NUM_TEAMS = 4;
-				WORDS_PER_TEAM = 6;
 				break;
 		}
 		console.log("Calling Create teams with values " + TEAM_SIZE + " " + NUM_TEAMS);
