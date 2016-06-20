@@ -46,7 +46,7 @@ $( document ).ready(function() {
 			console.log("Options Available");
 		} else {
 			console.log("Options not available");
-			$('#pnum').remove();
+			$('#options').remove();
 			socket.emit('getTeams');
 		}
 	});
@@ -59,7 +59,11 @@ $( document ).ready(function() {
 			console.log("Name was empty");
 		} else {
 			console.log("Registering Player: " + playerName);
-			socket.emit('registerPlayer', playerName, function (data) {
+			if($('#pnum').val() != "") {
+				playerNum = $('#pnum').val();
+				console.log("Number of players " + playerNum);
+			}
+			socket.emit('registerPlayer', playerName, playerNum, function (data) {
 				if (data) {
 					$('#playerentry').hide();
 					console.log("Player " + playerName + " registered");

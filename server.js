@@ -409,9 +409,9 @@ io.on('connection', function (socket) { // Incoming connections from clients
   
   
   //add player to team which has space
-  socket.on('registerPlayer', function (data, callback) {
+  socket.on('registerPlayer', function (data, playerNum, callback) {
 	console.log("received join game request from client:", data);
-	
+	console.log("Received player number parameter " + playerNum);
 	var added = false;
 	var left;
 	var teamSize = getTeamSize();
