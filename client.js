@@ -44,7 +44,7 @@ $( document ).ready(function() {
 	socket.emit('getStatus', function (data) {
 		if(data) {
 			console.log("Options Available");
-			$('#options').html("<label class=\"label paleGrey\" for=\"pnum\">Players</label><select id=\"pnum\"><option value=\"0\">..</option><option value=\"4\">4</option><option value=\"6\">6</option><option value=\"8\">8</option></option><option value=\"10\">10</option></option><option value=\"12\">12</option></option><option value=\"14\">14</option></option><option value=\"15\">15</option></option><option value=\"16\">16</option></select>");					
+			$('#options').html("<label class=\"label paleGrey\" for=\"pnum\">Players</label><select id=\"pnum\"><option value=\"0\">..</option><option value=\"4\">4</option><option value=\"6\">6</option><option value=\"8\">8</option><option value=\"9\">9</option></option><option value=\"10\">10</option></option><option value=\"12\">12</option></option><option value=\"14\">14</option></option><option value=\"15\">15</option></option><option value=\"16\">16</option></select>");					
 		} else {
 			console.log("Options not available");
 			$('#options').remove();

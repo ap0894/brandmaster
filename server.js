@@ -411,7 +411,47 @@ io.on('connection', function (socket) { // Incoming connections from clients
   //add player to team which has space
   socket.on('registerPlayer', function (data, playerNum, callback) {
 	console.log("received join game request from client:", data);
-	console.log("Received player number parameter " + playerNum);
+	if(playerNum) {
+		console.log("Received player number parameter " + playerNum);
+		switch (playerNum) {
+			case 4:
+				TEAM_SIZE = 2;
+				NUM_TEAMS = 2;
+				break;
+			case 6:
+				TEAM_SIZE = 2;
+				NUM_TEAMS = 3;
+				break;
+			case 8:
+				TEAM_SIZE = 2;
+				NUM_TEAMS = 4;
+				break;
+			case 9:
+				TEAM_SIZE = 3;
+				NUM_TEAMS = 3;
+				break;
+			case 10:
+				TEAM_SIZE = 5;
+				NUM_TEAMS = 2;
+				break;
+			case 12:
+				TEAM_SIZE = 4;
+				NUM_TEAMS = 3;
+				break;
+			case 14:
+				TEAM_SIZE = 7;
+				NUM_TEAMS = 2;
+				break;
+			case 15:
+				TEAM_SIZE = 3;
+				NUM_TEAMS = 3;
+				break;
+			case 16:
+				TEAM_SIZE = 4;
+				NUM_TEAMS = 4;
+				break;
+		}
+	}
 	var added = false;
 	var left;
 	var teamSize = getTeamSize();
