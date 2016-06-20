@@ -51,7 +51,7 @@ function toTitleCase(str)
 
 // Function to initialise teams
 function createTeams() {
-	//console.log("Initialising teams");
+	console.log("Initialising teams");
 	for (i=0; i<NUM_TEAMS; i++) {
 		teams.push ({
 			name: teamNames[i],
@@ -61,9 +61,9 @@ function createTeams() {
 			players: [],
 			active: false
 		});
-		//console.log("created team name: " + teams[i].name);
+		console.log("created team name: " + teams[i].name);
 	}
-	//console.log("Total teams = " + teams.length);
+	console.log("Total teams = " + teams.length);
 }
 
 // Function to get the number of players in the teams
@@ -288,7 +288,7 @@ console.log("Trying to start server with config:", config.serverip + ":" + confi
 // to bind server on IP 0.0.0.0 (or something) and fails
 server.listen(config.serverport, config.serverip, function() {
 	console.log("Server running @ http://" + config.serverip + ":" + config.serverport);
-	createTeams();
+	//createTeams();
 });
 
 // Allow some files to be served over HTTP
@@ -335,7 +335,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 		isPaused = false;
 
 		whoseGo = "";
-		createTeams();
+		//createTeams();
 		io.sockets.emit('reload');
 	});
 	
@@ -439,6 +439,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 				NUM_TEAMS = 4;
 				break;
 		}
+		createTeams();
 	}
 	var added = false;
 	var left;
