@@ -417,20 +417,22 @@ function connect() {
 	
 	//Handle display team event
 	socket.on('displayTeam', function (data) {
-		//$('#temp').remove();
-		$('#waitMsg').remove();
-		console.log("Display team event, teams length: " + data.teams.length);
-		for (i=0; i<data.teams.length; i++)
-		{
-			if (data.teams[i].players.length > 0) {
-				if(data.teams[i].players[0].name === playerName) {
-					spyMasterMode = true;
-					console.log("You are a code master");
+		if(data.teams.length > 0) {
+			//$('#temp').remove();
+			$('#waitMsg').remove();
+			console.log("Display team event, teams length: " + data.teams.length);
+			for (i=0; i<data.teams.length; i++)
+			{
+				if (data.teams[i].players.length > 0) {
+					if(data.teams[i].players[0].name === playerName) {
+						spyMasterMode = true;
+						console.log("You are a code master");
+					}
 				}
 			}
+			var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
+			$('#teamTable').html(teamTable);
 		}
-		var teamTable = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
-		$('#teamTable').html(teamTable);
 	});
 	
 	//Handle display score event
