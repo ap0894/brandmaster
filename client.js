@@ -20,7 +20,8 @@ var DARKEN = -0.1;
 var LIGHTEN = 0.2;
 var activeTeam = false;
 var currentGuesser = false;
-var numSelector = "<select id=\"num\"><option value=\"0\">..</option><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option></select>" 
+var numSelector = "<select class=\"selector\" id=\"num\"><option value=\"0\">..</option><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option></select>" ;
+var optionsSelector = "<label class=\"label paleGrey\" for=\"pnum\">Players</label><select class=\"selector\" id=\"pnum\"><option value=\"0\">..</option><option value=\"4\">4</option><option value=\"6\">6</option><option value=\"8\">8</option><option value=\"9\">9</option></option><option value=\"12\">12</option><option value=\"16\">16</option></select>";
 
 // this block executes when page DOM is ready
 $( document ).ready(function() {
@@ -44,7 +45,7 @@ $( document ).ready(function() {
 	socket.emit('getStatus', function (data) {
 		if(data) {
 			console.log("Options Available");
-			$('#options').html("<label class=\"label paleGrey\" for=\"pnum\">Players</label><select id=\"pnum\"><option value=\"0\">..</option><option value=\"4\">4</option><option value=\"6\">6</option><option value=\"8\">8</option><option value=\"9\">9</option></option><option value=\"12\">12</option><option value=\"16\">16</option></select>");					
+			$('#options').html(optionsSelector);					
 		} else {
 			console.log("Options not available");
 			$('#options').remove();
