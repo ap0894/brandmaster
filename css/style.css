@@ -422,3 +422,7 @@ a, a:link, a:visited, a:hover, a:active {
 #avatarContainer {
 	float: right;
 }
+
+#pnum {
+	width: 176px;
+}
