@@ -298,7 +298,7 @@ function connect() {
 		
 		//console.log("Generating player board");
 		var board = "";
-		var actions = "<div class=\"center\" id=\"top\"><div id=\"topWrap\"><div id=\"topInWrap\"><div id=\"pie\" class=\"pie degree middle\"><span class=\"block\"></span><span id=\"time\"></span></div><div class=\"middle\" id=\"clueWrap\"><div id=\"clue\"></div><div class=\"middle\" id=\"goes\"></div></div><div class=\"middle\" id=\"end\"></div></div></div></div>";
+		var actions = "<div class=\"center\" id=\"top\"><div id=\"topWrap\"><div id=\"topInWrap\"><div id=\"pie\" class=\"pie degree middle\"><span class=\"block\"></span><span id=\"time\"></span></div><div class=\"middle\" id=\"clueWrap\"><div id=\"clue\"></div><div class=\"middle\" id=\"goes\"></div></div><div class=\"middle\" id=\"end\"></div><div id=\"errors\"></div></div></div></div>";
 		//board += '<table class="board" id="board"><tbody>';
 		for (var i = 0; i < data.trs.length; i++){
 			board += data.trs[i];
