@@ -1,5 +1,5 @@
-var TEAM_SIZE = 3;
-var NUM_TEAMS = 4;
+var TEAM_SIZE;
+var NUM_TEAMS;
 var maxHash = 999;
 var NUMBER_OF_WORDS = 25;
 var timerDuration = 60 * 2.5;
@@ -51,7 +51,7 @@ function toTitleCase(str)
 
 // Function to initialise teams
 function createTeams() {
-	console.log("Initialising teams");
+	console.log("Initialising teams with values " + NUM_TEAMS + " " + TEAM_SIZE);
 	for (i=0; i<NUM_TEAMS; i++) {
 		teams.push ({
 			name: teamNames[i],
@@ -439,6 +439,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 				NUM_TEAMS = 4;
 				break;
 		}
+		console.log("Calling Create teams with values " + TEAM_SIZE + " " + NUM_TEAMS);
 		createTeams();
 	}
 	var added = false;
