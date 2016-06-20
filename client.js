@@ -419,7 +419,7 @@ function connect() {
 	socket.on('displayTeam', function (data) {
 		//$('#temp').remove();
 		$('#waitMsg').remove();
-		
+		console.log("Display team event, teams length: " + data.teams.length);
 		for (i=0; i<data.teams.length; i++)
 		{
 			if (data.teams[i].players.length > 0) {
