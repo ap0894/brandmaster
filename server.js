@@ -79,7 +79,7 @@ function getTeamSize () {
 
 // Function to create a new board
 function createBoard(){	
-	console.log("Creating a board");
+
 	//get seed and set the seed for randomizer
 	var gameHash = Math.floor((Math.random() * maxHash) + 1);
 	
