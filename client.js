@@ -379,7 +379,7 @@ function connect () {
 						socket.emit('switch');
 					}
 				}
-				//currentGuesser = false;
+				currentGuesser = false;
 			}
 		}
 	});
