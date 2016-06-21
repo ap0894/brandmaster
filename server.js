@@ -517,19 +517,17 @@ io.on('connection', function (socket) { // Incoming connections from clients
 				var duration = readyDuration;
 				readyTimer = setInterval(function () {
 					secs = parseInt(duration % 60, 10);
-					secs = secs < 10 ? "0" + secs : secs;
 					io.sockets.emit('getReady', secs);
 					duration--;
 					
 					if(duration == 0) {
 						clearInterval(readyTimer);
 						duration = readyDuration;
+						console.log("Calling startGame()");
+						startGame();
 					}
 					
 				}, 1000);
-			
-				console.log("Calling startGame()");
-				startGame();
 				
 				//Show board, turn then send score
 				/*io.sockets.emit('board', {trs: trs, colours: colours} );
