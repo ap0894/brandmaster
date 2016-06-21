@@ -255,9 +255,9 @@ function connect() {
 	
 	
 	// Handle getReady event
-	socket.on('getReady', function(seconds) {
+	/*socket.on('getReady', function(seconds) {
 		console.log("Countdown: " + seconds);
-	});
+	});*/
 	
 	// Handle showClue event
 	socket.on('showClue', function(data) {
