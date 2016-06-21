@@ -243,12 +243,12 @@ function connect() {
 		$('#numPlayers').html("Waiting for "+ data.left + " more players");
 		$('#numPlayers').css({'font-size':'24pt', 'padding-top':'20px' });
 		$('#numPlayers').css('color', COLOR_PALE_GREY);
-		$('#role').css({'font-size':'24pt', 'padding-top':'20px' });
+		$('#role').css({'font-size':'18pt', 'padding-top':'10px' });
 		$('#role').css('color', COLOR_PALE_GREY);
 		if(spyMasterMode) {
-			$('#role').html("You are in team <span style=\"color:"+teamColour+"\">"+ room + "</span> as a <span style=\"color:"+teamColour+"\">spymaster</span>");
+			$('#role').html("You are in team <span style=\"color:"+teamColour+"\"><strong>"+ room + "</strong></span> as a <span style=\"color:"+teamColour+"\"><strong>Brand Master</strong></span>");
 		} else {
-			$('#role').html("You are in team <span style=\"color:"+teamColour+"\">"+ room + "</span style=\"color:"+teamColour+"\">as a <span>marketeer</span>");
+			$('#role').html("You are in team <span style=\"color:"+teamColour+"\"><strong>"+ room + "</strong></span> as a <span style=\"color:"+teamColour+"\"><strong>Marketeer</strong></span>");
 		}
 	   }
 	});
