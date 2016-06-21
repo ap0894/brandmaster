@@ -520,7 +520,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 					io.sockets.emit('getReady', secs);
 					duration--;
 					
-					if(duration == 0) {
+					if(duration < 0) {
 						clearInterval(readyTimer);
 						duration = readyDuration;
 						console.log("Calling startGame()");
