@@ -512,6 +512,13 @@ io.on('connection', function (socket) { // Incoming connections from clients
 				}
 				
 				//Show countdown timer then start game
+				
+				setInterval(function () {
+				seconds = parseInt(3 % 60, 10);
+				seconds = seconds < 10 ? "0" + seconds : seconds;
+				io.sockets.emit('getReady', seconds);
+			}, 3000);
+				
 				console.log("Calling startGame()");
 				startGame();
 				

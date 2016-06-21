@@ -253,6 +253,12 @@ function connect() {
 		$('#teams').html(output + "<br/> Sorry! Game full");
 	});
 	
+	
+	// Handle getReady event
+	socket.on('getReady', function(seconds) {
+		console.log("Countdown: " + seconds);
+	});
+	
 	// Handle showClue event
 	socket.on('showClue', function(data) {
 		//the html for displaying the clue
