@@ -358,13 +358,19 @@ function connect() {
 			document.getElementById(theValue).style.color = 'white';
 			document.getElementById(theValue).style.boxShadow = "";	
 			
-			document.getElementById(theValue).style.backgroundColor = COLOR_EVEN_PALER_GREY;
-			document.getElementById(theValue).style.color = COLOR_PALE_GREY;
-			document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_EVEN_PALER_GREY;	
+			setTimeout(function() {
+				document.getElementById(theValue).style.backgroundColor = COLOR_EVEN_PALER_GREY;
+				document.getElementById(theValue).style.color = COLOR_PALE_GREY;
+				document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_EVEN_PALER_GREY;	
+			}, 500); 
 			
-			document.getElementById(theValue).style.backgroundColor = theColours[theValue];
-			document.getElementById(theValue).style.color = 'white';
-			document.getElementById(theValue).style.boxShadow = "";	
+			setTimeout(function() {
+				document.getElementById(theValue).style.backgroundColor = theColours[theValue];
+				document.getElementById(theValue).style.color = 'white';
+				document.getElementById(theValue).style.boxShadow = "";		
+			}, 500);
+			
+			
 			var col;
 			var newColour;
 			for (i=0; i<data.teams.length; i++) {
