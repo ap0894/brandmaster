@@ -553,7 +553,7 @@ function clicked(value){
 			$('.modal-content').css('color', COLOR_GREY);
 			confirmModal.style.display = "block";
 			
-			/*$('#yes').click(function(e) {
+			$('#yes').click(function(e) {
 				e.preventDefault();
 				confirmModal.style.display = "none";
 				//only deactivate once reached max goes
@@ -565,7 +565,7 @@ function clicked(value){
 				}
 				//console.log("Sending id of " + value + " to server clicked listener");
 				socket.emit('clicked', value);
-			});*/
+			});
 			
 			$('#nope').click(function(e) {
 				e.preventDefault();
