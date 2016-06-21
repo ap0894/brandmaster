@@ -3,7 +3,7 @@ var spyMasterMode = false;
 var activeSpy = false;
 var playerName;
 var COLOR_GREEN = "#009000";
-//var COLOR_WHITE = "#ffffff";
+var COLOR_WHITE = "#ffffff";
 var COLOR_PALE_GREY = "#b3b3b3";
 var COLOR_EVEN_PALER_GREY = "#f0f0f0";
 var TILE_GREY = "#F6F6F6";
@@ -397,6 +397,7 @@ function connect() {
 						}
 					}
 					$('.modal-content').css('background-color', '#2ec306');
+					$('.modal-content').css('color', COLOR_WHITE);
 					newColour = lighten('#2ec306', DARKEN);
 					$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + newColour);
 					setTimeout(function () {
@@ -405,6 +406,7 @@ function connect() {
 				} else {
 					incorrectModal.style.display = "block";
 					$('.modal-content').css('background-color', '#ff035c');
+					$('.modal-content').css('color', COLOR_WHITE);
 					newColour = lighten('#ff035c', DARKEN);
 					$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + newColour);
 					setTimeout(function () {
