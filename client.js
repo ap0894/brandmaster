@@ -555,7 +555,8 @@ function clicked(value){
 			$('.modal-content').css('color', COLOR_GREY);
 			confirmModal.style.display = "block";
 			
-			$('#yes').click(function(e) {
+			$('#yes').on('click', function(e) {
+				$("#yes").off("click");
 				e.preventDefault();
 				confirmModal.style.display = "none";
 				//only deactivate once reached max goes
@@ -569,7 +570,8 @@ function clicked(value){
 				socket.emit('clicked', value);
 			});
 			
-			$('#nope').click(function(e) {
+			$('#nope').on('click', function(e) {
+				$("#nope").off("click");
 				e.preventDefault();
 				confirmModal.style.display = "none";
 			});
