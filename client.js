@@ -358,7 +358,7 @@ function connect() {
 			document.getElementById(theValue).style.color = 'white';
 			document.getElementById(theValue).style.boxShadow = "";	
 			
-			setTimeout(function() {
+			/*setTimeout(function() {
 				document.getElementById(theValue).style.backgroundColor = COLOR_EVEN_PALER_GREY;
 				document.getElementById(theValue).style.color = COLOR_PALE_GREY;
 				document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_EVEN_PALER_GREY;	
@@ -368,8 +368,7 @@ function connect() {
 				document.getElementById(theValue).style.backgroundColor = theColours[theValue];
 				document.getElementById(theValue).style.color = 'white';
 				document.getElementById(theValue).style.boxShadow = "";		
-			}, 500);
-			
+			}, 500);*/
 			
 			var col;
 			var newColour;
