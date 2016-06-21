@@ -256,7 +256,11 @@ function connect() {
 	
 	// Handle getReady event
 	socket.on('getReady', function(seconds) {
-		console.log("Countdown: " + seconds);
+		console.log("Ready Countdown: " + seconds);
+		$('#numPlayers').html("<span id=\"readyTimer\">"+seconds+"</span><br/>Ready to start!");
+		$('#numPlayers').css({'font-size':'24pt', 'padding-top':'20px' });
+		$('#numPlayers').css('color', COLOR_PALE_GREY);
+		$('#readyTimer').css('color', '#27aae0');
 	});
 	
 	// Handle showClue event
