@@ -243,6 +243,11 @@ function connect() {
 		$('#numPlayers').html("Waiting for "+ data.left + " more players");
 		$('#numPlayers').css({'font-size':'24pt', 'padding-top':'20px' });
 		$('#numPlayers').css('color', COLOR_PALE_GREY);
+		if(spyMasterMode) {
+			$('#role').html("You are in team <span style=\"color:"+teamColour+"\">"+ room + "</span> as a <span style=\"color:"+teamColour+"\">spymaster</span>" + );
+		} else {
+			$('#role').html("You are in team <span style=\"color:"+teamColour+"\">"+ room + "</span style=\"color:"+teamColour+"\">as a <span>marketeer</span>" + );
+		}
 	   }
 	});
 
@@ -304,6 +309,7 @@ function connect() {
 	socket.on('board', function(data) {
 		$('#numPlayers').html('');
 		$('#rules').remove();
+		$('#role').remove();
 		$('#teamTable').css('display','none');
 		
 		//console.log("Generating player board");
