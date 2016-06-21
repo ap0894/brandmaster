@@ -38,6 +38,28 @@ $( document ).ready(function() {
 		}
 	}
 	
+	$('#yes').on('click', function(e) {
+		$("#yes").off("click");
+		e.preventDefault();
+		confirmModal.style.display = "none";
+		//only deactivate once reached max goes
+		if (goes == 0) {
+			console.log("max goes reached, deactivating players");
+			//$('#goes').html('');
+			$('#numInput').html("");
+			activeGo = false;
+		}
+		//console.log("Sending id of " + value + " to server clicked listener");
+		socket.emit('clicked', value);
+	});
+
+	$('#nope').on('click', function(e) {
+		$("#nope").off("click");
+		e.preventDefault();
+		currentGuesser = false;
+		confirmModal.style.display = "none";
+	});
+	
 	connect();
 	$('#btmShadow').hide();
 	$('#endBanner').hide();
@@ -555,27 +577,7 @@ function clicked(value){
 			$('.modal-content').css('color', COLOR_GREY);
 			confirmModal.style.display = "block";
 			
-			$('#yes').on('click', function(e) {
-				$("#yes").off("click");
-				e.preventDefault();
-				confirmModal.style.display = "none";
-				//only deactivate once reached max goes
-				if (goes == 0) {
-					console.log("max goes reached, deactivating players");
-					//$('#goes').html('');
-					$('#numInput').html("");
-					activeGo = false;
-				}
-				//console.log("Sending id of " + value + " to server clicked listener");
-				socket.emit('clicked', value);
-			});
-			
-			$('#nope').on('click', function(e) {
-				$("#nope").off("click");
-				e.preventDefault();
-				currentGuesser = false;
-				confirmModal.style.display = "none";
-			});
+
 			
 			/*if (window.confirm("Are you sure you want to select '"+word+"'?")) {
 				//only deactivate once reached max goes
