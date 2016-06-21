@@ -573,6 +573,7 @@ function clicked(value){
 			$('#nope').on('click', function(e) {
 				$("#nope").off("click");
 				e.preventDefault();
+				currentGuesser = false;
 				confirmModal.style.display = "none";
 			});
 			
