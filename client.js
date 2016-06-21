@@ -239,10 +239,11 @@ function connect() {
 	   //console.log('Team Size:', data);
 	   //$('#numPlayers').html("Players: "+ data.teamSize);
 	   //document.getElementById('numPlayers').innerHTML = "Players =  "+ data.teamSize;
-	   if (data.left >0 ) {
-		$('#numPlayers').html("Waiting for "+ data.left + " more players");
-		$('#numPlayers').css({'font-size':'24pt', 'padding-top':'20px' });
-		$('#numPlayers').css('color', COLOR_PALE_GREY);
+		if (data.left >0 ) {
+			$('#numPlayers').html("Waiting for "+ data.left + " more players");
+			$('#numPlayers').css({'font-size':'24pt', 'padding-top':'20px' });
+			$('#numPlayers').css('color', COLOR_PALE_GREY);
+		} 
 		$('#role').css({'font-size':'16pt', 'padding-top':'10px' });
 		$('#role').css('color', COLOR_PALE_GREY);
 		if(spyMasterMode) {
@@ -250,7 +251,6 @@ function connect() {
 		} else {
 			$('#role').html("You are in team <span style=\"color:"+teamColour+"\"><strong>"+ room + "</strong></span> as a <span style=\"color:"+teamColour+"\"><strong>Marketeer</strong></span>");
 		}
-	   }
 	});
 
 	// Handle game full event
