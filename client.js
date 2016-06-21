@@ -349,19 +349,22 @@ function connect() {
 		{
 			//Set tile white & clear it's contents
 			document.getElementById(theValue).style.backgroundColor = COLOR_EVEN_PALER_GREY ;
-			document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_EVEN_PALER_GREY;
-			//document.getElementById(theValue).innerHTML = "" ;
 			document.getElementById(theValue).style.color = COLOR_PALE_GREY;
+			document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_EVEN_PALER_GREY;
 		} 
 		// not spy master
 		else {
 			document.getElementById(theValue).style.backgroundColor = theColours[theValue];
 			document.getElementById(theValue).style.color = 'white';
-			//newColour = lighten(theColours[theValue], DARKEN);
-			//"0 10px 1px " + newColour;
-			//document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + newColour;	
 			document.getElementById(theValue).style.boxShadow = "";	
-			//document.getElementById(theValue).style.backgroundColor = theColours[theValue];
+			
+			document.getElementById(theValue).style.backgroundColor = COLOR_EVEN_PALER_GREY;
+			document.getElementById(theValue).style.color = COLOR_PALE_GREY;
+			document.getElementById(theValue).style.boxShadow = "inset 0 -5px 1px " + COLOR_EVEN_PALER_GREY;	
+			
+			document.getElementById(theValue).style.backgroundColor = theColours[theValue];
+			document.getElementById(theValue).style.color = 'white';
+			document.getElementById(theValue).style.boxShadow = "";	
 			var col;
 			var newColour;
 			for (i=0; i<data.teams.length; i++) {
