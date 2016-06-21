@@ -286,6 +286,17 @@ startTimer = function() {
     }, 1000);
 };
 
+function startGame() {
+
+	//Show board, turn then send score
+	io.sockets.emit('board', {trs: trs, colours: colours} );
+	io.sockets.emit('turn', { whoseGo : whoseGo, activeTeamColour : activeTeamColour });
+	sendScores();
+	isPaused = false;
+	startTimer();
+
+}
+
 console.log("Trying to start server with config:", config.serverip + ":" + config.serverport);
 
 // Both port and ip are needed for the OpenShift, otherwise it tries 
@@ -494,17 +505,22 @@ io.on('connection', function (socket) { // Incoming connections from clients
 			
 			//If team size is reached the max
 			if (teamSize == TEAM_SIZE*NUM_TEAMS) {
+				
 				// If no game in progress then create the board
 				if(!inProgress) {
 					createBoard();
 				}
 				
+				//Show countdown timer then start game
+				console.log("Calling startGame()");
+				startGame();
+				
 				//Show board, turn then send score
-				io.sockets.emit('board', {trs: trs, colours: colours} );
+				/*io.sockets.emit('board', {trs: trs, colours: colours} );
 				io.sockets.emit('turn', { whoseGo : whoseGo, activeTeamColour : activeTeamColour });
 				sendScores();
 				isPaused = false;
-				startTimer();
+				startTimer();*/
 			}
 		} else {
 			callback(false);
