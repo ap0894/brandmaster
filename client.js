@@ -342,7 +342,7 @@ function connect() {
 	
 	// Handle the changing of tile colour event
 	socket.on('changeColour',function(data) {
-		//console.log("Received colours & value from server",  data);
+		console.log("Changing colour");
 		var theColours = data.colours;
 		var theValue = data.value;
 		if(spyMasterMode)
