@@ -48,7 +48,7 @@ $( document ).ready(function() {
 
 	rm.click(function () {
 		var $this = $(this);
-		$this.prev().slideToggle();
+		$('#moreRules').slideToggle();
 		$this.text($this.text() == moreText ? lessText : moreText);
 	});
 	
