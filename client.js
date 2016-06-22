@@ -357,7 +357,7 @@ function connect() {
 			document.getElementById(theValue).style.backgroundColor = theColours[theValue];
 			document.getElementById(theValue).style.color = 'white';
 			document.getElementById(theValue).style.boxShadow = "";	
-			document.getElementById(theValue).style.pointer-events = "none";	
+			document.getElementById(theValue).style.pointerEvents  = "none";	
 			document.getElementById(theValue).style.cursor = "default";	
 			
 			/*setTimeout(function() {
