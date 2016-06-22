@@ -41,7 +41,7 @@ $( document ).ready(function() {
 	}
 	
 	$('.toggler').click(function() {
-        $(this).find('div').slideToggle();
+        $('#moreRules').slideToggle();
     });
 	
 	connect();

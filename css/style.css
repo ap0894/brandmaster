@@ -433,6 +433,6 @@ a, a:link, a:visited, a:hover, a:active {
 	cursor:pointer; 
 }
 
-.toggler div { 
+#moreRules  { 
 	display:none; 
 }
