@@ -244,7 +244,6 @@ function connect() {
 		$('#avatarName').html(teamName+" team");
 		$('#avatarName').css('color', teamColour);
 		$('#avatar').css('cursor', 'pointer' );
-		$('#avatar').off('click');
 		$('#avatar').on('click', function () {
 			console.log("Clicked on the avatar");
 			var output = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
