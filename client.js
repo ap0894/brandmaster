@@ -247,6 +247,8 @@ function connect() {
 			console.log("Clicked on the avatar");
 			var output = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
 			$('#teamsModalContent').html(output);
+			$('.modal-content').css('background-color', 'white');
+			$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + COLOR_GREY);
 			$('#teamsModal').css('display', 'block');
 		});
 	});
