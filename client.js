@@ -50,12 +50,14 @@ $( document ).ready(function() {
 	//$('#resetContainer').html("<div><input type=\'button\' class=\'btn btn-primary btn-sm\' id=\'reset\' value=\'Reset\'></input></div>");
 	socket.emit('getStatus', function (data) {
 		if(data) {
+			$('#playerentry').css('display', 'block');
 			console.log("Options Available");
 			$('#options').html(optionsSelector);					
 		} else {
 			console.log("Options not available, getting teams");
 			$('#options').remove();
 			socket.emit('getTeams');
+			$('#playerentry').css('display', 'block');
 		}
 	});
 	
