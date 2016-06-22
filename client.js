@@ -34,7 +34,9 @@ $( document ).ready(function() {
 		} else if(event.target==incorrectModal) {
 			incorrectModal.style.display = "none";
 		} else if(event.target==confirmModal) {
-			confirmModal.style.display = "none";
+			confirmModal.style.display = "none";		
+			console.log("Sending message to enable guessers");
+			socket.emit('enableGuessers');
 		}
 	}
 	
