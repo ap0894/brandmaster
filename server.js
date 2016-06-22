@@ -503,7 +503,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 					
 					//Adding player into room
 					socket.join(teamNames[i]);
-					io.sockets.in(teamNames[i]).emit('roomAllocated', {roomId: teamNames[i], colour: teamColours[i], teams: teams });
+					io.sockets.in(teamNames[i]).emit('roomAllocated', {roomId: teamNames[i], colour: teamColours[i], teams: teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE });
 					sendTeams();
 				}
 				i++;

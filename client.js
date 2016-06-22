@@ -245,7 +245,7 @@ function connect() {
 		$('#avatar').css('cursor', 'pointer' );
 		$('#avatar').on('click', function () {
 			console.log("Clicked on the avatar");
-			var output = createTeamTable(data.teams);
+			var output = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
 			$('#teamsModalContent').html(output);
 			$('#teamsModal').css('display', 'block');
 		});
