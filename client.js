@@ -40,6 +40,10 @@ $( document ).ready(function() {
 		}
 	}
 	
+	$('.toggler').click(function() {
+        $(this).find('div').slideToggle();
+    });
+	
 	connect();
 	$('#btmShadow').hide();
 	$('#endBanner').hide();

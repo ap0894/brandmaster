@@ -427,3 +427,12 @@ a, a:link, a:visited, a:hover, a:active {
 #pnum {
 	width: 176px;
 }
+
+.toggler { 
+	//background:lightblue; 
+	cursor:pointer; 
+}
+
+.toggler div { 
+	display:none; 
+}
