@@ -43,8 +43,8 @@ $( document ).ready(function() {
 	}
 	
 	var rm = $(".read_more"),
-		moreText = "... Read More",
-		lessText = "... Read Less";
+		moreText = "Read More ...",
+		lessText = "Read Less ...";
 
 	rm.click(function () {
 		var $this = $(this);

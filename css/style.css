@@ -428,7 +428,7 @@ a, a:link, a:visited, a:hover, a:active {
 	width: 176px;
 }
 
-.toggler { 
+.read_more { 
 	color:blue;
 	text-decoration:underline;	
 	cursor:pointer; 
