@@ -240,6 +240,9 @@ function connect() {
 		teamName = toTitleCase(room).slice(0,-1);
 		$('#avatarName').html(teamName+" team");
 		$('#avatarName').css('color', teamColour);
+		$('#avatarName').on('click', function () {
+			console.log("Clicked on the avatar");
+		});
 	});
 
 	// Handle teamSize event
