@@ -44,6 +44,8 @@ $( document ).ready(function() {
 	
 	$('.toggler').click(function() {
         $('#moreRules').slideToggle();
+		$('#readMore').html("Read Less...");
+		
     });
 	
 	connect();
