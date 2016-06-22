@@ -240,8 +240,12 @@ function connect() {
 		teamName = toTitleCase(room).slice(0,-1);
 		$('#avatarName').html(teamName+" team");
 		$('#avatarName').css('color', teamColour);
-		$('#avatarName').on('click', function () {
+		$('#avatar').css('cursor', 'pointer' );
+		$('#avatar').on('click', function () {
 			console.log("Clicked on the avatar");
+			var output = createTeamTable(data.teams);
+			$('#teamsModalContent').html(output);
+			$('#teamsModalContent').css('display', 'block');
 		});
 	});
 
