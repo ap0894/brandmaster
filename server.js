@@ -403,8 +403,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 			return;
 		}
 		
-	});
-	
+	});	
 	
 	socket.on('checkClue', function (data, callback) {
 		if (wordsSelected.indexOf(data) > -1) {
@@ -413,8 +412,19 @@ io.on('connection', function (socket) { // Incoming connections from clients
 			callback (true);
 		}
 	});
-  
-  
+ 
+	socket.on('disableGuessers', function () {
+		console.log("Received message to disable guessers");
+		io.sockets.in(whoseGo).emit('disable');
+		
+	}); 
+
+	socket.on('enableGuessers', function () {
+		console.log("Received message to enable guessers");
+		io.sockets.in(whoseGo).emit('enable');
+		
+	}); 
+	
   socket.on('getStatus', function (callback) {
 	if(optionsAvailable) {
 		callback(true);

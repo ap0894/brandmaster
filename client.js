@@ -486,8 +486,21 @@ function connect() {
 	});
 	
 	// Handle the disable event
-	socket.on('disable', function (turn) {  
+	socket.on('disable', function () {  
 		activeGo = false;
+		console.log("Disabled");
+	});
+
+	// Handle the enable event
+	socket.on('enable', function () {  
+		activeGo = true;
+		console.log("Enabled");
+	});
+	
+	// Handle the disable event
+	socket.on('enable', function () {  
+		activeGo = true;
+		console.log("Enabled");
 	});
 	
 	// Handle the turn event
@@ -549,6 +562,9 @@ function clicked(value){
 		if (activeGo && goes > 0) {
 			currentGuesser = true;
 			console.log("Setting you to the current guesser");
+			socket.emit('disableGuessers');
+			console.log("Sending message to server to disable other guessers");
+			
 			var word = document.getElementById(value).getElementsByTagName('a')[0].innerHTML;
 			
 			$('#wordToConfirm').html(word);
@@ -561,6 +577,8 @@ function clicked(value){
 				$("#yes").off("click");
 				e.preventDefault();
 				confirmModal.style.display = "none";
+				console.log("Sending message to enable guessers");
+				socket.emit('enableGuessers');
 				//only deactivate once reached max goes
 				if (goes == 0) {
 					console.log("max goes reached, deactivating players");
@@ -578,6 +596,8 @@ function clicked(value){
 				e.preventDefault();
 				currentGuesser = false;
 				confirmModal.style.display = "none";
+				console.log("Sending message to enable guessers");
+				socket.emit('enableGuessers');
 			});
 			
 			/*if (window.confirm("Are you sure you want to select '"+word+"'?")) {
