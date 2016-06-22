@@ -429,7 +429,8 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .toggler { 
-	//background:lightblue; 
+	color:blue;
+	text-decoration:underline;	
 	cursor:pointer; 
 }
 
