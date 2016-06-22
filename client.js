@@ -525,6 +525,12 @@ function connect() {
 	
 	// Handle the turn event
 	socket.on('turn', function (data) { 
+		
+		//Close confirm modal
+		correctModal.style.display = "none";
+		incorrectModal.style.display = "none";
+		confirmModal.style.display = "none";
+		
 		$("#endGo").hide();
 		turn = data.whoseGo;
 		activeTeamColour = data.activeTeamColour;
