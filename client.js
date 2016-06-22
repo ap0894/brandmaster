@@ -37,6 +37,8 @@ $( document ).ready(function() {
 			confirmModal.style.display = "none";		
 			console.log("Sending message to enable guessers");
 			socket.emit('enableGuessers');
+		} else if(event.target==teamsModal) {
+			teamsModal.style.display = "none";
 		}
 	}
 	
@@ -245,7 +247,7 @@ function connect() {
 			console.log("Clicked on the avatar");
 			var output = createTeamTable(data.teams);
 			$('#teamsModalContent').html(output);
-			$('#teamsModalContent').css('display', 'block');
+			$('#teamsModal').css('display', 'block');
 		});
 	});
 
