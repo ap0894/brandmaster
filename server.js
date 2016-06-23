@@ -513,6 +513,8 @@ io.on('connection', function (socket) { // Incoming connections from clients
 			teamSize++;
 			left = (TEAM_SIZE*NUM_TEAMS) - teamSize;
 			io.sockets.emit('teamSize', {teamSize : teamSize, left : left} );
+			socket.broadcast.emit('reload');
+			
 			
 			//If team size is reached the max
 			if (teamSize == TEAM_SIZE*NUM_TEAMS) {
