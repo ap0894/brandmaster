@@ -396,8 +396,9 @@ io.on('connection', function (socket) { // Incoming connections from clients
 	socket.on('disconnect', function(data) {
 		console.log(socket.id + " disconnected");
 		if(socket.nickname) {
+		
+			console.log("Disconnect from " + socket.nickname + " resending teams");
 			removePlayer(socket.nickname);
-			console.log("Disconnect, sending teams");
 			sendTeams();
 		} else {
 			return;
