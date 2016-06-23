@@ -440,7 +440,8 @@ io.on('connection', function (socket) { // Incoming connections from clients
   socket.on('registerPlayer', function (data, playerNum, callback) {
 	console.log("received join game request from client:", data);
 	if(playerNum) {
-		console.log("Received player number parameter " + playerNum);
+		console.log("Received player number parameter " + playerNum + " resetting all other clients");
+		socket.broadcast.emit('reload');
 		switch (parseInt(playerNum)) {
 			case 4:
 				TEAM_SIZE = 2;
@@ -512,9 +513,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 			callback (true);
 			teamSize++;
 			left = (TEAM_SIZE*NUM_TEAMS) - teamSize;
-			io.sockets.emit('teamSize', {teamSize : teamSize, left : left} );
-			socket.broadcast.emit('reload');
-			
+			io.sockets.emit('teamSize', {teamSize : teamSize, left : left} );			
 			
 			//If team size is reached the max
 			if (teamSize == TEAM_SIZE*NUM_TEAMS) {
