@@ -63,10 +63,9 @@ $( document ).ready(function() {
 			$('#options').html(optionsSelector);					
 		} else {
 			console.log("Options not available, getting teams");
-			//$('#options').remove();
-			//socket.emit('getTeams');
-			//$('#playerentry').css('display', 'block');
-			location.reload(true);
+			$('#options').remove();
+			socket.emit('getTeams');
+			$('#playerentry').css('display', 'block');
 		}
 	});
 	
