@@ -260,6 +260,28 @@ function connect() {
 		});
 	});
 
+	// Handle incoming team allocation event
+	socket.on('teamAllocated', function(data) {
+	   //console.log('Welcome to team', roomId);
+		room = data.roomId;
+		teamColour = data.colour;
+		loc = "images/avatar_"+room+"_small.png"
+		$('#avatar').attr("src",loc);
+		teamName = toTitleCase(room).slice(0,-1);
+		$('#avatarName').html(teamName+" team");
+		$('#avatarName').css('color', teamColour);
+		$('#avatar').css('cursor', 'pointer' );
+		$('#avatar').off('click');
+		$('#avatar').on('click', function () {
+			console.log("Clicked on the avatar");
+			var output = createTeamTable(data.teams, data.NUM_TEAMS, data.TEAM_SIZE);
+			$('#teamsModalContent').html(output);
+			$('.modal-content').css('background-color', 'white');
+			$('.modal-content').css('box-shadow', 'inset 0 -5px 1px' + COLOR_GREY);
+			$('#teamsModal').css('display', 'block');
+		});
+	});
+
 	// Handle teamSize event
 	socket.on('teamSize', function(data) {
 	   //console.log('Team Size:', data);
@@ -514,20 +536,18 @@ function connect() {
 	
 	// Handle the disable event
 	socket.on('disable', function () {  
-		activeGo = false;
-		console.log("Disabled");
+		if(activeTeam) {
+			activeGo = false;
+			console.log("Disabled");
+		}
 	});
 
 	// Handle the enable event
 	socket.on('enable', function () {  
-		activeGo = true;
-		console.log("Enabled");
-	});
-	
-	// Handle the disable event
-	socket.on('enable', function () {  
-		activeGo = true;
-		console.log("Enabled");
+		if(activeTeam) {
+			activeGo = true;
+			console.log("Enabled");
+		}
 	});
 	
 	// Handle the turn event

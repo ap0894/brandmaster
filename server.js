@@ -198,7 +198,8 @@ function switchTeam()
 {
 	var index = teamNames.indexOf(whoseGo);
 	teams[index].active = false;
-	io.sockets.in(whoseGo).emit('disable');
+	//io.sockets.in(whoseGo).emit('disable');
+	io.sockets.emit('disable');
 	if (index == NUM_TEAMS-1) {
 		index = 0;
 	} else {
@@ -420,13 +421,14 @@ io.on('connection', function (socket) { // Incoming connections from clients
  
 	socket.on('disableGuessers', function () {
 		console.log("Received message to disable guessers");
-		io.sockets.in(whoseGo).emit('disable');
-		
+		//io.sockets.in(whoseGo).emit('disable');
+		io.sockets.emit('disable');
 	}); 
 
 	socket.on('enableGuessers', function () {
 		console.log("Received message to enable guessers");
-		io.sockets.in(whoseGo).emit('enable');
+		//io.sockets.in(whoseGo).emit('enable');
+		io.sockets.emit('enable');
 		
 	}); 
 	
@@ -509,7 +511,8 @@ io.on('connection', function (socket) { // Incoming connections from clients
 					
 					//Adding player into room
 					socket.join(teamNames[i]);
-					io.sockets.in(teamNames[i]).emit('roomAllocated', {roomId: teamNames[i], colour: teamColours[i], teams: teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE });
+					socket.emit('teamAllocated', {roomId: teamNames[i], colour: teamColours[i], teams: teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE });
+					//io.sockets.in(teamNames[i]).emit('roomAllocated', {roomId: teamNames[i], colour: teamColours[i], teams: teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE });
 					sendTeams();
 				}
 				i++;
