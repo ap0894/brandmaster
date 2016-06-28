@@ -521,6 +521,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 				
 				// If no game in progress then create the board
 				if(!inProgress) {
+					console.log("Calling createBoard()");
 					createBoard();
 				}
 				

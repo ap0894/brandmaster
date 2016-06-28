@@ -335,6 +335,7 @@ function connect() {
 	
 	// Handle display board event
 	socket.on('board', function(data) {
+		$("#board").html();
 		$('#numPlayers').html('');
 		$('#rules').remove();
 		$('#role').remove();
