@@ -298,6 +298,10 @@ function startGame() {
 
 }
 
+function resumeGame() {
+
+}
+
 console.log("Trying to start server with config:", config.serverip + ":" + config.serverport);
 
 // Both port and ip are needed for the OpenShift, otherwise it tries 
