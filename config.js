@@ -13,7 +13,7 @@ var Config = {
   "wsclientopts": { reconnection: true, 
                     reconnectionDelay: 2000,
                     reconnectionAttempts: 100,
-                    secure: false
+                    secure: true
                   }
 };
 
