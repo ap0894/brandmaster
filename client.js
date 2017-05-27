@@ -216,7 +216,7 @@ function connect() {
 	var connString = config.protocol + config.domain + ':' + config.clientport;
 	console.log("Websocket connection string:", connString, config.wsclientopts);
 	//socket = io.connect(connString, config.wsclientopts);
-	socket = io.connect('wss://myappname.herokuapp.com/');
+	socket = io.connect('wss://brandmaster.herokuapp.com/');
 
 	// Handle error event
 	socket.on('error', function (err) {  
