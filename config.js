@@ -3,7 +3,8 @@ var Config = {
   "domain":     process.env.OPENSHIFT_APP_DNS || '127.0.0.1',
 
   "serverip":   process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
-  "serverport": process.env.OPENSHIFT_NODEJS_PORT || '8080',
+//  "serverport": process.env.OPENSHIFT_NODEJS_PORT || '8080',
+  "serverport": process.env.PORT || 5000,
   
   "clientport": (process.env.OPENSHIFT_NODEJS_PORT) ? '8443':'8080',
   "protocol":   'wss://',
