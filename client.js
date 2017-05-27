@@ -213,10 +213,11 @@ function toTitleCase(str)
 // Connect event for web sockets
 function connect() {
   
-	var connString = config.protocol + config.domain + ':' + config.clientport;
+	//var connString = config.protocol + config.domain + ':' + config.clientport;
+	var connString = config.protocol + config.domain;
 	console.log("Websocket connection string:", connString, config.wsclientopts);
-	//socket = io.connect(connString, config.wsclientopts);
-	socket = io.connect('wss://brandmaster.herokuapp.com/');
+	socket = io.connect(connString, config.wsclientopts);
+	//socket = io.connect('wss://brandmaster.herokuapp.com/');
 
 	// Handle error event
 	socket.on('error', function (err) {  
