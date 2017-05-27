@@ -9,7 +9,7 @@ var Config = {
   //"serverport": process.env.OPENSHIFT_NODEJS_PORT || '8080',
   
   //"clientport": (process.env.OPENSHIFT_NODEJS_PORT) ? '8443':'8080',
-  "clientport": '8443':'8080',
+  "clientport": '8443',
   "protocol":   'wss://',
 
   "heartbeattmo": 1000, // milliseconds 
