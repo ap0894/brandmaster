@@ -1,7 +1,7 @@
 var Config = {
   // Contents of this file will be send to the client
   //"domain":     process.env.OPENSHIFT_APP_DNS || '127.0.0.1',
-  "domain":		'https://brandmaster.herokuapp.com/',
+  "domain":		'brandmaster.herokuapp.com',
 
   "serverip":   process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
   "serverport": process.env.PORT || 5000,
