@@ -510,7 +510,7 @@ io.on('connection', function (socket) { // Incoming connections from clients
 					teams[i].players.push(player);
 					
 					//Adding player into room
-					socket.join(teamNames[i]);
+					//socket.join(teamNames[i]);
 					socket.emit('teamAllocated', {roomId: teamNames[i], colour: teamColours[i], teams: teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE });
 					//io.sockets.in(teamNames[i]).emit('roomAllocated', {roomId: teamNames[i], colour: teamColours[i], teams: teams, NUM_TEAMS:NUM_TEAMS, TEAM_SIZE:TEAM_SIZE });
 					sendTeams();
