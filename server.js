@@ -303,14 +303,24 @@ function resumeGame() {
 
 }
 
-console.log("Trying to start server with config:", config.serverip + ":" + config.serverport);
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+
+console.log("Trying to start server with config:", server_ip_address + ":" + server_port);
+
+ 
+server.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", port " + server_port )
+});
+
+
 
 // Both port and ip are needed for the OpenShift, otherwise it tries 
 // to bind server on IP 0.0.0.0 (or something) and fails
-server.listen(config.serverport, config.serverip, function() {
-	console.log("Server running @ http://" + config.serverip + ":" + config.serverport);
+//server.listen(config.serverport, config.serverip, function() {
+//	console.log("Server running @ http://" + config.serverip + ":" + config.serverport);
 	//createTeams();
-});
+//});
 
 // Allow some files to be served over HTTP
 app.use(express.static(__dirname + '/'));
